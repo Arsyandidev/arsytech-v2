@@ -39,16 +39,11 @@
             <h3 style="font-size:.9375rem">Email</h3>
             <p style="font-size:.875rem"><a href="mailto:{{ config('arsytech.contact.email') }}">{{ config('arsytech.contact.email') }}</a><br>
               <span style="color:var(--muted)">Untuk lampiran dan dokumen.</span></p></div></div>
-          <div class="col-sm-6"><div class="card-x flat">
+          <div class="col-12"><div class="card-x flat">
             <div class="ico ico-sm"><i class="bi bi-geo-alt"></i></div>
             <h3 style="font-size:.9375rem">Lokasi</h3>
             <p style="font-size:.875rem">Bogor, Jawa Barat<br>
               <span style="color:var(--muted)">Menerima klien dari seluruh Indonesia.</span></p></div></div>
-          <div class="col-sm-6"><div class="card-x flat">
-            <div class="ico ico-sm"><i class="bi bi-clock"></i></div>
-            <h3 style="font-size:.9375rem">Jam kerja</h3>
-            {{-- <p style="font-size:.875rem">Senin–Jumat<br>
-              <span style="color:var(--muted)">08.00–17.00 WIB.</span></p></div></div> --}}
         </div>
       </div>
 
