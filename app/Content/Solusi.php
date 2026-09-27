@@ -103,15 +103,6 @@ class Solusi
                 'description' => 'WMS custom dari Arsytech untuk penerimaan, putaway, picking, packing, pengiriman, dan stock opname berbasis barcode. Mendukung multi-gudang, akurasi stok 99%+.',
                 'heading' => 'WMS agar stok di sistem sama dengan di rak',
                 'lead' => 'Setiap pergerakan barang tercatat, dari penerimaan sampai pengiriman. Selisih stok turun jauh, picking lebih cepat, dan stock opname tidak perlu lagi menghentikan gudang selama dua hari.',
-                'card' => [
-                    'title' => 'Warehouse Management System (WMS)',
-                    'body' => 'Pergerakan barang tercatat sejak diterima sampai dikirim. Selisih stok berkurang, dan picking serta packing jadi jauh lebih cepat.',
-                    'features' => [
-                        'Barcode &amp; QR scanning',
-                        'Putaway, picking, packing, dispatch',
-                        'Stock opname tanpa setop operasi',
-                    ],
-                ],
                 'intro' => [
                     'title' => 'Dari mana selisih stok berasal',
                     'paragraphs' => [
@@ -191,15 +182,6 @@ class Solusi
                 'description' => 'HRIS custom dari Arsytech untuk absensi, shift, cuti, payroll, PPh 21, BPJS, dan portal mandiri karyawan. Proses payroll selesai dalam hitungan jam.',
                 'heading' => 'HRIS dari absensi sampai slip gaji',
                 'lead' => 'Absensi, cuti, lembur, dan payroll ada dalam satu alur. Tim HR tidak perlu lagi merekap manual tiap akhir bulan, dan karyawan bisa mengurus administrasinya sendiri lewat portal.',
-                'card' => [
-                    'title' => 'Human Resource Information System (HRIS)',
-                    'body' => 'Administrasi SDM berjalan otomatis. Payroll selesai tanpa rekap manual, dan data karyawan selalu terbaru serta bisa dilihat sendiri oleh karyawan.',
-                    'features' => [
-                        'Absensi, cuti, lembur, shift',
-                        'Payroll, PPh 21, BPJS',
-                        'Portal mandiri karyawan',
-                    ],
-                ],
                 'intro' => [
                     'title' => 'Payroll tanpa lembur tiap akhir bulan',
                     'paragraphs' => [
@@ -279,15 +261,6 @@ class Solusi
                 'description' => 'CRM custom dari Arsytech untuk lead, pipeline deal, penawaran, target, dan forecast penjualan. Bisa terhubung ke ERP dan WhatsApp Business API.',
                 'heading' => 'CRM agar forecast penjualan lebih akurat',
                 'lead' => 'Semua prospek, penawaran, dan tindak lanjut tercatat di satu tempat. Manajemen bisa melihat kondisi pipeline yang sebenarnya, dan peluang tidak ikut hilang saat sales-nya pindah kerja.',
-                'card' => [
-                    'title' => 'Customer Relationship Management (CRM)',
-                    'body' => 'Pipeline penjualan tercatat rapi. Prospek tidak ada yang terlewat, dan forecast disusun dari data yang ada di sistem.',
-                    'features' => [
-                        'Lead, deal, dan aktivitas sales',
-                        'Target &amp; forecast per tim',
-                        'Riwayat interaksi pelanggan',
-                    ],
-                ],
                 'intro' => [
                     'title' => 'Pipeline yang hanya ada di kepala tim sales',
                     'paragraphs' => [

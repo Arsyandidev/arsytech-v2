@@ -8,7 +8,7 @@
       <a href="{{ config('arsytech.contact.whatsapp') }}" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-1"></i> {{ config('arsytech.contact.phone') }}</a>
     </div>
     <div class="d-flex align-items-center gap-3">
-      <span><i class="bi bi-clock me-1"></i> {{ config('arsytech.contact.hours') }}</span>
+      {{-- <span><i class="bi bi-clock me-1"></i> {{ config('arsytech.contact.hours') }}</span> --}}
       <span class="sep"></span>
       <div class="d-flex gap-2">
         <a href="{{ config('arsytech.social.linkedin') }}" target="_blank" rel="noopener" aria-label="LinkedIn Arsytech"><i class="bi bi-linkedin"></i></a>

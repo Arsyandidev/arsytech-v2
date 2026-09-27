@@ -47,8 +47,8 @@
           <div class="col-sm-6"><div class="card-x flat">
             <div class="ico ico-sm"><i class="bi bi-clock"></i></div>
             <h3 style="font-size:.9375rem">Jam kerja</h3>
-            <p style="font-size:.875rem">Senin–Jumat<br>
-              <span style="color:var(--muted)">08.00–17.00 WIB.</span></p></div></div>
+            {{-- <p style="font-size:.875rem">Senin–Jumat<br>
+              <span style="color:var(--muted)">08.00–17.00 WIB.</span></p></div></div> --}}
         </div>
       </div>
 
@@ -104,8 +104,12 @@
                 <label for="kebutuhan" class="form-label">Kebutuhan utama <span class="req">*</span></label>
                 <select @class(['form-select', 'is-invalid' => $errors->has('kebutuhan')]) id="kebutuhan" name="kebutuhan" required>
                   <option value="" @selected(! old('kebutuhan')) disabled>Pilih salah satu…</option>
-                  @foreach (\App\Content\Konsultasi::KEBUTUHAN as $value => $label)
-                    <option value="{{ $value }}" @selected(old('kebutuhan') === $value)>{!! $label !!}</option>
+                  @foreach (\App\Content\Konsultasi::KEBUTUHAN_GRUP as $group => $values)
+                    <optgroup label="{{ $group }}">
+                      @foreach ($values as $value)
+                        <option value="{{ $value }}" @selected(old('kebutuhan') === $value)>{!! \App\Content\Konsultasi::KEBUTUHAN[$value] !!}</option>
+                      @endforeach
+                    </optgroup>
                   @endforeach
                 </select>
                 <div class="invalid-feedback">{{ $errors->first('kebutuhan') ?: 'Pilih salah satu kebutuhan dulu.' }}</div>

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Solusi ERP, WMS, HRIS & CRM untuk Perusahaan | Arsytech')
-@section('description', 'Empat sistem inti Arsytech, yaitu ERP, WMS, HRIS, dan CRM, ditambah sistem keuangan dan website perusahaan. Bisa dipakai per modul, saling terhubung, dan disesuaikan.')
+@section('title', 'Solusi Arsytech: ERP dan Aplikasi Bisnis Terintegrasi | Arsytech')
+@section('description', 'Arsytech Nawasena Service: ERP sebagai layanan inti, ditambah aplikasi operasional bisnis (HRIS, WMS, CRM, akuntansi), aplikasi pemasaran, dan e-learning untuk perusahaan.')
 
 @section('content')
 @include('layouts.components.page-head', [
-    'title' => 'Enam lini solusi dalam satu basis data',
-    'subtitle' => 'Tiap sistem bisa dipakai sendiri atau digabung dengan yang lain. Biasanya kami mulai dari masalah yang paling mengganggu, lalu menambah modul berikutnya saat tim siap.',
+    'title' => 'ERP sebagai inti, ditambah aplikasi yang saling terhubung',
+    'subtitle' => 'Arsytech Nawasena Service terdiri dari ERP sebagai layanan inti dan tiga kelompok aplikasi: operasional bisnis, pemasaran, dan e-learning. Semuanya bisa dipakai bertahap sesuai kesiapan tim Anda.',
     'breadcrumbs' => [
         'Solusi' => null,
     ],
@@ -14,60 +14,56 @@
 
 <section class="section">
   <div class="container">
-    <div class="text-center mb-5 rv">
-      <span class="eyebrow">Sistem inti</span>
-      <h2>Empat lini yang paling sering jadi titik awal</h2>
-      <p class="lead-sm mt-3 mx-auto" style="max-width:62ch">
-        Kami jarang menyarankan membangun semuanya sekaligus. Pilih satu yang paling menghambat operasional
-        saat ini, jalankan sampai stabil, lalu sambungkan yang lain.
-      </p>
-    </div>
-    <div class="row g-4">
-      @foreach ($solusiList as $slug => $item)
-        <div class="col-md-6 rv"><div class="card-x">
-          <div class="ico"><i class="bi {{ $item['icon'] }}"></i></div>
-          <h3>{!! $item['card']['title'] !!}</h3>
-          <p>{!! $item['card']['body'] !!}</p>
-          <ul class="feat-list">@foreach ($item['card']['features'] as $feature)<li>{!! $feature !!}</li>@endforeach</ul>
-          <a class="card-link stretched-link" href="{{ route('solusi.show', $slug) }}">Pelajari {{ $item['short'] }} <i class="bi bi-arrow-right"></i></a>
-        </div></div>
-      @endforeach
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6 rv">
+        <span class="eyebrow">Layanan inti</span>
+        <h2>{!! $erp['card']['title'] !!}</h2>
+        <p class="lead-sm mt-3">{!! $erp['card']['body'] !!}</p>
+        <ul class="feat-list mt-3" style="font-size:.9375rem">
+          @foreach ($erp['card']['features'] as $feature)
+            <li>{!! $feature !!}</li>
+          @endforeach
+        </ul>
+        <div class="d-flex flex-wrap gap-2 mt-4">
+          <a href="{{ route('solusi.show', 'erp') }}" class="btn btn-brand">Pelajari ERP <i class="bi bi-arrow-right ms-1"></i></a>
+          <a href="{{ route('kontak') }}" class="btn btn-outline-ink">Diskusikan kebutuhan ERP</a>
+        </div>
+      </div>
+      <div class="col-lg-6 rv">@include('pages.solusi.mocks.erp')</div>
     </div>
   </div>
 </section>
 
 <section class="section section-soft">
   <div class="container">
-    <div class="row g-5 align-items-center">
-      <div class="col-lg-5 rv">
-        <span class="eyebrow">Solusi pendukung</span>
-        <h2>Dua lini yang melengkapi sistem inti</h2>
-        <p class="lead-sm mt-3">
-          Keduanya bisa dipesan terpisah, tapi manfaatnya paling terasa kalau sudah tersambung ke sistem inti
-          yang Anda jalankan.
-        </p>
-      </div>
-      <div class="col-lg-7">
-        <div class="row g-4">
-          <div class="col-md-6 rv"><div class="card-x flat">
-            <div class="ico"><i class="bi bi-calculator-fill"></i></div>
-            <h3>Accounting &amp; Finance</h3>
-            <p>Laporan siap diaudit karena jurnalnya terbentuk otomatis dari transaksi operasional.
-              Tim finance tidak perlu mengetik ulang.</p>
-            <ul class="feat-list"><li>AR/AP, aset tetap, rekonsiliasi bank</li><li>Laporan keuangan &amp; ekspor pajak</li><li>Anggaran vs realisasi</li></ul>
-          </div></div>
-          <div class="col-md-6 rv"><div class="card-x flat">
-            <div class="ico"><i class="bi bi-globe2"></i></div>
-            <h3>Website &amp; Portal Perusahaan</h3>
-            <p>Website yang cepat dan mudah ditemukan. Pengunjung yang mengisi formulir langsung tercatat
-              sebagai prospek di CRM.</p>
-            <ul class="feat-list"><li>Company profile &amp; landing page</li><li>Portal vendor, mitra, atau pelanggan</li><li>Terhubung ke sistem internal</li></ul>
-          </div></div>
+    <div class="text-center mb-5 rv">
+      <span class="eyebrow">Arsytech Nawasena Service</span>
+      <h2>Tiga kelompok aplikasi pendukung</h2>
+      <p class="lead-sm mt-3 mx-auto" style="max-width:62ch">
+        Setiap kelompok berisi beberapa aplikasi yang bisa dipakai sendiri atau dihubungkan ke ERP.
+        Pilih salah satu untuk melihat aplikasi di dalamnya.
+      </p>
+    </div>
+    <div class="row g-4">
+      @foreach ($kategoriList as $slug => $item)
+        <div class="col-lg-4 rv">
+          <a class="card-x card-tap d-flex flex-column h-100" href="{{ route('solusi.show', $slug) }}">
+            <div class="ico"><i class="bi {{ $item['icon'] }}"></i></div>
+            <h3>{!! $item['name'] !!}</h3>
+            <p>{!! $item['summary'] !!}</p>
+            <ul class="feat-list tight mt-3 mb-4" style="font-size:.875rem">
+              @foreach ($item['apps'] as $app)
+                <li>{!! $app['name'] !!}</li>
+              @endforeach
+            </ul>
+            <span class="card-link mt-auto">Lihat aplikasinya <i class="bi bi-arrow-right"></i></span>
+          </a>
         </div>
-      </div>
+      @endforeach
     </div>
   </div>
 </section>
+
 
 <section class="section">
   <div class="container">

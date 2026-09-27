@@ -7,10 +7,11 @@
 @include('layouts.components.page-head', [
     'title' => $solusi['heading'],
     'subtitle' => $solusi['lead'],
-    'breadcrumbs' => [
-        'Solusi' => route('solusi.index'),
-        $solusi['short'] => null,
-    ],
+    'breadcrumbs' => array_merge(
+        ['Solusi' => route('solusi.index')],
+        $parent ? [$parent['name'] => route('solusi.show', $parentSlug)] : [],
+        [$solusi['short'] => null],
+    ),
 ])
 
 <section class="section">
@@ -24,7 +25,11 @@
         @endforeach
         <div class="d-flex flex-wrap gap-2 mt-4">
           <a href="{{ route('kontak') }}" class="btn btn-brand">Diskusikan kebutuhan {{ $solusi['short'] }} <i class="bi bi-arrow-right ms-1"></i></a>
-          <a href="{{ route('solusi.index') }}" class="btn btn-outline-ink">Lihat solusi lain</a>
+          @if ($parent)
+            <a href="{{ route('solusi.show', $parentSlug) }}" class="btn btn-outline-ink">Lihat aplikasi lain</a>
+          @else
+            <a href="{{ route('solusi.index') }}" class="btn btn-outline-ink">Lihat solusi lain</a>
+          @endif
         </div>
       </div>
       <div class="col-lg-6 rv">@include('pages.solusi.mocks.'.$slug)</div>

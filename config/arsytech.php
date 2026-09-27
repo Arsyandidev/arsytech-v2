@@ -15,7 +15,7 @@ return [
         'whatsapp' => 'https://wa.me/628211316623',
         'city' => 'Bogor',
         'region' => 'Jawa Barat',
-        'hours' => 'Senin–Jumat, 08.00–17.00 WIB',
+        'hours' => '',
     ],
 
     'social' => [

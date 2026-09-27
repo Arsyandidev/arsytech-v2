@@ -14,8 +14,10 @@
         <li class="nav-item dropdown">
           <a @class(['nav-link dropdown-toggle', 'active' => request()->routeIs('solusi.*')]) href="{{ route('solusi.index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Solusi</a>
           <ul class="dropdown-menu">
-            @foreach (\App\Content\Solusi::all() as $slug => $item)
-              <li><a @class(['dropdown-item', 'active' => request()->is('solusi/'.$slug)]) href="{{ route('solusi.show', $slug) }}"><i class="bi {{ $item['icon'] }} di-ico"></i><span class="di-txt">{{ $item['name'] }}<small>{{ $item['short'] }}</small></span></a></li>
+            @php($erp = \App\Content\Solusi::find('erp'))
+            <li><a @class(['dropdown-item', 'active' => request()->is('solusi/erp')]) href="{{ route('solusi.show', 'erp') }}"><i class="bi {{ $erp['icon'] }} di-ico"></i><span class="di-txt">{{ $erp['name'] }}<small>{{ $erp['short'] }}</small></span></a></li>
+            @foreach (\App\Content\KategoriSolusi::all() as $slug => $item)
+              <li><a @class(['dropdown-item', 'active' => request()->is('solusi/'.$slug) || \App\Content\KategoriSolusi::parentOf((string) request()->route('solusi')) === $slug]) href="{{ route('solusi.show', $slug) }}"><i class="bi {{ $item['icon'] }} di-ico"></i><span class="di-txt">{!! $item['name'] !!}<small>{!! $item['apps_label'] !!}</small></span></a></li>
             @endforeach
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item fw-bold" href="{{ route('solusi.index') }}"><span class="di-txt">Lihat semua solusi <i class="bi bi-arrow-right ms-1"></i></span></a></li>

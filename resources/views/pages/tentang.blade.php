@@ -41,8 +41,8 @@
             <div class="s-val" style="font-size:2rem;font-weight:800;color:var(--ink);letter-spacing:-.04em">6+</div>
             <div style="font-size:.8125rem;color:var(--muted)">tahun membangun sistem bisnis</div></div></div>
           <div class="col-6 rv"><div class="card-x flat text-center">
-            <div class="s-val" style="font-size:2rem;font-weight:800;color:var(--ink);letter-spacing:-.04em">6</div>
-            <div style="font-size:.8125rem;color:var(--muted)">lini solusi yang bisa disatukan</div></div></div>
+            <div class="s-val" style="font-size:2rem;font-weight:800;color:var(--ink);letter-spacing:-.04em">4</div>
+            <div style="font-size:.8125rem;color:var(--muted)">lini layanan yang bisa disatukan</div></div></div>
           <div class="col-6 rv"><div class="card-x flat text-center">
             <div class="s-val" style="font-size:2rem;font-weight:800;color:var(--brand);letter-spacing:-.04em">100%</div>
             <div style="font-size:.8125rem;color:var(--muted)">source code diserahkan ke klien</div></div></div>

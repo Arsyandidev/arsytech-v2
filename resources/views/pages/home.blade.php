@@ -79,7 +79,7 @@
   <div class="container">
     <div class="row row-cols-2 row-cols-lg-4 g-0">
       <div class="col"><div class="stat"><div class="s-val" data-count="6" data-suffix="+">6+</div><div class="s-lab">Tahun membangun sistem bisnis</div></div></div>
-      <div class="col"><div class="stat"><div class="s-val" data-count="6" data-suffix=" lini">6 lini</div><div class="s-lab">Solusi yang bisa disatukan</div></div></div>
+      <div class="col"><div class="stat"><div class="s-val" data-count="4" data-suffix=" lini">4 lini</div><div class="s-lab">Layanan yang bisa disatukan</div></div></div>
       <div class="col"><div class="stat"><div class="s-val"><i>100%</i></div><div class="s-lab">Source code diserahkan ke klien</div></div></div>
       <div class="col"><div class="stat"><div class="s-val">1&times;24<span style="font-size:.5em;font-weight:600"> jam</span></div><div class="s-lab">Waktu balas hari kerja</div></div></div>
     </div>
@@ -187,9 +187,9 @@
         <a class="gate" href="{{ route('solusi.index') }}">
           <div class="ico"><i class="bi bi-grid-1x2-fill"></i></div>
           <h3>Solusi</h3>
-          <p>Empat sistem inti yang bisa dipakai sendiri-sendiri atau digabung, ditambah sistem keuangan
-            dan website perusahaan sebagai pelengkap.</p>
-          <ul class="gate-list"><li>ERP</li><li>WMS</li><li>HRIS</li><li>CRM</li><li>Accounting &amp; Finance</li><li>Website &amp; Portal</li></ul>
+          <p>ERP sebagai layanan inti, ditambah tiga kelompok aplikasi untuk operasional, pemasaran, dan
+            pelatihan karyawan. Bisa dipakai sendiri-sendiri atau digabung.</p>
+          <ul class="gate-list"><li>ERP</li><li>Business Operation System</li><li>Advertisement Application</li><li>E-Learning Application</li></ul>
           <span class="gate-cta">Jelajahi solusi <i class="bi bi-arrow-right"></i></span>
         </a>
       </div>

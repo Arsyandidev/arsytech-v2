@@ -7,8 +7,8 @@
           <span><span class="brand-name" style="color:#fff">ARSYTECH</span>
           <span class="brand-sub" style="color:rgba(255,255,255,.45)">{{ config('arsytech.tagline') }}</span></span>
         </a>
-        <p class="f-about">Kami membuat sistem ERP, WMS, HRIS, CRM, dan keuangan untuk perusahaan yang ingin
-          operasionalnya lebih tertata dan laporannya bisa dipercaya.</p>
+        <p class="f-about">Kami membuat ERP dan aplikasi pendukungnya, mulai dari HRIS, WMS, dan CRM sampai
+          aplikasi pemasaran dan e-learning, untuk perusahaan yang ingin operasionalnya lebih tertata.</p>
         <div class="d-flex gap-2 mt-4">
           <a class="soc" href="{{ config('arsytech.social.linkedin') }}" target="_blank" rel="noopener" aria-label="LinkedIn Arsytech"><i class="bi bi-linkedin"></i></a>
           <a class="soc" href="{{ config('arsytech.social.instagram') }}" target="_blank" rel="noopener" aria-label="Instagram Arsytech"><i class="bi bi-instagram"></i></a>
@@ -19,11 +19,10 @@
       <div class="col-6 col-lg-2">
         <h5>Solusi</h5>
         <ul class="list-unstyled mb-0">
-          @foreach (\App\Content\Solusi::all() as $slug => $item)
-            <li><a href="{{ route('solusi.show', $slug) }}">{{ $item['short'] }}</a></li>
+          <li><a href="{{ route('solusi.show', 'erp') }}">Enterprise Resource Planning</a></li>
+          @foreach (\App\Content\KategoriSolusi::all() as $slug => $item)
+            <li><a href="{{ route('solusi.show', $slug) }}">{!! $item['name'] !!}</a></li>
           @endforeach
-          <li><a href="{{ route('solusi.index') }}">Accounting &amp; Finance</a></li>
-          <li><a href="{{ route('solusi.index') }}">Website &amp; Portal</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2">
