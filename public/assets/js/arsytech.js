@@ -66,6 +66,7 @@
 
   document.querySelectorAll('form.needs-validation').forEach(function (form) {
     form.addEventListener('submit', function (ev) {
+      form.classList.add('was-validated');
       if (!form.checkValidity()) {
         ev.preventDefault();
         ev.stopPropagation();
@@ -74,8 +75,13 @@
           first.focus({ preventScroll: true });
           first.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
         }
+        return;
       }
-      form.classList.add('was-validated');
+      var btn = form.querySelector('[data-loading]');
+      if (btn) {
+        btn.classList.add('is-loading');
+        btn.innerHTML = btn.dataset.loading;
+      }
     }, false);
   });
 })();

@@ -12,12 +12,12 @@ class Solusi
                 'name' => 'Enterprise Resource Planning',
                 'icon' => 'bi-diagram-3-fill',
                 'title' => 'Sistem ERP Custom untuk Perusahaan Indonesia | Arsytech',
-                'description' => 'Arsytech membangun ERP modular: purchasing, persediaan, penjualan, produksi, dan keuangan dalam satu basis data. Source code jadi milik Anda.',
-                'heading' => 'ERP yang menyatukan pembelian, persediaan, dan keuangan',
-                'lead' => 'Satu sumber data untuk seluruh divisi. Setiap transaksi dicatat sekali, lalu dipakai bersama — sehingga closing lebih cepat, stok akurat, dan tidak ada lagi rapat yang habis untuk mendebat angka.',
+                'description' => 'Arsytech membangun ERP custom yang modular: purchasing, persediaan, penjualan, produksi, dan keuangan dalam satu basis data. Source code menjadi milik Anda.',
+                'heading' => 'Satu ERP untuk pembelian, persediaan, dan keuangan',
+                'lead' => 'Semua divisi bekerja dari data yang sama. Transaksi cukup dicatat sekali lalu dipakai bersama, jadi closing lebih cepat, stok lebih akurat, dan rapat tidak lagi habis untuk mencocokkan angka.',
                 'card' => [
                     'title' => 'Enterprise Resource Planning (ERP)',
-                    'body' => 'Satu sumber data untuk pembelian, produksi, persediaan, dan keuangan. Closing lebih cepat, stok akurat, dan setiap divisi melihat angka yang sama.',
+                    'body' => 'Pembelian, produksi, persediaan, dan keuangan tercatat di satu tempat. Closing jadi lebih cepat, stok lebih akurat, dan semua divisi membaca angka yang sama.',
                     'features' => [
                         'Procure-to-pay &amp; order-to-cash',
                         'Multi-cabang &amp; multi-gudang',
@@ -25,10 +25,10 @@ class Solusi
                     ],
                 ],
                 'intro' => [
-                    'title' => 'Ketika tiap divisi punya kebenarannya sendiri',
+                    'title' => 'Saat tiap divisi punya angkanya sendiri',
                     'paragraphs' => [
-                        'Gudang mencatat di kartu stok, purchasing di spreadsheet, finance di aplikasi akuntansi terpisah. Masing-masing benar menurut catatannya sendiri, tapi tidak ada satu angka yang bisa dipakai manajemen untuk memutuskan.',
-                        'ERP menutup celah itu dengan memindahkan seluruh transaksi operasional ke satu basis data. Barang masuk di gudang langsung memperbarui stok, menutup PO, dan membentuk jurnal persediaan — tanpa ada yang mengetik ulang.',
+                        'Gudang mencatat di kartu stok, purchasing di spreadsheet, finance di aplikasi akuntansi yang terpisah. Masing-masing benar menurut catatannya, tapi manajemen tidak punya satu angka yang bisa dipegang untuk mengambil keputusan.',
+                        'ERP menutup celah itu dengan memindahkan semua transaksi operasional ke satu basis data. Begitu barang diterima di gudang, stok langsung bertambah, PO tertutup, dan jurnal persediaan terbentuk. Tidak ada yang perlu mengetik ulang.',
                     ],
                 ],
                 'modules' => [
@@ -77,21 +77,21 @@ class Solusi
                     [
                         'value' => '99%+',
                         'label' => 'Akurasi persediaan',
-                        'body' => 'Stok sistem dan fisik bertemu tanpa opname darurat tiap kuartal.',
+                        'body' => 'Stok di sistem dan di rak cocok, tanpa opname darurat tiap kuartal.',
                     ],
                 ],
                 'faq' => [
                     [
                         'question' => 'Apakah ERP harus dibangun sekaligus semua modul?',
-                        'answer' => 'Tidak, dan kami jarang menyarankannya. Umumnya kami mulai dari satu atau dua modul yang paling menghambat — misalnya purchasing dan persediaan — lalu menambahkan produksi dan keuangan pada fase berikutnya. Arsitekturnya dirancang modular sejak awal supaya penambahan tidak berarti membongkar ulang.',
+                        'answer' => 'Tidak, dan biasanya kami juga tidak menyarankannya. Kami mulai dari satu atau dua modul yang paling mengganggu operasional, misalnya purchasing dan persediaan, lalu produksi dan keuangan menyusul di fase berikutnya. Arsitekturnya kami buat modular dari awal, jadi menambah modul tidak perlu membongkar yang sudah jalan.',
                     ],
                     [
                         'question' => 'Data dari sistem lama kami bisa dipindahkan?',
-                        'answer' => 'Umumnya bisa. Migrasi data master (pelanggan, vendor, item, saldo awal) adalah bagian standar dari tahap UAT & Go-Live. Kami periksa kualitas dan konsistensi data sumber lebih dulu di tahap discovery, karena di situlah biasanya waktu terbanyak terpakai.',
+                        'answer' => 'Umumnya bisa. Migrasi data master seperti pelanggan, vendor, item, dan saldo awal sudah termasuk dalam tahap UAT & Go-Live. Kualitas dan konsistensi data sumbernya kami cek lebih dulu saat discovery, karena bagian inilah yang biasanya paling makan waktu.',
                     ],
                     [
                         'question' => 'Berapa lama pengerjaan ERP?',
-                        'answer' => 'ERP multi-divisi biasanya 6–12 bulan dan dirilis bertahap, sehingga modul pertama sudah dipakai jauh sebelum keseluruhan selesai. Satu modul fokus bisa selesai dalam 2–4 bulan.',
+                        'answer' => 'ERP untuk banyak divisi biasanya butuh 6–12 bulan dan kami rilis bertahap, jadi modul pertama sudah bisa dipakai jauh sebelum semuanya selesai. Kalau fokus di satu modul saja, umumnya selesai dalam 2–4 bulan.',
                     ],
                 ],
             ],
@@ -100,12 +100,12 @@ class Solusi
                 'name' => 'Warehouse Management System',
                 'icon' => 'bi-box-seam-fill',
                 'title' => 'Sistem WMS Gudang Berbasis Barcode | Arsytech',
-                'description' => 'WMS custom dari Arsytech: penerimaan, putaway, picking, packing, pengiriman, dan stock opname dengan barcode. Akurasi stok 99%+, multi-gudang.',
-                'heading' => 'WMS yang membuat stok sistem dan fisik akhirnya bertemu',
-                'lead' => 'Kendali penuh atas pergerakan barang dari penerimaan sampai pengiriman. Selisih stok turun drastis, picking lebih cepat, dan stock opname tidak lagi menghentikan operasional selama dua hari.',
+                'description' => 'WMS custom dari Arsytech untuk penerimaan, putaway, picking, packing, pengiriman, dan stock opname berbasis barcode. Mendukung multi-gudang, akurasi stok 99%+.',
+                'heading' => 'WMS agar stok di sistem sama dengan di rak',
+                'lead' => 'Setiap pergerakan barang tercatat, dari penerimaan sampai pengiriman. Selisih stok turun jauh, picking lebih cepat, dan stock opname tidak perlu lagi menghentikan gudang selama dua hari.',
                 'card' => [
                     'title' => 'Warehouse Management System (WMS)',
-                    'body' => 'Kendali penuh atas pergerakan barang dari terima sampai kirim. Selisih stok turun, proses picking dan packing jauh lebih cepat.',
+                    'body' => 'Pergerakan barang tercatat sejak diterima sampai dikirim. Selisih stok berkurang, dan picking serta packing jadi jauh lebih cepat.',
                     'features' => [
                         'Barcode &amp; QR scanning',
                         'Putaway, picking, packing, dispatch',
@@ -113,10 +113,10 @@ class Solusi
                     ],
                 ],
                 'intro' => [
-                    'title' => 'Selisih stok bukan karena tim tidak teliti',
+                    'title' => 'Dari mana selisih stok berasal',
                     'paragraphs' => [
-                        'Selama pencatatan masih mengandalkan ingatan dan kertas, selisih hanya soal waktu. Barang pindah rak tanpa tercatat, retur masuk tanpa dokumen, dan opname baru mengungkap masalah tiga bulan kemudian — saat sudah terlambat ditelusuri.',
-                        'WMS memaksa setiap pergerakan barang tercatat pada saat kejadian, lewat scan barcode di perangkat yang dipegang petugas. Bukan menambah beban administrasi, tapi memindahkannya dari akhir bulan ke detik saat barang berpindah.',
+                        'Tim gudang umumnya sudah teliti. Masalahnya, selama pencatatan masih pakai kertas dan ingatan, selisih tinggal menunggu waktu. Barang pindah rak tanpa dicatat, retur masuk tanpa dokumen, dan opname baru menemukannya tiga bulan kemudian, saat sudah sulit ditelusuri.',
+                        'Dengan WMS, setiap pergerakan barang dicatat saat itu juga lewat scan barcode di perangkat yang dipegang petugas. Administrasinya tetap ada, hanya dicicil setiap kali barang berpindah, jadi tidak menumpuk di akhir bulan.',
                     ],
                 ],
                 'modules' => [
@@ -160,26 +160,26 @@ class Solusi
                     [
                         'value' => '2–3×',
                         'label' => 'Kecepatan picking',
-                        'body' => 'Rute pengambilan disusun sistem, bukan dihafal petugas.',
+                        'body' => 'Rute pengambilan disusun sistem, petugas tak perlu menghafal.',
                     ],
                     [
                         'value' => '2 jam',
                         'label' => 'Stock opname bulanan',
-                        'body' => 'Dari dua hari penuh dengan operasional dihentikan.',
+                        'body' => 'Sebelumnya dua hari penuh dan gudang harus berhenti.',
                     ],
                 ],
                 'faq' => [
                     [
                         'question' => 'Perlu perangkat khusus seperti scanner industrial?',
-                        'answer' => 'Tidak wajib. Sistem kami berjalan di browser dan bisa dipakai lewat HP Android biasa dengan kamera sebagai pemindai. Kalau volume transaksi tinggi, scanner khusus memang lebih nyaman dan bisa ditambahkan belakangan tanpa mengubah sistem.',
+                        'answer' => 'Tidak wajib. Sistemnya berjalan di browser, jadi bisa dipakai dari HP Android biasa dengan kamera sebagai pemindai. Kalau volume transaksinya tinggi, scanner khusus memang lebih nyaman, dan bisa ditambahkan belakangan tanpa mengubah sistem.',
                     ],
                     [
                         'question' => 'Gudang kami sering offline. Apakah tetap bisa dipakai?',
-                        'answer' => 'Bisa. Untuk area dengan sinyal tidak stabil, kami sediakan mode offline yang menyimpan transaksi di perangkat lalu menyinkronkannya begitu koneksi kembali. Ini kami rancang sejak awal, bukan ditambal kemudian.',
+                        'answer' => 'Bisa. Untuk area yang sinyalnya tidak stabil, kami siapkan mode offline: transaksi disimpan dulu di perangkat, lalu disinkronkan begitu koneksi kembali. Fitur ini sudah masuk rancangan kami sejak awal.',
                     ],
                     [
                         'question' => 'Bagaimana kalau kami punya lebih dari satu gudang?',
-                        'answer' => 'WMS kami mendukung multi-gudang dan multi-lokasi sejak versi pertama, termasuk transfer antar gudang dengan dokumen dan persetujuan sendiri. Setiap gudang bisa punya tata letak dan aturan penempatan yang berbeda.',
+                        'answer' => 'Tidak masalah. Multi-gudang dan multi-lokasi sudah didukung sejak versi pertama, termasuk transfer antar gudang dengan dokumen dan persetujuannya sendiri. Tiap gudang juga boleh punya tata letak dan aturan penempatan yang berbeda.',
                     ],
                 ],
             ],
@@ -188,12 +188,12 @@ class Solusi
                 'name' => 'Human Resource Information System',
                 'icon' => 'bi-people-fill',
                 'title' => 'Sistem HRIS & Payroll Karyawan | Arsytech',
-                'description' => 'HRIS custom dari Arsytech: absensi, shift, cuti, payroll, PPh 21, BPJS, dan portal mandiri karyawan. Payroll selesai dalam hitungan jam.',
-                'heading' => 'HRIS yang menutup jarak antara absensi dan slip gaji',
-                'lead' => 'Absensi, cuti, lembur, dan payroll berada di satu alur. Tim HR berhenti merekap manual tiap akhir bulan, dan karyawan bisa mengurus administrasinya sendiri lewat portal.',
+                'description' => 'HRIS custom dari Arsytech untuk absensi, shift, cuti, payroll, PPh 21, BPJS, dan portal mandiri karyawan. Proses payroll selesai dalam hitungan jam.',
+                'heading' => 'HRIS dari absensi sampai slip gaji',
+                'lead' => 'Absensi, cuti, lembur, dan payroll ada dalam satu alur. Tim HR tidak perlu lagi merekap manual tiap akhir bulan, dan karyawan bisa mengurus administrasinya sendiri lewat portal.',
                 'card' => [
                     'title' => 'Human Resource Information System (HRIS)',
-                    'body' => 'Administrasi SDM berjalan otomatis. Payroll selesai tanpa rekap manual, data karyawan selalu mutakhir dan bisa diakses karyawan sendiri.',
+                    'body' => 'Administrasi SDM berjalan otomatis. Payroll selesai tanpa rekap manual, dan data karyawan selalu terbaru serta bisa dilihat sendiri oleh karyawan.',
                     'features' => [
                         'Absensi, cuti, lembur, shift',
                         'Payroll, PPh 21, BPJS',
@@ -201,10 +201,10 @@ class Solusi
                     ],
                 ],
                 'intro' => [
-                    'title' => 'Payroll seharusnya bukan acara lembur bulanan',
+                    'title' => 'Payroll tanpa lembur tiap akhir bulan',
                     'paragraphs' => [
-                        'Di banyak perusahaan, data absensi keluar dari mesin fingerprint sebagai file mentah, lalu dirapikan di Excel, dicocokkan dengan catatan cuti di buku, dan baru kemudian dihitung. Satu salah ketik berarti satu karyawan komplain — dan tim HR menghabiskan tiga hari untuk menelusurinya.',
-                        'HRIS menyambungkan rantai itu. Data absensi masuk otomatis, cuti dan lembur yang sudah disetujui ikut terhitung, dan payroll tinggal ditinjau lalu dikunci. Slip gaji terkirim ke portal masing-masing karyawan tanpa dicetak satu per satu.',
+                        'Di banyak perusahaan, data absensi keluar dari mesin fingerprint sebagai file mentah. File itu dirapikan di Excel, dicocokkan dengan catatan cuti di buku, baru kemudian dihitung. Satu salah ketik bisa berujung komplain karyawan, dan tim HR bisa habis tiga hari untuk menelusurinya.',
+                        'HRIS menyambungkan semua langkah itu. Data absensi masuk otomatis, cuti dan lembur yang sudah disetujui ikut terhitung, jadi payroll tinggal diperiksa lalu dikunci. Slip gaji dikirim ke portal tiap karyawan, tidak perlu dicetak satu per satu.',
                     ],
                 ],
                 'modules' => [
@@ -248,7 +248,7 @@ class Solusi
                     [
                         'value' => '0',
                         'label' => 'Rekap manual',
-                        'body' => 'Absensi, cuti, dan lembur mengalir langsung ke perhitungan gaji.',
+                        'body' => 'Absensi, cuti, dan lembur langsung masuk ke perhitungan gaji.',
                     ],
                     [
                         'value' => '−80%',
@@ -259,15 +259,15 @@ class Solusi
                 'faq' => [
                     [
                         'question' => 'Bisa terhubung ke mesin fingerprint yang sudah kami punya?',
-                        'answer' => 'Umumnya bisa. Kami terbiasa menarik data dari mesin absensi merek umum lewat API, file ekspor terjadwal, atau koneksi langsung ke basis datanya. Kelayakannya kami periksa di tahap discovery sebelum apa pun dijanjikan.',
+                        'answer' => 'Biasanya bisa. Kami sudah terbiasa menarik data dari mesin absensi merek umum, entah lewat API, file ekspor terjadwal, atau koneksi langsung ke basis datanya. Tapi kami cek dulu di tahap discovery sebelum menjanjikan apa pun.',
                     ],
                     [
                         'question' => 'Perhitungan PPh 21 dan BPJS mengikuti aturan terbaru?',
-                        'answer' => 'Ya. Komponen perhitungan dibuat dapat dikonfigurasi, bukan ditanam keras di dalam kode, sehingga ketika tarif atau aturan berubah, penyesuaian dilakukan lewat pengaturan — bukan lewat pembaruan sistem.',
+                        'answer' => 'Ya. Komponen perhitungannya bisa dikonfigurasi dan tidak ditanam di dalam kode. Jadi kalau tarif atau aturannya berubah, cukup disesuaikan lewat menu pengaturan tanpa perlu memperbarui sistem.',
                     ],
                     [
                         'question' => 'Bagaimana dengan perusahaan yang punya beberapa entitas?',
-                        'answer' => 'HRIS kami mendukung multi-entitas dengan kebijakan cuti, struktur gaji, dan hari libur yang berbeda per perusahaan, sambil tetap memberi manajemen grup satu tampilan gabungan.',
+                        'answer' => 'Bisa. HRIS kami mendukung multi-entitas, jadi tiap perusahaan boleh punya kebijakan cuti, struktur gaji, dan hari libur sendiri. Manajemen grup tetap bisa melihat semuanya dalam satu tampilan gabungan.',
                     ],
                 ],
             ],
@@ -276,12 +276,12 @@ class Solusi
                 'name' => 'Customer Relationship Management',
                 'icon' => 'bi-graph-up-arrow',
                 'title' => 'Sistem CRM Penjualan B2B | Arsytech',
-                'description' => 'CRM custom dari Arsytech: lead, pipeline deal, penawaran, target, dan forecast penjualan. Terhubung ke ERP dan WhatsApp Business API.',
-                'heading' => 'CRM yang membuat forecast berhenti jadi tebakan',
-                'lead' => 'Setiap prospek, penawaran, dan tindak lanjut tercatat di satu tempat. Manajemen bisa melihat pipeline apa adanya, dan tidak ada peluang yang hilang karena sales-nya pindah kerja.',
+                'description' => 'CRM custom dari Arsytech untuk lead, pipeline deal, penawaran, target, dan forecast penjualan. Bisa terhubung ke ERP dan WhatsApp Business API.',
+                'heading' => 'CRM agar forecast penjualan lebih akurat',
+                'lead' => 'Semua prospek, penawaran, dan tindak lanjut tercatat di satu tempat. Manajemen bisa melihat kondisi pipeline yang sebenarnya, dan peluang tidak ikut hilang saat sales-nya pindah kerja.',
                 'card' => [
                     'title' => 'Customer Relationship Management (CRM)',
-                    'body' => 'Pipeline penjualan yang terukur. Tidak ada prospek yang terlewat, dan forecast bukan lagi soal perasaan kepala cabang.',
+                    'body' => 'Pipeline penjualan tercatat rapi. Prospek tidak ada yang terlewat, dan forecast disusun dari data yang ada di sistem.',
                     'features' => [
                         'Lead, deal, dan aktivitas sales',
                         'Target &amp; forecast per tim',
@@ -291,8 +291,8 @@ class Solusi
                 'intro' => [
                     'title' => 'Pipeline yang hanya ada di kepala tim sales',
                     'paragraphs' => [
-                        'Prospek dicatat di buku agenda, tindak lanjut diingat sendiri, dan laporan mingguan disusun dari ingatan menjelang rapat. Ketika seorang sales resign, relasi dan riwayat negosiasinya ikut keluar dari perusahaan.',
-                        'CRM memindahkan aset itu kembali ke perusahaan. Setiap interaksi tercatat, setiap deal punya tahap dan nilai, dan forecast dihitung dari data — bukan dari optimisme.',
+                        'Prospek dicatat di buku agenda, tindak lanjut diingat masing-masing, dan laporan mingguan disusun dari ingatan menjelang rapat. Kalau ada sales yang resign, relasi dan riwayat negosiasinya ikut pergi bersamanya.',
+                        'Dengan CRM, informasi itu tersimpan di sistem milik perusahaan. Setiap interaksi tercatat, setiap deal punya tahap dan nilai, dan forecast dihitung dari data yang sudah masuk.',
                     ],
                 ],
                 'modules' => [
@@ -309,7 +309,7 @@ class Solusi
                     [
                         'icon' => 'bi-calendar-event',
                         'title' => 'Aktivitas &amp; Tindak Lanjut',
-                        'body' => 'Jadwal kunjungan, panggilan, dan pengingat agar tidak ada prospek yang menganggur.',
+                        'body' => 'Jadwal kunjungan, panggilan, dan pengingat supaya tidak ada prospek yang terlupa.',
                     ],
                     [
                         'icon' => 'bi-file-earmark-text',
@@ -336,26 +336,26 @@ class Solusi
                     [
                         'value' => '&lt;1 hari',
                         'label' => 'Waktu susun laporan sales',
-                        'body' => 'Dari dua hari merekap laporan manual tiap akhir bulan.',
+                        'body' => 'Sebelumnya dua hari merekap manual tiap akhir bulan.',
                     ],
                     [
                         'value' => '100%',
                         'label' => 'Riwayat tetap di perusahaan',
-                        'body' => 'Relasi pelanggan tidak ikut hilang saat sales berganti.',
+                        'body' => 'Relasi pelanggan tetap tercatat meski sales berganti.',
                     ],
                 ],
                 'faq' => [
                     [
                         'question' => 'Bisa terhubung ke WhatsApp Business?',
-                        'answer' => 'Bisa, lewat WhatsApp Business API resmi. Percakapan masuk dapat otomatis menjadi lead dan tercatat di linimasa pelanggan. Perlu dicatat bahwa penggunaan API resmi memiliki biaya dari penyedia yang terpisah dari biaya pengembangan.',
+                        'answer' => 'Bisa, lewat WhatsApp Business API resmi. Chat yang masuk bisa otomatis jadi lead dan tercatat di linimasa pelanggan. Satu hal yang perlu diketahui: API resmi ini ada biayanya sendiri dari penyedia, terpisah dari biaya pengembangan.',
                     ],
                     [
                         'question' => 'Apakah CRM ini terhubung ke ERP?',
-                        'answer' => 'Ya, bila keduanya kami bangun. Deal yang ditutup bisa langsung membentuk sales order, dan sales dapat melihat ketersediaan stok serta status piutang pelanggan tanpa berpindah aplikasi.',
+                        'answer' => 'Ya, kalau keduanya kami yang membangun. Deal yang sudah closing bisa langsung jadi sales order, dan sales bisa melihat ketersediaan stok serta status piutang pelanggan tanpa pindah aplikasi.',
                     ],
                     [
                         'question' => 'Tim sales kami banyak di lapangan. Bisa dipakai dari HP?',
-                        'answer' => 'Bisa. Antarmuka dirancang agar nyaman dipakai di layar kecil, termasuk untuk mencatat hasil kunjungan langsung di tempat dengan penanda lokasi.',
+                        'answer' => 'Bisa. Tampilannya kami buat nyaman di layar HP, termasuk untuk mencatat hasil kunjungan langsung di lokasi, lengkap dengan penanda lokasinya.',
                     ],
                 ],
             ],

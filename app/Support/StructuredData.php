@@ -8,6 +8,8 @@ class StructuredData
 
     protected array $questions = [];
 
+    protected array $extra = [];
+
     public function breadcrumbs(array $items): void
     {
         $this->breadcrumbs = $items;
@@ -16,6 +18,11 @@ class StructuredData
     public function questions(array $items): void
     {
         array_push($this->questions, ...$items);
+    }
+
+    public function add(array $node): void
+    {
+        $this->extra[] = $node;
     }
 
     public function toJson(): string
@@ -29,6 +36,8 @@ class StructuredData
         if ($this->questions) {
             $graph[] = $this->faqPage();
         }
+
+        array_push($graph, ...$this->extra);
 
         return json_encode(
             ['@context' => 'https://schema.org', '@graph' => $graph],

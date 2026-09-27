@@ -7,8 +7,8 @@
           <span><span class="brand-name" style="color:#fff">ARSYTECH</span>
           <span class="brand-sub" style="color:rgba(255,255,255,.45)">{{ config('arsytech.tagline') }}</span></span>
         </a>
-        <p class="f-about">Kami membangun sistem bisnis terintegrasi — ERP, WMS, HRIS, CRM, dan sistem keuangan —
-          untuk perusahaan yang ingin merapikan operasional dan mengambil keputusan berbasis data.</p>
+        <p class="f-about">Kami membuat sistem ERP, WMS, HRIS, CRM, dan keuangan untuk perusahaan yang ingin
+          operasionalnya lebih tertata dan laporannya bisa dipercaya.</p>
         <div class="d-flex gap-2 mt-4">
           <a class="soc" href="{{ config('arsytech.social.linkedin') }}" target="_blank" rel="noopener" aria-label="LinkedIn Arsytech"><i class="bi bi-linkedin"></i></a>
           <a class="soc" href="{{ config('arsytech.social.instagram') }}" target="_blank" rel="noopener" aria-label="Instagram Arsytech"><i class="bi bi-instagram"></i></a>
@@ -49,8 +49,10 @@
       </div>
     </div>
     <div class="f-bottom d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
-      <span>&copy; {{ date('Y') }} Arsytech — Part of Clarsyara Group. Seluruh hak cipta dilindungi.</span>
-      <span class="d-flex gap-3">
+      <span>&copy; {{ date('Y') }} Arsytech, bagian dari Clarsyara Group. Seluruh hak cipta dilindungi.</span>
+      <span class="d-flex flex-wrap gap-3">
+        <a href="{{ route('blog.index') }}">Blog</a>
+        <a href="{{ route('galeri.index') }}">Galeri</a>
         <a href="{{ route('kebijakan-privasi') }}">Kebijakan Privasi</a>
         <a href="{{ route('syarat-ketentuan') }}">Syarat &amp; Ketentuan</a>
         <a href="{{ route('kontak') }}">Kontak</a>

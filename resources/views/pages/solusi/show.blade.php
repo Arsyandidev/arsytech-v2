@@ -38,8 +38,8 @@
       <span class="eyebrow">Modul utama</span>
       <h2>Apa saja yang biasanya kami bangun</h2>
       <p class="lead-sm mt-3 mx-auto" style="max-width:62ch">
-        Daftar ini titik awal, bukan paket kaku. Modul bisa ditambah, dikurangi, atau disesuaikan
-        dengan istilah yang sudah dipakai tim Anda.
+        Anggap daftar ini sebagai titik awal. Modul bisa ditambah, dikurangi, atau disesuaikan
+        dengan istilah yang sudah biasa dipakai tim Anda.
       </p>
     </div>
     <div class="row g-4">
@@ -59,8 +59,8 @@
       <span class="eyebrow">Hasil yang bisa diharapkan</span>
       <h2>Angka yang biasanya berubah lebih dulu</h2>
       <p class="lead-sm mt-3 mx-auto" style="max-width:60ch">
-        Rentang di bawah berasal dari proyek {{ $solusi['short'] }} yang sudah kami kerjakan. Hasil sebenarnya bergantung
-        pada kondisi awal dan kesiapan tim Anda.
+        Angka di bawah kami ambil dari proyek {{ $solusi['short'] }} yang sudah kami kerjakan. Hasil di tempat Anda tetap
+        tergantung kondisi awal dan kesiapan tim.
       </p>
     </div>
     <div class="row g-4">
@@ -79,7 +79,7 @@
     <div class="row g-4 align-items-center">
       <div class="col-lg-5 rv">
         <h2 class="h3" style="font-size:clamp(1.3rem,1.15rem + .6vw,1.65rem)">Paling sering dipakai di sektor ini</h2>
-        <p class="lead-sm mt-2">Lihat bagaimana {{ $solusi['short'] }} diterapkan sesuai konteks industri Anda.</p>
+        <p class="lead-sm mt-2">Lihat contoh penerapan {{ $solusi['short'] }} di industri yang paling dekat dengan bisnis Anda.</p>
       </div>
       <div class="col-lg-7 rv"><div class="d-flex flex-wrap">@foreach ($industriList as $industriSlug => $industri)<a class="tech" href="{{ route('industri.show', $industriSlug) }}" style="text-decoration:none"><i class="bi bi-arrow-right-short"></i>{!! $industri['name'] !!}</a>@endforeach</div></div>
     </div>

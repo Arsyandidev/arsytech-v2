@@ -9,8 +9,9 @@ return [
 
     'contact' => [
         'email' => 'info@arsytech.id',
+        'inbox' => env('CONTACT_INBOX', 'info@arsytech.id'),
         'phone' => '+628211316623',
-        'phone_schema' => '+62-882-1255-8452',
+        'phone_schema' => '628211316623',
         'whatsapp' => 'https://wa.me/628211316623',
         'city' => 'Bogor',
         'region' => 'Jawa Barat',

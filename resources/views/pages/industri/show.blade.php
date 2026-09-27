@@ -42,17 +42,17 @@
     <div class="row g-5">
       <div class="col-lg-5 rv">
         <span class="eyebrow">Urutan yang kami sarankan</span>
-        <h2>Dibangun bertahap, bukan sekaligus</h2>
+        <h2>Dibangun bertahap</h2>
         <p class="lead-sm mt-3">
-          Urutan di samping adalah pola yang paling sering berhasil di sektor ini. Bukan aturan kaku &mdash;
-          prioritasnya tetap mengikuti masalah yang paling mahal buat Anda hari ini.
+          Urutan di samping adalah pola yang paling sering berhasil di sektor ini. Urutannya tetap bisa diubah,
+          karena prioritasnya mengikuti masalah yang paling mahal buat Anda saat ini.
         </p>
         <div class="card-x mt-4" style="background:var(--brand-soft);border-color:var(--brand-line);height:auto">
           <div class="d-flex gap-3">
             <i class="bi bi-graph-up" style="color:var(--brand);font-size:1.5rem"></i>
             <div><h3 style="font-size:.9375rem;margin-bottom:.3rem">Kenapa bertahap?</h3>
               <p style="font-size:.875rem;color:var(--ink-3)">Karena tim Anda tetap harus bekerja selama sistem dibangun.
-                Fase pertama yang berjalan baik membuat fase berikutnya jauh lebih mudah diterima.</p></div>
+                Kalau fase pertama berjalan baik, fase berikutnya biasanya jauh lebih mudah diterima.</p></div>
           </div>
         </div>
       </div>
