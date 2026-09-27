@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Pembuatan Sistem Bisnis ERP, WMS, HRIS & CRM | Arsytech')
-@section('description', 'Arsytech membuat ERP, WMS, HRIS, CRM, dan sistem keuangan yang saling terhubung untuk perusahaan di Indonesia. Source code jadi milik Anda, konsultasi awal gratis.')
+@section('description', 'Arsytech membuat ERP, WMS, HRIS, CRM, dan sistem keuangan yang saling terhubung untuk perusahaan di Indonesia. Penyerahan Source Code, konsultasi awal gratis.')
 
 @section('content')
 <section class="hero">
@@ -11,15 +11,15 @@
         <span class="pill"><span class="tag">SOFTWARE HOUSE B2B</span><span>Bogor · Melayani klien se-Indonesia</span></span>
         <h1>Operasional teratur, <em>data laporan lebih <br> Akurat</em></h1>
         <p class="lead-lg mt-4 measure-sm">
-          Kami membangun ERP, WMS, HRIS, dan CRM yang bikin data perusahaan nggak terpecah-pecah
+          Kami membangun solusi guna menyatukan data operasional perusahaan ke dalam satu sistem terpusat, memastikan manajemen memiliki landasan angka yang valid dan transparan
         </p>
         <div class="hero-cta">
           <a href="{{ route('kontak') }}" class="btn btn-brand btn-lg">Konsultasi Gratis <i class="bi bi-arrow-right ms-1"></i></a>
           <a href="{{ route('solusi.index') }}" class="btn btn-outline-ink btn-lg">Lihat Solusi Kami</a>
         </div>
         <div class="hero-proof">
-          <span><i class="bi bi-check-circle-fill"></i>Source code jadi milik Anda</span>
-          <span><i class="bi bi-check-circle-fill"></i>Siap tanda tangan NDA</span>
+          <span><i class="bi bi-check-circle-fill"></i>Penyerahan Source Code</span>
+          {{-- <span><i class="bi bi-check-circle-fill"></i>Siap tanda tangan NDA</span> --}}
           <span><i class="bi bi-check-circle-fill"></i>Balasan 1&times;24 jam kerja</span>
         </div>
       </div>
@@ -78,7 +78,7 @@
 <section class="statbar">
   <div class="container">
     <div class="row row-cols-2 row-cols-lg-4 g-0">
-      <div class="col"><div class="stat"><div class="s-val" data-count="6" data-suffix="+">6+</div><div class="s-lab">Tahun membangun sistem bisnis</div></div></div>
+      <div class="col"><div class="stat"><div class="s-val" data-count="6" data-suffix="+">6+</div><div class="s-lab">Pengalaman nyata</div></div></div>
       <div class="col"><div class="stat"><div class="s-val" data-count="4" data-suffix=" lini">4 lini</div><div class="s-lab">Layanan yang bisa disatukan</div></div></div>
       <div class="col"><div class="stat"><div class="s-val"><i>100%</i></div><div class="s-lab">Source code diserahkan ke klien</div></div></div>
       <div class="col"><div class="stat"><div class="s-val">1&times;24<span style="font-size:.5em;font-weight:600"> jam</span></div><div class="s-lab">Waktu balas hari kerja</div></div></div>
@@ -91,15 +91,12 @@
     <div class="row g-5 align-items-center">
       <div class="col-lg-6 rv">
         <span class="eyebrow">Tentang Arsytech</span>
-        <h2>Tim teknis yang paham urusan bisnis</h2>
+        <h2>Solusi teknis yang berkorelasi dengan realita bisnis</h2>
         <p class="lead-sm mt-3">
-          Arsytech berangkat dari kebutuhan sehari-hari perusahaan. Sebelum mulai menulis kode, kami duduk dulu
-          dengan tim operasional Anda dan memetakan alur kerja yang benar-benar berjalan, termasuk kebiasaan yang
-          tidak pernah tertulis di SOP.
+          Arsytech membantu perusahaan membangun dan mengembangkan sistem digital yang sesuai dengan kebutuhan kerja di lapangan. Kami tidak hanya melihat dari sisi teknis. Kami mempelajari proses kerja, memahami kebutuhan pengguna, lalu menerjemahkannya menjadi solusi yang bisa digunakan dan dikembangkan bersama bisnis Anda.
         </p>
         <p class="lead-sm mt-3">
-          Jadi ukuran berhasil tidaknya proyek adalah apakah cara kerja tim Anda benar-benar berubah, bukan
-          berapa banyak fitur yang kami kirim.
+          Karena bagi kami, software yang baik bukan sekadar memiliki banyak fitur, tetapi benar-benar membantu pekerjaan menjadi lebih mudah, terstruktur, dan efisien.
         </p>
         <a href="{{ route('tentang') }}" class="btn btn-outline-ink mt-4">Selengkapnya Tentang Kami <i class="bi bi-arrow-right ms-1"></i></a>
       </div>
@@ -107,23 +104,23 @@
         <div class="row g-3">
           <div class="col-sm-6 rv"><div class="card-x">
             <div class="ico ico-sm"><i class="bi bi-clipboard2-check"></i></div>
-            <h3 style="font-size:1rem">Paham proses</h3>
-            <p>Alur kerja dipetakan dulu, baru mulai koding.</p>
+            <h3 style="font-size:1rem">Memahami Proses Bisnis</h3>
+            <p>Kami memahami alur kerja dan kebutuhan bisnis Anda sebelum pengembangan dimulai.</p>
           </div></div>
           <div class="col-sm-6 rv"><div class="card-x">
             <div class="ico ico-sm"><i class="bi bi-boxes"></i></div>
-            <h3 style="font-size:1rem">Modular &amp; scalable</h3>
-            <p>Mulai dari satu modul, tambah saat perlu.</p>
+            <h3 style="font-size:1rem">Pengembangan Bertahap</h3>
+            <p>Sistem dibangun secara modular agar dapat dikembangkan dan disesuaikan seiring kebutuhan bisnis.</p>
           </div></div>
           <div class="col-sm-6 rv"><div class="card-x">
             <div class="ico ico-sm"><i class="bi bi-eye"></i></div>
-            <h3 style="font-size:1rem">Progres transparan</h3>
-            <p>Demo rutin tiap sprint, progres bisa dipantau.</p>
+            <h3 style="font-size:1rem">Proses Pengembangan Terukur</h3>
+            <p>Perkembangan proyek disampaikan secara berkala melalui demo dan evaluasi bersama.</p>
           </div></div>
           <div class="col-sm-6 rv"><div class="card-x">
             <div class="ico ico-sm"><i class="bi bi-key"></i></div>
-            <h3 style="font-size:1rem">Kepemilikan penuh</h3>
-            <p>Source code dan database diserahkan ke Anda.</p>
+            <h3 style="font-size:1rem">Kepemilikan Penuh</h3>
+            <p>Source code, database, dan hasil pengembangan menjadi bagian dari aset perusahaan Anda.</p>
           </div></div>
         </div>
       </div>

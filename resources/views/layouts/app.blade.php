@@ -29,7 +29,7 @@
 </head>
 <body id="top">
 <a class="skip-link" href="#main">Lompat ke konten utama</a>
-@include('layouts.components.topbar')
+{{-- @include('layouts.components.topbar') --}}
 @include('layouts.components.navbar')
 <main id="main">
 @yield('content')

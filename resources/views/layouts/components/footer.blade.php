@@ -3,9 +3,7 @@
     <div class="row g-4 g-lg-5">
       <div class="col-lg-4">
         <a class="navbar-brand mb-3" href="{{ route('home') }}" aria-label="Arsytech — beranda">
-          @include('layouts.components.brand-mark', ['color' => '#E4545A'])
-          <span><span class="brand-name" style="color:#fff">ARSYTECH</span>
-          <span class="brand-sub" style="color:rgba(255,255,255,.45)">{{ config('arsytech.tagline') }}</span></span>
+          <img src="{{ asset('assets/img/logo-white.png') }}" alt="Arsytech" style="height:6rem">
         </a>
         <p class="f-about">Kami membuat ERP dan aplikasi pendukungnya, mulai dari HRIS, WMS, dan CRM sampai
           aplikasi pemasaran dan e-learning, untuk perusahaan yang ingin operasionalnya lebih tertata.</p>
@@ -40,7 +38,6 @@
           <li class="d-flex gap-2 mb-2"><i class="bi bi-geo-alt mt-1"></i><span style="font-size:.9375rem">{{ config('arsytech.contact.city') }}, {{ config('arsytech.contact.region') }}, Indonesia</span></li>
           <li class="d-flex gap-2 mb-2"><i class="bi bi-envelope mt-1"></i><a href="mailto:{{ config('arsytech.contact.email') }}">{{ config('arsytech.contact.email') }}</a></li>
           <li class="d-flex gap-2 mb-2"><i class="bi bi-whatsapp mt-1"></i><a href="{{ config('arsytech.contact.whatsapp') }}" target="_blank" rel="noopener">{{ config('arsytech.contact.phone') }}</a></li>
-          <li class="d-flex gap-2"><i class="bi bi-clock mt-1"></i><span style="font-size:.9375rem">{{ config('arsytech.contact.hours') }}</span></li>
         </ul>
         <div class="d-flex flex-wrap gap-2 mt-3">
           <a href="{{ route('kontak') }}" class="btn btn-outline-light-2">Minta Penawaran <i class="bi bi-arrow-right ms-1"></i></a>
