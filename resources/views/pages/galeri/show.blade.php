@@ -139,5 +139,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('assets/js/gallery.js') }}"></script>
+<script src="{{ \App\Support\Asset::url('assets/js/gallery.js') }}"></script>
 @endpush

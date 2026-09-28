@@ -13,8 +13,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 @stack('styles')
-<link href="{{ asset('assets/css/arsytech.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/css/dashboard.css') }}" rel="stylesheet">
+<link href="{{ \App\Support\Asset::url('assets/css/arsytech.css') }}" rel="stylesheet">
+<link href="{{ \App\Support\Asset::url('assets/css/dashboard.css') }}" rel="stylesheet">
 </head>
 <body class="dash-body">
 <aside class="dash-side" id="dashSide">
@@ -89,6 +89,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 @stack('scripts')
-<script src="{{ asset('assets/js/dashboard.js') }}"></script>
+<script src="{{ \App\Support\Asset::url('assets/js/dashboard.js') }}"></script>
 </body>
 </html>

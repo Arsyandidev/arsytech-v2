@@ -364,8 +364,8 @@ hr.soft{ border-color:var(--line); opacity:1 }
 
 .site-footer{ background:var(--bg-ink); color:rgba(255,255,255,.55); padding-top:clamp(3rem,2rem + 3vw,4.5rem) }
 .site-footer h5{ font-size:.75rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#fff; margin-bottom:1.1rem }
-.site-footer a{ color:rgba(255,255,255,.55); font-size:.9375rem; display:inline-block; padding:.22rem 0; transition:color .16s }
-.site-footer a:hover{ color:#fff }
+.site-footer a:not(.btn):not(.soc){ color:rgba(255,255,255,.55); font-size:.9375rem; display:inline-block; padding:.22rem 0; transition:color .16s }
+.site-footer a:not(.btn):not(.soc):hover{ color:#fff }
 .site-footer .f-about{ font-size:.9375rem; line-height:1.7; max-width:34ch }
 .soc{ width:38px; height:38px; border-radius:50%; display:grid; place-items:center; border:1px solid rgba(255,255,255,.14); color:rgba(255,255,255,.7) !important; font-size:.95rem; transition:background-color .18s, border-color .18s, color .18s, transform .18s }
 .soc:hover{ background:var(--brand); border-color:var(--brand); color:#fff !important; transform:translateY(-2px) }
@@ -638,3 +638,11 @@ hr.soft{ border-color:var(--line); opacity:1 }
 .ind-metric .d{ font-size:.75rem; color:var(--muted) }
 @media (max-width: 991.98px){ .ind-tabs{ grid-template-columns:repeat(2, minmax(0,1fr)) } }
 @media (max-width: 575.98px){ .ind-tabs{ gap:.6rem } .ind-tab{ padding:.8rem; flex-direction:column; gap:.5rem } .ind-tab small{ display:none } }
+
+@media (max-width: 575.98px){
+  .container{ padding-left:20px; padding-right:20px }
+  .row.g-5, .row.gx-5{ --bs-gutter-x:1.5rem }
+  .pill{ flex-wrap:nowrap; gap:.45rem; font-size:.75rem; padding:.35rem .8rem .35rem .4rem }
+  .pill .tag{ font-size:.625rem; padding:.14rem .5rem; white-space:nowrap; flex-shrink:0 }
+  .pill > span:last-child{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0 }
+}

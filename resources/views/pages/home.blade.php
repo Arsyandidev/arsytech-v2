@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row align-items-center g-5">
       <div class="col-lg-6">
-        <span class="pill"><span class="tag">SOFTWARE HOUSE B2B</span><span>Bogor · Melayani klien se-Indonesia</span></span>
+        <span class="pill"><span class="tag">SOFTWARE HOUSE B2B</span><span><span class="d-none d-sm-inline">Bogor · Melayani klien se-Indonesia</span><span class="d-sm-none">Bogor · Klien se-Indonesia</span></span></span>
         <h1>Operasional teratur, <em>data laporan lebih <br> Akurat</em></h1>
         <p class="lead-lg mt-4 measure-sm">
           Kami membangun solusi guna menyatukan data operasional perusahaan ke dalam satu sistem terpusat, memastikan manajemen memiliki landasan angka yang valid dan transparan
