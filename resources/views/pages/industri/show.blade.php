@@ -70,11 +70,11 @@
   <div class="container">
     <div class="row g-5 align-items-center">
       <div class="col-lg-6 rv">
-        <span class="eyebrow">Studi kasus</span>
+        <span class="eyebrow">Contoh proyek</span>
         <h2>{!! $industri['case']['title'] !!}</h2>
         <p class="lead-sm mt-3">{!! $industri['case']['before'] !!}</p>
         <p class="lead-sm mt-3">{!! $industri['case']['after'] !!}</p>
-        <a href="{{ route('studi-kasus') }}" class="btn btn-outline-ink mt-4">Lihat studi kasus lain <i class="bi bi-arrow-right ms-1"></i></a>
+        <a href="{{ route('kontak') }}" class="btn btn-outline-ink mt-4">Diskusikan kasus serupa <i class="bi bi-arrow-right ms-1"></i></a>
       </div>
       <div class="col-lg-6 rv">
         <div class="row g-3">

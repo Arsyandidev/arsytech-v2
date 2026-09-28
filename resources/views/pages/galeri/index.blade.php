@@ -18,8 +18,8 @@
       <div class="empty-state rv">
         <div class="ico mx-auto"><i class="bi bi-images"></i></div>
         <h2>Belum ada album yang ditampilkan</h2>
-        <p>Dokumentasi kegiatan kami akan muncul di sini. Sementara itu, lihat dulu cerita proyek di halaman studi kasus.</p>
-        <a href="{{ route('studi-kasus') }}" class="btn btn-outline-ink mt-2">Lihat Studi Kasus <i class="bi bi-arrow-right ms-1"></i></a>
+        <p>Dokumentasi kegiatan kami akan muncul di sini. Sementara itu, silakan lihat layanan yang kami kerjakan.</p>
+        <a href="{{ route('solusi.index') }}" class="btn btn-outline-ink mt-2">Lihat Solusi Kami <i class="bi bi-arrow-right ms-1"></i></a>
       </div>
     @else
       <div class="row g-4 g-lg-5">

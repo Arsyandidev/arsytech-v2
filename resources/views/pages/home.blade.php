@@ -78,7 +78,7 @@
 <section class="statbar">
   <div class="container">
     <div class="row row-cols-2 row-cols-lg-4 g-0">
-      <div class="col"><div class="stat"><div class="s-val" data-count="6" data-suffix="+">6+</div><div class="s-lab">Pengalaman nyata</div></div></div>
+      <div class="col"><div class="stat"><div class="s-val" data-count="6" data-suffix="+">6+</div><div class="s-lab">Tahun pengalaman</div></div></div>
       <div class="col"><div class="stat"><div class="s-val" data-count="4" data-suffix=" lini">4 lini</div><div class="s-lab">Layanan yang bisa disatukan</div></div></div>
       <div class="col"><div class="stat"><div class="s-val"><i>100%</i></div><div class="s-lab">Source code diserahkan ke klien</div></div></div>
       <div class="col"><div class="stat"><div class="s-val">1&times;24<span style="font-size:.5em;font-weight:600"> jam</span></div><div class="s-lab">Waktu balas hari kerja</div></div></div>
@@ -105,22 +105,22 @@
           <div class="col-sm-6 rv"><div class="card-x">
             <div class="ico ico-sm"><i class="bi bi-clipboard2-check"></i></div>
             <h3 style="font-size:1rem">Memahami Proses Bisnis</h3>
-            <p>Kami memahami alur kerja dan kebutuhan bisnis Anda sebelum pengembangan dimulai.</p>
+            <p>Kami memahami alur kerja dan kebutuhan bisnis Anda sebelum pengembangan dimulai</p>
           </div></div>
           <div class="col-sm-6 rv"><div class="card-x">
             <div class="ico ico-sm"><i class="bi bi-boxes"></i></div>
             <h3 style="font-size:1rem">Pengembangan Bertahap</h3>
-            <p>Sistem dibangun secara modular agar dapat dikembangkan dan disesuaikan seiring kebutuhan bisnis.</p>
+            <p>Sistem dibangun secara modular agar dapat dikembangkan dan disesuaikan seiring kebutuhan bisnis</p>
           </div></div>
           <div class="col-sm-6 rv"><div class="card-x">
             <div class="ico ico-sm"><i class="bi bi-eye"></i></div>
             <h3 style="font-size:1rem">Proses Pengembangan Terukur</h3>
-            <p>Perkembangan proyek disampaikan secara berkala melalui demo dan evaluasi bersama.</p>
+            <p>Perkembangan proyek disampaikan secara berkala melalui demo dan evaluasi bersama</p>
           </div></div>
           <div class="col-sm-6 rv"><div class="card-x">
             <div class="ico ico-sm"><i class="bi bi-key"></i></div>
             <h3 style="font-size:1rem">Kepemilikan Penuh</h3>
-            <p>Source code, database, dan hasil pengembangan menjadi bagian dari aset perusahaan Anda.</p>
+            <p>Source code, database, dan hasil pengembangan menjadi bagian dari aset perusahaan Anda</p>
           </div></div>
         </div>
       </div>
@@ -130,62 +130,19 @@
 
 <section class="section section-soft">
   <div class="container">
-    <div class="row align-items-end g-3 mb-5 rv">
-      <div class="col-lg-7">
-        <span class="eyebrow">Karya kami</span>
-        <h2>Yang berubah setelah sistemnya jalan</h2>
-        <p class="lead-sm mt-3 measure">
-          Kami sudah mengerjakan sistem untuk manufaktur, distribusi &amp; logistik, retail &amp; FMCG,
-          jasa konsultan, pendidikan, serta instansi pemerintah dan NGO. Ini beberapa hasilnya.
-        </p>
-      </div>
-      <div class="col-lg-5 text-lg-end">
-        <a href="{{ route('studi-kasus') }}" class="btn btn-outline-ink">Lihat Semua Studi Kasus <i class="bi bi-arrow-right ms-1"></i></a>
-      </div>
-    </div>
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-4 rv"><article class="case">
-        <div class="case-top"><span class="case-sector">Distribusi FMCG</span>
-          <h3>Tiga gudang, satu catatan stok</h3>
-          <p>Dulu tiap gudang mencatat kartu stoknya sendiri, dan opname makan waktu dua hari dengan operasional berhenti.</p></div>
-        <div class="case-metrics"><div><div class="m-val">99,2%</div><div class="m-lab">akurasi stok<br>dari 87%</div></div>
-          <div><div class="m-val">2 jam</div><div class="m-lab">opname bulanan<br>dari 2 hari</div></div></div>
-      </article></div>
-      <div class="col-md-6 col-lg-4 rv"><article class="case">
-        <div class="case-top"><span class="case-sector">Manufaktur</span>
-          <h3>Closing bulanan dari 12 hari jadi 3</h3>
-          <p>Sekarang jurnal terbentuk otomatis dari transaksi pembelian dan produksi. Tim finance tidak perlu mengetik ulang.</p></div>
-        <div class="case-metrics"><div><div class="m-val">3 hari</div><div class="m-lab">waktu closing<br>dari 12 hari</div></div>
-          <div><div class="m-val">0</div><div class="m-lab">temuan material<br>audit terakhir</div></div></div>
-      </article></div>
-      <div class="col-md-6 col-lg-4 rv"><article class="case">
-        <div class="case-top"><span class="case-sector">Jasa &amp; Konsultan</span>
-          <h3>Payroll 240 karyawan tanpa lembur finance</h3>
-          <p>Data absensi, cuti, dan lembur langsung masuk ke perhitungan gaji, jadi tim HR tidak perlu merekap manual.</p></div>
-        <div class="case-metrics"><div><div class="m-val">4 jam</div><div class="m-lab">proses payroll<br>dari 5 hari</div></div>
-          <div><div class="m-val">240</div><div class="m-lab">karyawan<br>3 entitas</div></div></div>
-      </article></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
     <div class="text-center mb-5 rv">
-      <span class="eyebrow">Dua jalan masuk</span>
-      <h2>Mulai dari sistemnya, atau dari industri Anda</h2>
+      <span class="eyebrow">Solusi untuk kebutuhan bisnis Anda</span>
+      <h2>Mulai dari kebutuhan sistem, atau temukan solusi berdasarkan industri Anda</h2>
       <p class="lead-sm mt-3 mx-auto" style="max-width:60ch">
-        Kalau Anda sudah tahu modul yang dibutuhkan, silakan lewat halaman Solusi. Kalau ingin melihat
-        dulu masalah yang umum di sektor Anda, mulai dari halaman Industri.
+        Pilih solusi yang sedang Anda cari, atau lihat berbagai kebutuhan dan tantangan yang umum ditemui di industri Anda.
       </p>
     </div>
     <div class="row g-4">
       <div class="col-lg-6 rv">
         <a class="gate" href="{{ route('solusi.index') }}">
           <div class="ico"><i class="bi bi-grid-1x2-fill"></i></div>
-          <h3>Solusi</h3>
-          <p>ERP sebagai layanan inti, ditambah tiga kelompok aplikasi untuk operasional, pemasaran, dan
-            pelatihan karyawan. Bisa dipakai sendiri-sendiri atau digabung.</p>
+          <h3>Sistem yang dibangun sesuai kebutuhan bisnis Anda</h3>
+          <p>Mulai dari ERP hingga aplikasi pendukung operasional, pemasaran, dan pengembangan karyawan. Pilih modul yang dibutuhkan dan kembangkan sesuai kebutuhan bisnis Anda</p>
           <ul class="gate-list"><li>ERP</li><li>Business Operation System</li><li>Advertisement Application</li><li>E-Learning Application</li></ul>
           <span class="gate-cta">Jelajahi solusi <i class="bi bi-arrow-right"></i></span>
         </a>
@@ -193,9 +150,8 @@
       <div class="col-lg-6 rv">
         <a class="gate" href="{{ route('industri.index') }}">
           <div class="ico"><i class="bi bi-buildings-fill"></i></div>
-          <h3>Industri</h3>
-          <p>Tiap sektor punya masalah operasionalnya sendiri. Lihat kendala yang umum di industri Anda
-            dan kombinasi modul yang biasanya paling cepat terasa hasilnya.</p>
+          <h3>Solusi yang disesuaikan dengan karakter setiap industri</h3>
+          <p>Setiap industri memiliki proses dan tantangan yang berbeda. Kami membantu membangun sistem yang menyesuaikan kebutuhan operasional dan cara kerja di bisnis Anda</p>
           <ul class="gate-list"><li>Manufaktur</li><li>Distribusi &amp; Logistik</li><li>Retail &amp; FMCG</li><li>Pemerintahan &amp; NGO</li></ul>
           <span class="gate-cta">Jelajahi industri <i class="bi bi-arrow-right"></i></span>
         </a>
@@ -204,30 +160,30 @@
   </div>
 </section>
 
-<section class="section section-soft section-line">
+<section class="section">
   <div class="container">
     <div class="text-center mb-5 rv">
       <span class="eyebrow">Konsultasi gratis</span>
-      <h2>Ceritakan dulu masalahnya ke kami</h2>
+      <h2>Ceritakan kebutuhan bisnis</h2>
       <p class="lead-sm mt-3 mx-auto" style="max-width:60ch">
-        Di sesi pertama, kami lebih banyak mendengarkan. Tanpa biaya, Anda akan mendapat hal-hal berikut.
+        Kami mencoba memahami kebutuhan bisnis Anda dan melihat bagaimana kami dapat membantu.
       </p>
     </div>
     <div class="row g-4">
       <div class="col-md-4 rv"><div class="card-x text-center">
         <div class="ico mx-auto"><i class="bi bi-search"></i></div>
         <h3>Analisis Kebutuhan</h3>
-        <p>Kami bantu melihat bagian operasional mana yang saat ini paling banyak menyita waktu dan biaya.</p>
+        <p>Kami memahami kebutuhan dan kendala yang ada pada proses bisnis Anda.</p>
       </div></div>
       <div class="col-md-4 rv"><div class="card-x text-center">
         <div class="ico mx-auto"><i class="bi bi-file-earmark-ruled"></i></div>
-        <h3>Estimasi Tertulis</h3>
-        <p>Lingkup, tahapan, perkiraan waktu, dan kisaran anggaran kami tuliskan, jadi mudah Anda bandingkan.</p>
+        <h3>Estimasi & Rencana</h3>
+        <p>Kami memberikan gambaran mengenai solusi, tahapan, waktu, dan estimasi biaya.</p>
       </div></div>
       <div class="col-md-4 rv"><div class="card-x text-center">
         <div class="ico mx-auto"><i class="bi bi-shield-lock"></i></div>
-        <h3>Jaminan Kerahasiaan</h3>
-        <p>Kami siap menandatangani NDA sebelum Anda menceritakan detail proses dan data bisnis perusahaan.</p>
+        <h3>Kerahasiaan Terjaga</h3>
+        <p>Kami menjaga informasi dan data bisnis yang Anda sampaikan selama proses konsultasi.</p>
       </div></div>
     </div>
     <div class="text-center mt-5 rv">

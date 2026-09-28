@@ -83,10 +83,10 @@
           <p>Informasi di Situs disajikan sebagai informasi umum dan pengenalan layanan. Kami berusaha menjaga
           ketepatannya, dengan catatan berikut:</p>
           <ul>
-            <li>Angka, rentang waktu, dan hasil yang disebut pada halaman solusi, industri, dan studi kasus
+            <li>Angka, rentang waktu, dan hasil yang disebut pada halaman solusi dan industri, termasuk contoh proyeknya,
                 adalah <strong>gambaran dari proyek sebelumnya</strong>. Angka tersebut tidak menjamin hasil
                 yang sama, karena hasil sangat bergantung pada kondisi awal, kualitas data, dan kesiapan tim Anda.</li>
-            <li>Nama klien pada studi kasus sengaja disamarkan karena terikat perjanjian kerahasiaan.</li>
+            <li>Nama klien pada contoh proyek sengaja disamarkan karena terikat perjanjian kerahasiaan.</li>
             <li>Daftar modul dan fitur bersifat indikatif dan dapat berubah sesuai hasil analisis kebutuhan.</li>
           </ul>
           <div class="callout">
@@ -204,7 +204,7 @@
           <ul>
             <li>Situs akan selalu tersedia tanpa gangguan, kesalahan, atau jeda pemeliharaan;</li>
             <li>Semua informasi selalu terbaru dan bebas dari salah tulis;</li>
-            <li>Hasil yang disebut pada studi kasus akan terulang di perusahaan Anda.</li>
+            <li>Hasil yang disebut pada contoh proyek akan terulang di perusahaan Anda.</li>
           </ul>
           <p>Penafian ini berlaku untuk penggunaan <em>Situs</em>. Jaminan atas pekerjaan proyek, termasuk masa
           garansi perbaikan cacat dan tingkat layanan dukungan, diatur tersendiri dalam Perjanjian Proyek dan

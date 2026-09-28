@@ -18,7 +18,6 @@ Route::get('/solusi/{solusi}', [SolusiController::class, 'show'])->name('solusi.
 Route::get('/industri', [IndustriController::class, 'index'])->name('industri.index');
 Route::get('/industri/{industri}', [IndustriController::class, 'show'])->name('industri.show');
 
-Route::view('/studi-kasus', 'pages.studi-kasus')->name('studi-kasus');
 Route::view('/faq', 'pages.faq')->name('faq');
 Route::view('/kontak', 'pages.kontak')->name('kontak');
 Route::post('/kontak', [KonsultasiController::class, 'store'])->name('kontak.kirim');
