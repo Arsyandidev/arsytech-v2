@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#A90E14">
 
+@php
+    $metaDescription = html_entity_decode(trim($__env->yieldContent('description')), ENT_QUOTES, 'UTF-8');
+    $metaDescription = $metaDescription !== ''
+        ? $metaDescription
+        : 'Arsytech membangun ERP, WMS, HRIS, CRM, sistem keuangan, dan aplikasi web custom untuk perusahaan di Indonesia. Bagian dari Clarsyara Group.';
+@endphp
+<meta name="description" content="{{ $metaDescription }}">
+<meta name="keywords" content="ERP, WMS, HRIS, CRM, software house, sistem informasi, aplikasi bisnis, custom software Indonesia, Arsytech">
+<meta name="author" content="Arsytech - Clarsyara Group">
+
 <title>@yield('title')</title>
 <meta name="description" content="@yield('description')">
 <link rel="canonical" href="{{ url()->current() }}">
