@@ -3,7 +3,7 @@
     <div class="row g-4 g-lg-5">
       <div class="col-lg-4">
         <a class="navbar-brand mb-3" href="{{ route('home') }}" aria-label="Arsytech — beranda">
-          <img src="{{ asset('assets/img/logo-white.png') }}" alt="Arsytech" style="height:4rem">
+          <img src="{{ asset('assets/img/logo-white.png') }}" alt="Arsytech" style="height:2rem">
         </a>
         <p class="f-about">Kami membuat ERP dan aplikasi pendukungnya, mulai dari HRIS, WMS, dan CRM sampai
           aplikasi pemasaran dan e-learning, untuk perusahaan yang ingin operasionalnya lebih tertata.</p>

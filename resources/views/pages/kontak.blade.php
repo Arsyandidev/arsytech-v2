@@ -5,8 +5,8 @@
 
 @section('content')
 @include('layouts.components.page-head', [
-    'title' => 'Mari mulai dari cerita Anda',
-    'subtitle' => 'Ceritakan singkat kebutuhan sistem Anda. Tim kami membalas dalam 1×24 jam kerja dan langsung membahas masalahnya, tanpa presentasi penjualan.',
+    'title' => 'Ceritakan kebutuhan atau masalah yang sedang dihadapi',
+    'subtitle' => 'Ceritakan kebutuhan atau masalah Anda secara singkat. Tim kami akan merespons dalam 1×24 jam kerja.',
     'breadcrumbs' => [
         'Kontak' => null,
     ],
@@ -17,13 +17,12 @@
     <div class="row g-5">
       <div class="col-lg-5 rv">
         <h2>Formulir konsultasi</h2>
-        <p class="lead-sm mt-3">Makin jelas ceritanya, makin berguna jawaban pertama dari kami.
-          Istilah teknis tidak perlu. Cukup ceritakan bagian pekerjaan yang sekarang paling merepotkan.</p>
+        <p class="lead-sm mt-3">Jelaskan secara singkat tentang bisnis, proses kerja, dan kendala yang sedang dihadapi. Istilah teknis tidak diperlukan</p>
 
         <div class="mt-4">
-          <div class="tick on-light"><i class="bi bi-check-circle-fill"></i><div><strong>Analisis kebutuhan gratis</strong>Kami bantu memetakan masalahnya dulu.</div></div>
-          <div class="tick on-light"><i class="bi bi-check-circle-fill"></i><div><strong>Estimasi lingkup, waktu, dan anggaran</strong>Dalam bentuk tertulis, jadi mudah Anda bandingkan.</div></div>
-          <div class="tick on-light"><i class="bi bi-check-circle-fill"></i><div><strong>Siap menandatangani NDA</strong>Kerahasiaan data dan proses bisnis Anda kami jaga.</div></div>
+          <div class="tick on-light"><i class="bi bi-check-circle-fill"></i><div><strong>Analisis Kebutuhan</strong>Pembahasan awal digunakan untuk memetakan kebutuhan, alur kerja, dan masalah yang perlu diselesaikan</div></div>
+          <div class="tick on-light"><i class="bi bi-check-circle-fill"></i><div><strong>Estimasi Lingkup, Waktu, dan Anggaran</strong>Mendapatkan gambaran yang jelas mengenai lingkup pekerjaan, estimasi waktu, dan anggaran sebelum memutuskan untuk melanjutkan</div></div>
+          <div class="tick on-light"><i class="bi bi-check-circle-fill"></i><div><strong>NDA & Kerahasiaan</strong>Kami bersedia menandatangani NDA sebelum Anda membagikan informasi, data, maupun proses internal perusahaan</div></div>
         </div>
 
         <hr class="soft my-4">
@@ -33,17 +32,17 @@
             <div class="ico ico-sm"><i class="bi bi-whatsapp"></i></div>
             <h3 style="font-size:.9375rem">WhatsApp</h3>
             <p style="font-size:.875rem"><a href="{{ config('arsytech.contact.whatsapp') }}" target="_blank" rel="noopener">{{ config('arsytech.contact.phone') }}</a><br>
-              <span style="color:var(--muted)">Paling cepat dibalas.</span></p></div></div>
+              </p></div></div>
           <div class="col-sm-6"><div class="card-x flat">
             <div class="ico ico-sm"><i class="bi bi-envelope"></i></div>
             <h3 style="font-size:.9375rem">Email</h3>
             <p style="font-size:.875rem"><a href="mailto:{{ config('arsytech.contact.email') }}">{{ config('arsytech.contact.email') }}</a><br>
-              <span style="color:var(--muted)">Untuk lampiran dan dokumen.</span></p></div></div>
+              </p></div></div>
           <div class="col-12"><div class="card-x flat">
             <div class="ico ico-sm"><i class="bi bi-geo-alt"></i></div>
             <h3 style="font-size:.9375rem">Lokasi</h3>
             <p style="font-size:.875rem">Bogor, Jawa Barat<br>
-              <span style="color:var(--muted)">Menerima klien dari seluruh Indonesia.</span></p></div></div>
+              </p></div></div>
         </div>
       </div>
 
@@ -154,8 +153,6 @@
               <div class="col-12 d-grid d-sm-flex align-items-center gap-3 mt-2">
                 <button type="submit" class="btn btn-brand btn-lg flex-shrink-0 text-nowrap" data-loading="Mengirim…">
                   Kirim &amp; Jadwalkan Konsultasi <i class="bi bi-arrow-right ms-1"></i></button>
-                <span style="font-size:.8125rem;color:var(--muted)">
-                  <i class="bi bi-shield-check me-1" style="color:var(--ok)"></i>Tidak mengikat · Siap menandatangani NDA</span>
               </div>
             </div>
           </form>
@@ -166,40 +163,10 @@
   </div>
 </section>
 
-<section class="section section-soft">
-  <div class="container">
-    <div class="text-center mb-5 rv">
-      <span class="eyebrow">Setelah Anda mengirim</span>
-      <h2>Langkah selanjutnya</h2>
-      <p class="lead-sm mt-3 mx-auto" style="max-width:58ch">
-        Anda tidak akan ditelepon sales berulang kali. Prosesnya seperti ini.
-      </p>
-    </div>
-    <div class="row g-4">
-      <div class="col-md-3 rv"><div class="card-x text-center h-100">
-        <div class="ico mx-auto"><i class="bi bi-envelope-check"></i></div>
-        <h3 style="font-size:.9375rem">1. Balasan awal</h3>
-        <p>Dalam 1&times;24 jam kerja kami kirim balasan, biasanya berisi beberapa pertanyaan lanjutan sesuai cerita Anda.</p></div></div>
-      <div class="col-md-3 rv"><div class="card-x text-center h-100">
-        <div class="ico mx-auto"><i class="bi bi-camera-video"></i></div>
-        <h3 style="font-size:.9375rem">2. Sesi konsultasi</h3>
-        <p>Gratis, daring atau tatap muka selama 45–60 menit. Kami banyak mendengarkan, dan Anda bebas bertanya.</p></div></div>
-      <div class="col-md-3 rv"><div class="card-x text-center h-100">
-        <div class="ico mx-auto"><i class="bi bi-file-earmark-ruled"></i></div>
-        <h3 style="font-size:.9375rem">3. Estimasi tertulis</h3>
-        <p>Lingkup, tahapan, perkiraan waktu, dan rentang anggaran, semuanya dalam satu dokumen.</p></div></div>
-      <div class="col-md-3 rv"><div class="card-x text-center h-100">
-        <div class="ico mx-auto"><i class="bi bi-signpost-split"></i></div>
-        <h3 style="font-size:.9375rem">4. Keputusan Anda</h3>
-        <p>Anda bebas memilih: lanjut, menunda dulu, atau membawa dokumennya ke vendor lain.</p></div></div>
-    </div>
-  </div>
-</section>
-
 <section class="section-tight">
   <div class="container">
     <div class="text-center rv">
-      <p class="lead-sm mb-3">Bisa jadi pertanyaan Anda sudah dijawab di halaman FAQ.</p>
+      <p class="lead-sm mb-3"></p>
       <a href="{{ route('faq') }}" class="btn btn-outline-ink">Lihat Tanya Jawab <i class="bi bi-arrow-right ms-1"></i></a>
     </div>
   </div>

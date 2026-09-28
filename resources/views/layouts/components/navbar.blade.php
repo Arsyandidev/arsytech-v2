@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg site-nav sticky-top" id="siteNav">
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}" aria-label="Arsytech — beranda">
-        <img src="{{ asset('assets/img/logo.png') }}" alt="Arsytech Logo" style="height: 4rem;">
+        <img src="{{ asset('assets/img/logo.png') }}" alt="Arsytech Logo" style="height: 2rem;">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
             aria-controls="mainNav" aria-expanded="false" aria-label="Buka menu navigasi">

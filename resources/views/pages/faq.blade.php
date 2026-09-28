@@ -6,7 +6,7 @@
 @section('content')
 @include('layouts.components.page-head', [
     'title' => 'Pertanyaan yang sering kami terima',
-    'subtitle' => 'Kami kelompokkan per topik supaya mudah dicari. Kalau pertanyaan Anda belum ada, kirim saja lewat WhatsApp. Kami balas dalam 1×24 jam kerja, tidak perlu menjadwalkan pertemuan dulu.',
+    'subtitle' => 'Kami mengelompokkan pertanyaan berdasarkan topik agar lebih mudah ditemukan. Jika pertanyaan Anda belum tersedia, silakan hubungi kami melalui WhatsApp. Kami akan merespons dalam 1×24 jam kerja',
     'breadcrumbs' => [
         'FAQ' => null,
     ],
