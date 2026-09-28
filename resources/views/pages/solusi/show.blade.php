@@ -41,10 +41,9 @@
   <div class="container">
     <div class="text-center mb-5 rv">
       <span class="eyebrow">Modul utama</span>
-      <h2>Apa saja yang biasanya kami bangun</h2>
+      <h2>Sistem disesuaikan dengan cara kerja bisnis Anda</h2>
       <p class="lead-sm mt-3 mx-auto" style="max-width:62ch">
-        Anggap daftar ini sebagai titik awal. Modul bisa ditambah, dikurangi, atau disesuaikan
-        dengan istilah yang sudah biasa dipakai tim Anda.
+        Modul di bawah merupakan gambaran umum. Lingkup dapat disesuaikan, baik dengan menambah, mengurangi, maupun menyesuaikan proses dengan istilah dan alur kerja yang sudah digunakan tim Anda
       </p>
     </div>
     <div class="row g-4">
@@ -62,10 +61,9 @@
   <div class="container">
     <div class="text-center mb-5 rv">
       <span class="eyebrow">Hasil yang bisa diharapkan</span>
-      <h2>Angka yang biasanya berubah lebih dulu</h2>
+      <h2>Perubahan setelah proses mulai terintegrasi</h2>
       <p class="lead-sm mt-3 mx-auto" style="max-width:60ch">
-        Angka di bawah kami ambil dari proyek {{ $solusi['short'] }} yang sudah kami kerjakan. Hasil di tempat Anda tetap
-        tergantung kondisi awal dan kesiapan tim.
+        Setiap implementasi memiliki kondisi awal dan target yang berbeda. Angka berikut merupakan contoh hasil dari proyek ERP yang telah kami kerjakan dan bukan merupakan angka yang kami janjikan untuk setiap proyek.
       </p>
     </div>
     <div class="row g-4">
@@ -83,10 +81,10 @@
   <div class="container">
     <div class="row g-4 align-items-center">
       <div class="col-lg-5 rv">
-        <h2 class="h3" style="font-size:clamp(1.3rem,1.15rem + .6vw,1.65rem)">Paling sering dipakai di sektor ini</h2>
-        <p class="lead-sm mt-2">Lihat contoh penerapan {{ $solusi['short'] }} di industri yang paling dekat dengan bisnis Anda.</p>
+        <h2 class="h3" style="font-size:clamp(1.3rem,1.15rem + .6vw,1.65rem)">Solusi yang Relevan dengan Industri Anda</h2>
+        <p class="lead-sm mt-2">Setiap industri memiliki alur kerja dan kebutuhan yang berbeda. Kami menyesuaikan sistem dengan proses yang sudah berjalan, bukan memaksakan satu pola untuk semua bisnis.</p>
       </div>
-      <div class="col-lg-7 rv"><div class="d-flex flex-wrap">@foreach ($industriList as $industriSlug => $industri)<a class="tech" href="{{ route('industri.show', $industriSlug) }}" style="text-decoration:none"><i class="bi bi-arrow-right-short"></i>{!! $industri['name'] !!}</a>@endforeach</div></div>
+      <div class="col-lg-7 rv"><div class="d-flex flex-wrap">@foreach ($industriList as $industriSlug => $industri)<a class="tech" href="{{ route('industri.index').'#'.$industriSlug }}" style="text-decoration:none"><i class="bi bi-arrow-right-short"></i>{!! $industri['name'] !!}</a>@endforeach</div></div>
     </div>
   </div>
 </section>

@@ -33,7 +33,7 @@
         e.target.classList.add('in');
         io.unobserve(e.target);
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
     revealables.forEach(function (el) { io.observe(el); });
   }
 

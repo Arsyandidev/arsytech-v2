@@ -49,10 +49,9 @@
   <div class="container">
     <div class="text-center mb-5 rv">
       <span class="eyebrow">Aplikasi di dalamnya</span>
-      <h2>Pilih yang paling Anda butuhkan</h2>
+      <h2>Pilih sesuai kebutuhan bisnis Anda</h2>
       <p class="lead-sm mt-3 mx-auto" style="max-width:62ch">
-        Setiap aplikasi kami sesuaikan dengan alur kerja dan istilah yang sudah dipakai tim Anda.
-        Fitur di bawah adalah titik awal, dan bisa ditambah atau dikurangi.
+        Setiap aplikasi kami sesuaikan dengan alur kerja, kebutuhan, dan istilah yang sudah digunakan tim Anda. Daftar berikut merupakan titik awal yang dapat dikembangkan sesuai kebutuhan.
       </p>
     </div>
     <div class="row g-4 justify-content-center">
@@ -98,8 +97,8 @@
   <div class="container">
     <div class="row g-4 align-items-center">
       <div class="col-lg-5 rv">
-        <h2 class="h3" style="font-size:clamp(1.3rem,1.15rem + .6vw,1.65rem)">Layanan Arsytech lainnya</h2>
-        <p class="lead-sm mt-2">ERP sebagai inti, dan kelompok aplikasi lain yang bisa disambungkan.</p>
+        <h2 class="h3" style="font-size:clamp(1.3rem,1.15rem + .6vw,1.65rem)">Bangun sesuai kebutuhan, integrasikan saat diperlukan</h2>
+        <p class="lead-sm mt-2">Selain ERP, kami membangun berbagai aplikasi bisnis yang dapat digunakan secara mandiri maupun diintegrasikan dengan sistem yang sudah Anda miliki</p>
       </div>
       <div class="col-lg-7 rv"><div class="d-flex flex-wrap"><a class="tech" href="{{ route('solusi.show', 'erp') }}" style="text-decoration:none"><i class="bi bi-arrow-right-short"></i>Enterprise Resource Planning</a>@foreach ($kategoriList as $otherSlug => $other)@if ($otherSlug !== $slug)<a class="tech" href="{{ route('solusi.show', $otherSlug) }}" style="text-decoration:none"><i class="bi bi-arrow-right-short"></i>{!! $other['name'] !!}</a>@endif
 @endforeach</div></div>

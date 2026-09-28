@@ -16,7 +16,7 @@ Route::get('/solusi', [SolusiController::class, 'index'])->name('solusi.index');
 Route::get('/solusi/{solusi}', [SolusiController::class, 'show'])->name('solusi.show');
 
 Route::get('/industri', [IndustriController::class, 'index'])->name('industri.index');
-Route::get('/industri/{industri}', [IndustriController::class, 'show'])->name('industri.show');
+Route::get('/industri/{industri}', [IndustriController::class, 'redirect'])->name('industri.show');
 
 Route::view('/faq', 'pages.faq')->name('faq');
 Route::view('/kontak', 'pages.kontak')->name('kontak');

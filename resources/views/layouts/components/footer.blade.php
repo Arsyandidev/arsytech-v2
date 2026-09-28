@@ -27,7 +27,7 @@
         <h5>Industri</h5>
         <ul class="list-unstyled mb-0">
           @foreach (\App\Content\Industri::all() as $slug => $item)
-            <li><a href="{{ route('industri.show', $slug) }}">{!! $item['name'] !!}</a></li>
+            <li><a href="{{ route('industri.index').'#'.$slug }}">{!! $item['name'] !!}</a></li>
           @endforeach
           <li><a href="{{ route('industri.index') }}">Lihat semua</a></li>
         </ul>

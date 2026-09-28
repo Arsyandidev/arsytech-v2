@@ -11,28 +11,18 @@
       <ul class="navbar-nav ms-auto align-items-lg-center">
         <li class="nav-item"><a @class(['nav-link', 'active' => request()->routeIs('home')]) href="{{ route('home') }}">Beranda</a></li>
         <li class="nav-item"><a @class(['nav-link', 'active' => request()->routeIs('tentang')]) href="{{ route('tentang') }}">Tentang Kami</a></li>
+        <li class="nav-item"><a @class(['nav-link', 'active' => request()->is('solusi/erp')]) href="{{ route('solusi.show', 'erp') }}">ERP</a></li>
         <li class="nav-item dropdown">
-          <a @class(['nav-link dropdown-toggle', 'active' => request()->routeIs('solusi.*')]) href="{{ route('solusi.index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Solusi</a>
+          <a @class(['nav-link dropdown-toggle', 'active' => request()->routeIs('solusi.*') && ! request()->is('solusi/erp')]) href="{{ route('solusi.index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ekosistem Lainnya</a>
           <ul class="dropdown-menu">
-            @php($erp = \App\Content\Solusi::find('erp'))
-            <li><a @class(['dropdown-item', 'active' => request()->is('solusi/erp')]) href="{{ route('solusi.show', 'erp') }}"><i class="bi {{ $erp['icon'] }} di-ico"></i><span class="di-txt">{{ $erp['name'] }}<small>{{ $erp['short'] }}</small></span></a></li>
             @foreach (\App\Content\KategoriSolusi::all() as $slug => $item)
               <li><a @class(['dropdown-item', 'active' => request()->is('solusi/'.$slug) || \App\Content\KategoriSolusi::parentOf((string) request()->route('solusi')) === $slug]) href="{{ route('solusi.show', $slug) }}"><i class="bi {{ $item['icon'] }} di-ico"></i><span class="di-txt">{!! $item['name'] !!}<small>{!! $item['apps_label'] !!}</small></span></a></li>
             @endforeach
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item fw-bold" href="{{ route('solusi.index') }}"><span class="di-txt">Lihat semua solusi <i class="bi bi-arrow-right ms-1"></i></span></a></li>
+            <li><a class="dropdown-item fw-bold" href="{{ route('solusi.index') }}"><span class="di-txt">Lihat semua layanan <i class="bi bi-arrow-right ms-1"></i></span></a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a @class(['nav-link dropdown-toggle', 'active' => request()->routeIs('industri.*')]) href="{{ route('industri.index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Industri</a>
-          <ul class="dropdown-menu">
-            @foreach (\App\Content\Industri::all() as $slug => $item)
-              <li><a @class(['dropdown-item', 'active' => request()->is('industri/'.$slug)]) href="{{ route('industri.show', $slug) }}"><i class="bi {{ $item['icon'] }} di-ico"></i><span class="di-txt">{!! $item['name'] !!}<small>{!! $item['name'] !!}</small></span></a></li>
-            @endforeach
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item fw-bold" href="{{ route('industri.index') }}"><span class="di-txt">Lihat semua industri <i class="bi bi-arrow-right ms-1"></i></span></a></li>
-          </ul>
-        </li>
+        <li class="nav-item"><a @class(['nav-link', 'active' => request()->routeIs('industri.*')]) href="{{ route('industri.index') }}">Industri</a></li>
         <li class="nav-item"><a @class(['nav-link', 'active' => request()->routeIs('faq')]) href="{{ route('faq') }}">FAQ</a></li>
         <li class="nav-item dropdown">
           <a @class(['nav-link dropdown-toggle', 'active' => request()->routeIs('blog.*', 'galeri.*')]) href="{{ route('blog.index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Kabar</a>

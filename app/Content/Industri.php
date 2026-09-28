@@ -11,7 +11,7 @@ class Industri
                 'name' => 'Manufaktur',
                 'icon' => 'bi-gear-wide-connected',
                 'summary' => 'Biaya produksi per batch, jadwal mesin, dan stok bahan baku dalam satu kendali.',
-                'complaint' => 'Biaya produksi tidak pernah pasti sampai bulan ditutup, dan jadwal mesin disusun di papan tulis.',
+                'complaint' => 'Biaya produksi baru benar-benar kelihatan setelah bulan ditutup, sementara jadwal produksi masih dicatat di papan tulis',
                 'modules' => ['ERP', 'WMS', 'Accounting &amp; Finance'],
                 'title' => 'Sistem ERP & Produksi untuk Manufaktur | Arsytech',
                 'description' => 'Sistem manufaktur dari Arsytech untuk bill of material, perintah kerja, biaya per batch, dan persediaan bahan baku. Closing bulanan turun jadi 3 hari.',
@@ -20,8 +20,8 @@ class Industri
                 'opening' => [
                     'title' => 'Biaya produksi yang selalu terlambat diketahui',
                     'paragraphs' => [
-                        'Di banyak pabrik, harga pokok produksi baru bisa dihitung setelah semua nota terkumpul dan stock opname selesai, biasanya dua sampai tiga minggu setelah barangnya jadi. Akibatnya, harga jual terpaksa diputuskan dengan data bulan lalu.',
-                        'Yang kami bangun adalah pencatatan yang nyambung dari awal sampai akhir. Pemakaian bahan dicatat saat perintah kerja berjalan, hasil produksi dicatat di lini, dan biayanya terbentuk seiring proses.',
+                        'Biaya produksi baru dapat dihitung setelah nota terkumpul dan stock opname selesai. Proses ini bisa memakan waktu hingga beberapa minggu setelah barang diproduksi, sehingga keputusan harga dan evaluasi produksi sering kali masih menggunakan data periode sebelumnya',
+                        'Kami membangun pencatatan yang terhubung dari awal hingga akhir. Pemakaian bahan dicatat saat proses produksi berjalan, hasil produksi dicatat di lini, dan biaya terbentuk mengikuti transaksi yang terjadi',
                     ],
                 ],
                 'pains' => [
@@ -48,30 +48,27 @@ class Industri
                 ],
                 'phases' => [
                     [
-                        'title' => 'WMS untuk bahan baku &amp; barang jadi',
-                        'body' => 'Kami mulai dari gudang, karena selisih di sini paling mahal dan hasil perbaikannya paling cepat terlihat.',
+                        'title' => 'WMS untuk Bahan Baku & Barang Jadi',
+                        'body' => 'Memulai dari gudang untuk memastikan pergerakan bahan dan hasil produksi tercatat dengan baik sejak awal',
                         'result' => 'Akurasi stok naik dalam 2–3 bulan',
                     ],
                     [
-                        'title' => 'ERP: purchasing &amp; persediaan',
-                        'body' => 'Pembelian bahan baku terhubung ke rencana produksi, dengan persetujuan berjenjang sesuai nilai.',
+                        'title' => 'ERP: Purchasing & Persediaan',
+                        'body' => 'Menghubungkan kebutuhan bahan baku, proses pembelian, penerimaan, dan persediaan dalam satu alur dengan persetujuan sesuai kewenangan',
                         'result' => 'Pembelian tidak lagi serba mendadak',
                     ],
                     [
-                        'title' => 'Modul produksi',
-                        'body' => 'Bill of material, perintah kerja, pencatatan hasil dan sisa, serta perhitungan biaya per batch.',
+                        'title' => 'Modul Produksi',
+                        'body' => 'Bill of material, perintah kerja, pemakaian bahan, hasil produksi, sisa produksi, hingga perhitungan biaya per batch',
                         'result' => 'Harga pokok diketahui saat batch selesai',
                     ],
                     [
-                        'title' => 'Accounting &amp; Finance',
-                        'body' => 'Jurnal terbentuk otomatis dari transaksi produksi dan pembelian, jadi tim finance tidak perlu mengetik ulang.',
+                        'title' => 'Accounting & Finance',
+                        'body' => 'Transaksi pembelian dan produksi diteruskan ke pencatatan keuangan sehingga tim finance tidak perlu melakukan input yang sama berulang kali',
                         'result' => 'Closing bulanan turun ke 3–5 hari',
                     ],
                 ],
                 'case' => [
-                    'title' => 'Closing bulanan dari 12 hari jadi 3',
-                    'before' => 'Sebuah pabrik komponen dengan dua lini produksi merekap pemakaian bahan dari lembar kerja fisik. Tiap bulan, tim finance butuh dua minggu hanya untuk menyusun laporan yang bisa dipercaya.',
-                    'after' => 'Setelah perintah kerja dan pemakaian bahan dicatat langsung di lini, jurnal ikut terbentuk selama produksi berjalan. Audit tahun berikutnya selesai tanpa temuan material.',
                     'metrics' => [
                         [
                             'value' => '3 hari',
@@ -114,7 +111,7 @@ class Industri
                 'name' => 'Distribusi &amp; Logistik',
                 'icon' => 'bi-truck',
                 'summary' => 'Multi-gudang, rute pengiriman, dan piutang pelanggan yang selalu mutakhir.',
-                'complaint' => 'Stok berbeda antar gudang, pengiriman sulit dilacak, dan piutang pelanggan baru ketahuan saat jatuh tempo.',
+                'complaint' => 'Stok berbeda antar gudang, pengiriman sulit dilacak, dan piutang baru terlihat ketika sudah jatuh tempo.',
                 'modules' => ['WMS', 'ERP', 'CRM'],
                 'title' => 'Sistem Distribusi Multi-Gudang & Logistik | Arsytech',
                 'description' => 'Sistem untuk distributor: WMS multi-gudang, sales order, surat jalan, batas kredit pelanggan, dan pelacakan pengiriman, dengan akurasi stok 99%+.',
@@ -123,30 +120,30 @@ class Industri
                 'opening' => [
                     'title' => 'Saat gudang tidak lagi satu',
                     'paragraphs' => [
-                        'Begitu gudang bertambah, masalahnya ikut berubah. Sekarang semua catatan harus disamakan: cabang mana yang punya stok, siapa yang boleh memindahkan barang, dan siapa yang bertanggung jawab kalau barang tidak ketemu.',
-                        'Belum lagi sales di lapangan yang menjanjikan barang yang ternyata sudah dialokasikan ke pesanan lain. Sistem yang kami bangun membuat semua orang melihat ketersediaan stok yang sama pada waktu yang sama.',
+                        'Ketika gudang bertambah, pencatatan dan pengendalian stok ikut menjadi lebih kompleks. Manajemen perlu mengetahui stok berada di lokasi mana, siapa yang dapat memindahkan barang, dan bagaimana setiap perpindahan dapat ditelusuri',
+                        'Di sisi lain, sales di lapangan bisa saja menawarkan barang yang ternyata sudah dialokasikan untuk pesanan lain. Sistem yang terintegrasi membuat tim bekerja dengan informasi stok yang sama, tanpa harus menunggu rekap dari masing-masing gudang',
                     ],
                 ],
                 'pains' => [
                     [
                         'icon' => 'bi-boxes',
                         'title' => 'Stok berbeda antar gudang',
-                        'body' => 'Tiap lokasi punya kartu stok sendiri, jadi alokasi ke pelanggan sering berebut barang yang sama.',
+                        'body' => 'Setiap lokasi memiliki pencatatan sendiri, sehingga alokasi barang antar pesanan dan antar gudang mudah menimbulkan selisih',
                     ],
                     [
                         'icon' => 'bi-truck',
                         'title' => 'Pengiriman sulit dilacak',
-                        'body' => 'Setelah surat jalan dicetak, posisi barang hanya bisa dicek dengan menelepon sopir atau kepala gudang.',
+                        'body' => 'Setelah surat jalan diterbitkan, status pengiriman masih harus ditanyakan melalui telepon atau pesan kepada sopir dan kepala gudang',
                     ],
                     [
                         'icon' => 'bi-cash-stack',
-                        'title' => 'Piutang baru ketahuan saat menunggak',
-                        'body' => 'Batas kredit pelanggan tidak terpantau otomatis, jadi pengiriman tetap jalan walaupun tagihan sudah menumpuk.',
+                        'title' => 'Piutang Baru Terlihat Saat Menunggak',
+                        'body' => 'Batas kredit dan tagihan pelanggan tidak selalu terpantau saat pesanan dibuat, sehingga pengiriman dapat terus berjalan ketika piutang sudah menumpuk',
                     ],
                     [
                         'icon' => 'bi-arrow-repeat',
-                        'title' => 'Retur menggantung tanpa dokumen',
-                        'body' => 'Barang kembali dari pelanggan tanpa alur yang jelas, lalu muncul selisih yang sulit ditelusuri.',
+                        'title' => 'Retur Tanpa Alur yang Jelas',
+                        'body' => 'Barang kembali dari pelanggan tanpa dokumen dan proses yang terstruktur, sehingga penyebab retur dan perubahan stok sulit ditelusuri',
                     ],
                 ],
                 'phases' => [
@@ -172,9 +169,6 @@ class Industri
                     ],
                 ],
                 'case' => [
-                    'title' => 'Tiga gudang, satu catatan stok',
-                    'before' => 'Distributor FMCG dengan tiga gudang dan sekitar 400 SKU menjalankan kartu stok terpisah di tiap lokasi. Stock opname bulanan butuh dua hari penuh dan operasional harus dihentikan.',
-                    'after' => 'Dengan WMS berbasis barcode dan cycle counting per zona, opname cukup dua jam dan gudang tetap buka. Akurasi stok naik dari 87% ke 99,2%.',
                     'metrics' => [
                         [
                             'value' => '99,2%',
@@ -217,7 +211,7 @@ class Industri
                 'name' => 'Retail &amp; FMCG',
                 'icon' => 'bi-shop',
                 'summary' => 'Stok per outlet, perputaran SKU, dan promosi yang bisa diukur dampaknya.',
-                'complaint' => 'Outlet kehabisan barang laku sementara gudang penuh SKU yang tidak bergerak.',
+                'complaint' => 'Barang yang dicari pelanggan sering kosong, sementara stok yang lambat terjual terus menumpuk',
                 'modules' => ['WMS', 'ERP', 'CRM'],
                 'title' => 'Sistem Retail & FMCG Multi-Outlet | Arsytech',
                 'description' => 'Sistem retail dari Arsytech untuk stok per outlet, analisis perputaran SKU, pengukuran dampak promosi, dan program loyalitas pelanggan.',
@@ -226,30 +220,30 @@ class Industri
                 'opening' => [
                     'title' => 'Outlet kehabisan barang laku, gudang penuh barang diam',
                     'paragraphs' => [
-                        'Ini keluhan yang sangat umum di retail. SKU yang paling dicari justru kosong di outlet, sementara gudang pusat penuh barang yang tidak bergerak berbulan-bulan. Akibatnya modal tertahan di barang yang salah.',
-                        'Penyebabnya biasanya sederhana: angkanya tidak ada. Tanpa data perputaran per SKU per outlet, pengisian ulang dilakukan berdasarkan perkiraan, dan perkiraan cenderung mengulang pola pembelian bulan lalu.',
+                        'Ini merupakan salah satu tantangan yang sering muncul ketika bisnis retail mulai memiliki banyak outlet. Produk yang paling dicari bisa habis di satu lokasi, sementara gudang pusat masih menyimpan barang yang tidak bergerak selama berbulan-bulan',
+                        'Tanpa data perputaran barang per SKU dan per outlet, pengisian ulang sering dilakukan berdasarkan perkiraan. Akibatnya, pola pembelian lama terus berulang tanpa benar-benar melihat kebutuhan di setiap lokasi',
                     ],
                 ],
                 'pains' => [
                     [
                         'icon' => 'bi-shop-window',
                         'title' => 'Stok per outlet tidak terpantau',
-                        'body' => 'Pusat baru tahu outlet kehabisan barang setelah kepala toko menelepon.',
+                        'body' => 'Pusat baru mengetahui suatu produk habis setelah mendapat laporan dari kepala toko, sehingga pengisian ulang sering terlambat',
                     ],
                     [
                         'icon' => 'bi-arrow-down-up',
-                        'title' => 'Perputaran SKU tidak pernah dihitung',
-                        'body' => 'Tidak ada daftar barang mati, jadi modal terus tertahan di stok yang tidak bergerak.',
+                        'title' => 'Perputaran SKU Tidak Terukur',
+                        'body' => 'Tidak ada gambaran yang jelas mengenai barang yang cepat terjual, lambat bergerak, atau sudah tidak memiliki permintaan. Akibatnya, modal terus tertahan dalam persediaan',
                     ],
                     [
                         'icon' => 'bi-tags',
-                        'title' => 'Dampak promosi tidak terukur',
-                        'body' => 'Diskon dijalankan dan penjualan naik, tapi tidak ada yang tahu apakah marginnya masih sehat.',
+                        'title' => 'Dampak Promosi Sulit Diukur',
+                        'body' => 'Penjualan meningkat setelah program diskon, tetapi dampaknya terhadap margin dan perputaran stok tidak selalu terlihat dengan jelas',
                     ],
                     [
                         'icon' => 'bi-people',
-                        'title' => 'Data pelanggan tidak terkumpul',
-                        'body' => 'Transaksi tercatat, tapi riwayat pembelinya tidak tersimpan, jadi sulit dipakai untuk program loyalitas.',
+                        'title' => 'Data Pelanggan Tidak Terkumpul',
+                        'body' => 'Transaksi tercatat sebagai penjualan, tetapi riwayat pembelian pelanggan tidak terkumpul menjadi data yang dapat digunakan untuk program loyalitas dan penawaran berikutnya',
                     ],
                 ],
                 'phases' => [
@@ -275,9 +269,6 @@ class Industri
                     ],
                 ],
                 'case' => [
-                    'title' => 'Barang mati turun, rak yang laku tetap terisi',
-                    'before' => 'Jaringan retail dengan beberapa outlet mengandalkan laporan penjualan mingguan berupa file Excel dari tiap toko. Pengisian ulang diputuskan pusat berdasarkan permintaan kepala toko.',
-                    'after' => 'Setelah penjualan tercatat seragam dan perputaran per SKU per outlet bisa dilihat, pengisian ulang mulai diputuskan dari data. Dalam dua kuartal, modal yang tertahan di barang lambat turun signifikan.',
                     'metrics' => [
                         [
                             'value' => 'Realtime',
@@ -320,39 +311,39 @@ class Industri
                 'name' => 'Pemerintahan &amp; NGO',
                 'icon' => 'bi-bank',
                 'summary' => 'Tata kelola anggaran, jejak audit, dan pelaporan yang siap diperiksa.',
-                'complaint' => 'Pelaporan anggaran memakan waktu berminggu-minggu dan jejak persetujuan tersebar di banyak dokumen.',
+                'complaint' => 'Pelaporan anggaran memakan waktu berminggu-minggu, sementara jejak persetujuan tersebar di banyak dokumen',
                 'modules' => ['ERP', 'HRIS', 'Accounting &amp; Finance'],
                 'title' => 'Sistem Tata Kelola untuk Pemerintahan & NGO | Arsytech',
                 'description' => 'Sistem untuk instansi dan lembaga nirlaba: tata kelola anggaran, persetujuan digital berjenjang, jejak audit lengkap, dan laporan yang siap diperiksa.',
                 'heading' => 'Sistem untuk institusi yang setiap rupiahnya harus bisa dipertanggungjawabkan',
                 'lead' => 'Anggaran, jejak persetujuan, dan pelaporan tersimpan rapi di satu sistem, jadi tim administrasi tidak perlu menyusun ulang berkas setiap kali ada permintaan audit.',
                 'opening' => [
-                    'title' => 'Dokumennya rapi, tapi tersebar',
+                    'title' => 'Tantangan Tata Kelola di Pemerintahan & NGO',
                     'paragraphs' => [
-                        'Di instansi dan lembaga nirlaba, dokumentasinya biasanya sudah sangat rapi. Kendalanya ada di letaknya: persetujuan di berkas fisik, realisasi anggaran di spreadsheet, dan bukti pendukung di folder lain.',
-                        'Saat pemeriksa meminta satu berkas, tim harus menyusunnya ulang dari tiga sumber. Sistem yang kami bangun menyimpan setiap keputusan bersama buktinya di tempat yang sama, sejak keputusan itu dibuat.',
+                        'Di instansi dan lembaga nirlaba, dokumentasi biasanya sudah menjadi bagian penting dari setiap proses. Tantangannya adalah informasi tersebut sering tersimpan di tempat yang berbeda: persetujuan di dokumen fisik, realisasi anggaran di spreadsheet, dan bukti pendukung di folder terpisah',
+                        'Ketika pemeriksa membutuhkan satu rangkaian dokumen, tim harus kembali mengumpulkan informasi dari berbagai sumber. Sistem yang kami bangun menghubungkan proses, keputusan, dan dokumen pendukung dalam satu alur yang mudah ditelusuri',
                     ],
                 ],
                 'pains' => [
                     [
                         'icon' => 'bi-file-earmark-break',
-                        'title' => 'Bukti tersebar di banyak tempat',
-                        'body' => 'Persetujuan, kuitansi, dan laporan disimpan terpisah, jadi menelusuri satu transaksi bisa makan waktu berjam-jam.',
+                        'title' => 'Bukti Tersebar di Banyak Tempat',
+                        'body' => 'Persetujuan, kuitansi, dan dokumen pendukung tersimpan terpisah, sehingga penelusuran satu transaksi dapat memakan waktu cukup lama',
                     ],
                     [
                         'icon' => 'bi-hourglass',
-                        'title' => 'Pelaporan memakan waktu berminggu-minggu',
-                        'body' => 'Realisasi anggaran direkap manual dari banyak unit kerja menjelang tenggat pelaporan.',
+                        'title' => 'Pelaporan Memakan Waktu Berminggu-minggu',
+                        'body' => 'Realisasi anggaran masih direkap secara manual dari berbagai unit kerja sebelum laporan disusun dan dikirimkan.',
                     ],
                     [
                         'icon' => 'bi-person-x',
-                        'title' => 'Proses berhenti saat pejabat berhalangan',
-                        'body' => 'Pendelegasian tidak tercatat di sistem, jadi berkas menumpuk menunggu satu tanda tangan.',
+                        'title' => 'Pendelegasian Tidak Tercatat',
+                        'body' => 'Ketika persetujuan masih bergantung pada satu orang, pekerjaan dapat tertahan saat pejabat yang berwenang sedang tidak tersedia. Sistem dapat mencatat pendelegasian dan meneruskan proses sesuai kewenangan yang ditetapkan',
                     ],
                     [
                         'icon' => 'bi-shield-exclamation',
-                        'title' => 'Hak akses tidak terkontrol rapi',
-                        'body' => 'Satu file dibagikan ke banyak orang tanpa catatan siapa mengubah apa dan kapan.',
+                        'title' => 'Hak Akses Perlu Dikendalikan',
+                        'body' => 'Dokumen yang sama dapat beredar ke banyak pihak tanpa pencatatan yang jelas mengenai siapa yang mengakses atau melakukan perubahan. Hak akses berbasis peran dan audit trail membantu menjaga kontrol atas informasi dan aktivitas pengguna',
                     ],
                 ],
                 'phases' => [
@@ -378,9 +369,6 @@ class Industri
                     ],
                 ],
                 'case' => [
-                    'title' => 'Dari berminggu-minggu jadi hitungan menit',
-                    'before' => 'Sebuah lembaga dengan beberapa unit kerja menyusun laporan realisasi anggaran dengan mengumpulkan spreadsheet dari tiap unit, lalu menggabungkannya secara manual.',
-                    'after' => 'Setelah transaksi dicatat langsung di sumbernya dan buktinya dilampirkan saat itu juga, laporan tersusun otomatis. Menelusuri satu angka sampai ke dokumen aslinya cukup beberapa klik.',
                     'metrics' => [
                         [
                             'value' => 'Otomatis',

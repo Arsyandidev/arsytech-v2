@@ -13,15 +13,10 @@ class IndustriController extends Controller
         ]);
     }
 
-    public function show(string $industri)
+    public function redirect(string $industri)
     {
-        $content = Industri::find($industri);
+        abort_unless(Industri::find($industri), 404);
 
-        abort_unless($content, 404);
-
-        return view('pages.industri.show', [
-            'slug' => $industri,
-            'industri' => $content,
-        ]);
+        return redirect()->to(route('industri.index').'#'.$industri, 301);
     }
 }

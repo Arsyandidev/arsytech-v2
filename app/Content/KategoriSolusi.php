@@ -14,13 +14,13 @@ class KategoriSolusi
                 'summary' => 'Aplikasi untuk urusan harian perusahaan: karyawan, gudang, penjualan, dan keuangan. Bisa dipakai sendiri, dan paling terasa manfaatnya kalau datanya mengalir ke ERP.',
                 'title' => 'Business Operation System: HRIS, WMS, CRM & Akuntansi | Arsytech',
                 'description' => 'Aplikasi operasional dari Arsytech: HRIS, WMS, CRM, sistem akuntansi, serta aplikasi analisis dan laporan. Bisa dipakai terpisah atau dihubungkan ke ERP.',
-                'heading' => 'Aplikasi untuk pekerjaan operasional sehari-hari',
-                'lead' => 'Kepegawaian, gudang, penjualan, akuntansi, dan laporan. Masing-masing bisa dipakai sendiri, dan datanya bisa dihubungkan ke ERP supaya tidak perlu diinput dua kali.',
+                'heading' => 'Aplikasi untuk Operasional Sehari-hari',
+                'lead' => 'Mulai dari kepegawaian, gudang, penjualan, hingga akuntansi dan pelaporan. Setiap aplikasi dapat digunakan secara mandiri atau diintegrasikan dengan ERP agar data tidak perlu dicatat berulang',
                 'intro' => [
-                    'title' => 'Mulai dari divisi yang paling repot',
+                    'title' => 'Tidak harus membangun semuanya sekaligus',
                     'paragraphs' => [
-                        'Biasanya ada satu divisi yang paling merasakan beratnya pekerjaan manual. Bisa tim HR yang merekap absensi setiap akhir bulan, bisa juga gudang yang stoknya sering tidak cocok dengan catatan.',
-                        'Kami sarankan mulai dari aplikasi untuk divisi itu dulu. Setelah berjalan dan dipakai rutin, aplikasi berikutnya tinggal disambungkan ke data yang sama.',
+                        'Kami dapat memulai dari bagian yang paling banyak menyita waktu atau paling sering menimbulkan masalah. Misalnya, HR yang masih merekap absensi secara manual atau gudang yang sering menemukan selisih antara stok fisik dan catatan di sistem',
+                        'Setelah aplikasi berjalan dan digunakan secara rutin, sistem berikutnya dapat dikembangkan dan dihubungkan menggunakan data yang sama',
                     ],
                 ],
                 'apps' => [
@@ -88,13 +88,13 @@ class KategoriSolusi
                 'summary' => 'Aplikasi untuk tim marketing dan sales: mengumpulkan prospek dari berbagai kanal, menjaga pelanggan tetap kembali, dan melihat hasil kampanye iklan.',
                 'title' => 'Advertisement Application: Lead, Loyalty & Analitik Kampanye | Arsytech',
                 'description' => 'Aplikasi pemasaran dari Arsytech: manajemen lead omnichannel, program loyalitas pelanggan, dan dashboard analitik kampanye iklan digital.',
-                'heading' => 'Aplikasi untuk pemasaran dan penjualan',
-                'lead' => 'Prospek dari berbagai kanal masuk ke satu tempat, pelanggan lama punya alasan untuk kembali, dan hasil setiap kampanye bisa dilihat dengan jelas.',
+                'heading' => 'Satukan prospek, follow-up, dan hasil penjualan dalam satu sistem',
+                'lead' => 'Prospek dari berbagai kanal masuk ke satu tempat, tim lebih mudah menindaklanjuti, dan hasil setiap aktivitas pemasaran dapat dipantau dengan lebih jelas',
                 'intro' => [
-                    'title' => 'Iklan sudah jalan, hasilnya sulit dilacak',
+                    'title' => 'Dari Prospek hingga Menjadi Pelanggan',
                     'paragraphs' => [
-                        'Prospek datang dari WhatsApp, Instagram, marketplace, dan website. Masing-masing dicatat oleh orang yang berbeda, dan sebagian tidak pernah ditindaklanjuti.',
-                        'Aplikasi di kelompok ini mengumpulkan semuanya ke satu sistem. Tim bisa melihat prospek datang dari kampanye mana, siapa yang menanganinya, dan berapa yang akhirnya membeli.',
+                        'Data prospek, aktivitas follow-up, status penawaran, hingga hasil penjualan tersimpan dalam satu alur. Dengan begitu, tim tidak hanya melihat berapa banyak prospek yang masuk, tetapi juga mengetahui apa yang terjadi setelahnya',
+                        'Aplikasi dalam kelompok ini membantu mengumpulkan prospek ke satu sistem. Tim dapat melihat dari mana prospek berasal, siapa yang menanganinya, bagaimana perkembangannya, hingga berapa banyak yang akhirnya menjadi pelanggan    ',
                     ],
                 ],
                 'apps' => [
@@ -146,13 +146,13 @@ class KategoriSolusi
                 'summary' => 'Aplikasi untuk pelatihan karyawan: kelas online, onboarding karyawan baru, dan pusat pengetahuan internal yang mudah dicari.',
                 'title' => 'E-Learning Application: LMS & Onboarding Karyawan | Arsytech',
                 'description' => 'Aplikasi e-learning perusahaan dari Arsytech: learning management system, portal pelatihan dan onboarding karyawan, serta knowledge base internal.',
-                'heading' => 'Aplikasi untuk pelatihan dan pengembangan karyawan',
-                'lead' => 'Materi pelatihan, onboarding karyawan baru, dan dokumentasi internal tersimpan di satu tempat, dan progres belajar setiap orang bisa dipantau.',
+                'heading' => 'Satukan materi, onboarding, dan pembelajaran dalam satu sistem',
+                'lead' => 'Materi pelatihan, SOP, dan program onboarding tersimpan dalam satu tempat. HR dapat menyusun jalur pembelajaran dan memantau perkembangan setiap karyawan',
                 'intro' => [
-                    'title' => 'Ilmunya hanya ada di kepala orang tertentu',
+                    'title' => 'Satu Tempat untuk Belajar dan Berbagi Pengetahuan',
                     'paragraphs' => [
-                        'Karyawan baru belajar dengan bertanya ke senior, materi pelatihan tersebar di banyak folder, dan SOP terbaru tidak selalu sampai ke semua cabang.',
-                        'Aplikasi e-learning membantu merapikannya. Materi disusun per jabatan, karyawan baru punya jalur onboarding yang jelas, dan HR bisa melihat siapa saja yang sudah menyelesaikan pelatihan.',
+                        'Materi yang sudah disusun dapat digunakan kembali untuk karyawan baru, pelatihan berkala, maupun pembaruan prosedur. Dengan dokumentasi yang lebih teratur, proses transfer pengetahuan menjadi lebih mudah dan konsisten',
+                        'Aplikasi e-learning membantu membuat proses tersebut lebih terstruktur. Materi dapat disusun berdasarkan jabatan atau kebutuhan, karyawan baru memiliki jalur onboarding yang jelas, dan HR dapat memantau pelatihan yang sudah maupun belum diselesaikan',
                     ],
                 ],
                 'apps' => [

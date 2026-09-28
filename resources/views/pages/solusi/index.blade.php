@@ -118,7 +118,7 @@
     </div>
     <div class="row g-3 justify-content-center">
       @foreach ($industriList as $slug => $item)
-        <div class="col-sm-6 col-lg-3 rv"><a class="card-x card-tap text-center d-block" href="{{ route('industri.show', $slug) }}">
+        <div class="col-sm-6 col-lg-3 rv"><a class="card-x card-tap text-center d-block" href="{{ route('industri.index').'#'.$slug }}">
           <div class="ico ico-sm mx-auto"><i class="bi {{ $item['icon'] }}"></i></div>
           <h3 style="font-size:.9375rem">{!! $item['name'] !!}</h3>
           <p style="font-size:.8125rem">{!! $item['summary'] !!}</p></a></div>

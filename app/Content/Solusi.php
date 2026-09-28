@@ -13,8 +13,8 @@ class Solusi
                 'icon' => 'bi-diagram-3-fill',
                 'title' => 'Sistem ERP Custom untuk Perusahaan Indonesia | Arsytech',
                 'description' => 'Arsytech membangun ERP custom yang modular: purchasing, persediaan, penjualan, produksi, dan keuangan dalam satu basis data. Source code menjadi milik Anda.',
-                'heading' => 'Satu ERP untuk pembelian, persediaan, dan keuangan',
-                'lead' => 'Semua divisi bekerja dari data yang sama. Transaksi cukup dicatat sekali lalu dipakai bersama, jadi closing lebih cepat, stok lebih akurat, dan rapat tidak lagi habis untuk mencocokkan angka.',
+                'heading' => 'Satu data untuk seluruh proses bisnis',
+                'lead' => 'Setiap transaksi dicatat satu kali dan dapat digunakan oleh divisi terkait. Purchasing, gudang, penjualan, hingga keuangan bekerja dengan data yang sama, sehingga proses lebih cepat, stok lebih terkontrol, dan laporan lebih mudah dipantau',
                 'card' => [
                     'title' => 'Enterprise Resource Planning (ERP)',
                     'body' => 'Pembelian, produksi, persediaan, dan keuangan tercatat di satu tempat. Closing jadi lebih cepat, stok lebih akurat, dan semua divisi membaca angka yang sama.',
@@ -25,59 +25,59 @@ class Solusi
                     ],
                 ],
                 'intro' => [
-                    'title' => 'Saat tiap divisi punya angkanya sendiri',
+                    'title' => 'Kondisi saat ini',
                     'paragraphs' => [
-                        'Gudang mencatat di kartu stok, purchasing di spreadsheet, finance di aplikasi akuntansi yang terpisah. Masing-masing benar menurut catatannya, tapi manajemen tidak punya satu angka yang bisa dipegang untuk mengambil keputusan.',
-                        'ERP menutup celah itu dengan memindahkan semua transaksi operasional ke satu basis data. Begitu barang diterima di gudang, stok langsung bertambah, PO tertutup, dan jurnal persediaan terbentuk. Tidak ada yang perlu mengetik ulang.',
+                        'Gudang mencatat stok, purchasing mengelola pembelian di spreadsheet, sementara finance menggunakan sistem yang berbeda. Masing-masing punya catatan sendiri, tetapi tidak selalu menghasilkan angka yang sama ketika dibutuhkan manajemen',
+                        'ERP menyatukan proses tersebut dalam satu sistem. Saat barang diterima, stok diperbarui, proses pembelian tercatat, dan transaksi terkait dapat diteruskan ke proses keuangan tanpa perlu memasukkan data yang sama berulang kali',
                     ],
                 ],
                 'modules' => [
                     [
                         'icon' => 'bi-cart-check',
                         'title' => 'Purchasing',
-                        'body' => 'Permintaan pembelian, perbandingan vendor, PO, dan penerimaan barang dengan persetujuan berjenjang.',
+                        'body' => 'Permintaan pembelian, pengelolaan vendor, purchase order, penerimaan barang, hingga alur persetujuan',
                     ],
                     [
                         'icon' => 'bi-box-seam',
                         'title' => 'Persediaan',
-                        'body' => 'Kartu stok per gudang, transfer antar lokasi, penyesuaian, dan penilaian persediaan.',
+                        'body' => 'Pengelolaan stok per gudang, transfer antar lokasi, penyesuaian stok, dan penilaian persediaan',
                     ],
                     [
                         'icon' => 'bi-receipt-cutoff',
                         'title' => 'Penjualan',
-                        'body' => 'Sales order, surat jalan, faktur, dan pemantauan piutang per pelanggan.',
+                        'body' => 'Sales order, surat jalan, faktur, hingga pemantauan piutang pelanggan',
                     ],
                     [
                         'icon' => 'bi-gear',
                         'title' => 'Produksi',
-                        'body' => 'Bill of material, perintah kerja, pencatatan hasil produksi, dan biaya per batch.',
+                        'body' => 'Bill of material, perintah produksi, pencatatan hasil produksi, dan perhitungan biaya per batch',
                     ],
                     [
                         'icon' => 'bi-cash-stack',
                         'title' => 'Keuangan',
-                        'body' => 'Jurnal otomatis dari transaksi operasional, buku besar, AR/AP, dan laporan keuangan.',
+                        'body' => 'Jurnal dari transaksi operasional, buku besar, pengelolaan AR/AP, hingga laporan keuangan',
                     ],
                     [
                         'icon' => 'bi-shield-check',
                         'title' => 'Tata Kelola',
-                        'body' => 'Hak akses per peran, jejak audit setiap perubahan, dan alur persetujuan yang bisa diatur.',
+                        'body' => 'Pengaturan hak akses, pencatatan aktivitas pengguna, serta alur persetujuan sesuai struktur organisasi',
                     ],
                 ],
                 'outcomes' => [
                     [
                         'value' => '3 hari',
                         'label' => 'Waktu closing bulanan',
-                        'body' => 'Dari rata-rata 10–12 hari pada klien yang masih merekap manual.',
+                        'body' => 'Dari sebelumnya rata-rata 10–12 hari pada proses yang masih banyak bergantung pada rekap manual',
                     ],
                     [
                         'value' => '1×',
                         'label' => 'Entri data per transaksi',
-                        'body' => 'Sebelumnya satu transaksi diketik ulang di tiga sampai empat tempat.',
+                        'body' => 'Satu transaksi tidak perlu lagi dicatat berulang di beberapa sistem atau spreadsheet',
                     ],
                     [
                         'value' => '99%+',
                         'label' => 'Akurasi persediaan',
-                        'body' => 'Stok di sistem dan di rak cocok, tanpa opname darurat tiap kuartal.',
+                        'body' => 'Selisih antara data stok di sistem dan kondisi aktual dapat ditekan melalui pencatatan transaksi yang terintegrasi',
                     ],
                 ],
                 'faq' => [
