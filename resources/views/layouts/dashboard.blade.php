@@ -19,8 +19,7 @@
 <body class="dash-body">
 <aside class="dash-side" id="dashSide">
   <a class="navbar-brand" href="{{ route('dashboard.index') }}" aria-label="Dashboard Arsytech">
-    @include('layouts.components.brand-mark', ['color' => '#E4545A'])
-    <span><span class="brand-name" style="color:#fff">ARSYTECH</span><span class="brand-sub" style="color:rgba(255,255,255,.45)">Dashboard internal</span></span>
+    <img src="{{ asset('assets/img/logo-white.png') }}" alt="Arsytech" style="height:2rem">
   </a>
   <ul class="dash-nav">
     <li><a @class(['active' => request()->routeIs('dashboard.index')]) href="{{ route('dashboard.index') }}"><i class="bi bi-grid-1x2"></i> Ringkasan</a></li>

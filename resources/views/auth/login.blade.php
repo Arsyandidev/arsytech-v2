@@ -18,14 +18,13 @@
 <main class="auth-wrap">
   <div class="auth-side">
     <a class="navbar-brand" href="{{ route('home') }}" aria-label="Arsytech — beranda">
-      @include('layouts.components.brand-mark', ['color' => '#E4545A'])
-      <span><span class="brand-name" style="color:#fff">ARSYTECH</span><span class="brand-sub" style="color:rgba(255,255,255,.45)">{{ config('arsytech.tagline') }}</span></span>
+      <img src="{{ asset('assets/img/logo-white.png') }}" alt="Arsytech" style="height:2rem">
     </a>
     <div>
       <h1>Ruang kerja tim Arsytech</h1>
       <p>Tempat mengelola artikel blog dan dokumentasi galeri yang tampil di arsytech.id.</p>
     </div>
-    <small>&copy; {{ date('Y') }} Arsytech</small>
+    <small>&copy; {{ date('Y') }} Arsytech Nawasena Zetta</small>
   </div>
   <div class="auth-main">
     <div class="auth-card">
