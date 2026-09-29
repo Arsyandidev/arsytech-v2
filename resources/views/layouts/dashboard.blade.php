@@ -7,6 +7,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="theme-color" content="#0E1216">
 <title>@yield('title') | Dashboard Arsytech</title>
+<link rel="icon" type="image/png" height="528" width="528" href="{{ asset('assets/img/favicon.png') }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">

@@ -181,68 +181,52 @@
   });
 
   var editorEl = document.querySelector('[data-editor]');
-  if (editorEl && window.EasyMDE) {
+  if (editorEl && window.tinymce) {
     var uploadUrl = editorEl.dataset.uploadUrl;
-    var editor = new EasyMDE({
-      element: editorEl,
-      spellChecker: false,
-      nativeSpellcheck: true,
-      autoDownloadFontAwesome: true,
-      minHeight: '420px',
-      placeholder: 'Mulai menulis di sini…',
-      status: ['words', 'lines'],
-      uploadImage: true,
-      imageAccept: 'image/jpeg, image/png, image/webp, image/gif',
-      imageUploadFunction: function (file, onSuccess, onError) {
-        resizeImage(file, 1600).then(function (resized) {
+    tinymce.init({
+      target: editorEl,
+      license_key: 'gpl',
+      language: 'id',
+      language_url: 'https://cdn.jsdelivr.net/npm/tinymce-i18n@24.12.9/langs7/id.js',
+      menubar: false,
+      branding: false,
+      promotion: false,
+      min_height: 480,
+      max_height: 900,
+      plugins: 'autoresize lists advlist link image table wordcount searchreplace code fullscreen',
+      toolbar: [
+        'undo redo | blocks fontsize | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify',
+        'bullist numlist outdent indent | blockquote hr | link image table | removeformat | searchreplace code fullscreen'
+      ],
+      toolbar_mode: 'wrap',
+      block_formats: 'Paragraf=p; Subjudul=h2; Subjudul kecil=h3; Subjudul lebih kecil=h4; Kode=pre',
+      font_size_formats: '12px 14px 16px 18px 20px 24px 28px 32px',
+      content_css: editorEl.dataset.contentCss,
+      convert_urls: false,
+      link_default_target: '_blank',
+      link_assume_external_targets: 'https',
+      image_caption: false,
+      image_dimensions: false,
+      automatic_uploads: true,
+      paste_data_images: true,
+      images_file_types: 'jpeg,jpg,png,webp,gif',
+      images_upload_handler: function (blobInfo) {
+        var file = new File([blobInfo.blob()], blobInfo.filename(), { type: blobInfo.blob().type });
+        return resizeImage(file, 1600).then(function (resized) {
           var data = new FormData();
           data.append('image', resized);
           return request('POST', uploadUrl, data);
         }).then(function (res) {
-          onSuccess(res.data.filePath);
+          return res.data.filePath;
         }).catch(function (err) {
-          onError(err.message);
           toast(err.message, true);
+          throw err;
         });
       },
-      toolbar: [
-        { name: 'heading-2', action: EasyMDE.toggleHeading2, className: 'fa fa-header', title: 'Subjudul' },
-        { name: 'heading-3', action: EasyMDE.toggleHeading3, className: 'fa fa-header fa-header-x fa-header-3', title: 'Subjudul kecil' },
-        '|',
-        { name: 'bold', action: EasyMDE.toggleBold, className: 'fa fa-bold', title: 'Tebal' },
-        { name: 'italic', action: EasyMDE.toggleItalic, className: 'fa fa-italic', title: 'Miring' },
-        { name: 'quote', action: EasyMDE.toggleBlockquote, className: 'fa fa-quote-left', title: 'Kutipan' },
-        '|',
-        { name: 'unordered-list', action: EasyMDE.toggleUnorderedList, className: 'fa fa-list-ul', title: 'Daftar berpoin' },
-        { name: 'ordered-list', action: EasyMDE.toggleOrderedList, className: 'fa fa-list-ol', title: 'Daftar bernomor' },
-        '|',
-        { name: 'link', action: EasyMDE.drawLink, className: 'fa fa-link', title: 'Sisipkan tautan' },
-        { name: 'upload-image', action: EasyMDE.drawUploadedImage, className: 'fa fa-image', title: 'Unggah gambar' },
-        { name: 'table', action: EasyMDE.drawTable, className: 'fa fa-table', title: 'Sisipkan tabel' },
-        { name: 'horizontal-rule', action: EasyMDE.drawHorizontalRule, className: 'fa fa-minus', title: 'Garis pemisah' },
-        '|',
-        { name: 'preview', action: EasyMDE.togglePreview, className: 'fa fa-eye no-disable', title: 'Pratinjau' },
-        { name: 'side-by-side', action: EasyMDE.toggleSideBySide, className: 'fa fa-columns no-disable no-mobile', title: 'Tulis & pratinjau berdampingan' },
-        { name: 'fullscreen', action: EasyMDE.toggleFullScreen, className: 'fa fa-arrows-alt no-disable no-mobile', title: 'Layar penuh' },
-        '|',
-        { name: 'guide', action: 'https://www.markdownguide.org/basic-syntax/', className: 'fa fa-question-circle', title: 'Panduan format' }
-      ],
-      imageTexts: {
-        sbInit: 'Seret gambar ke sini atau tempel dari clipboard.',
-        sbOnDragEnter: 'Lepaskan untuk mengunggah gambar.',
-        sbOnDrop: 'Mengunggah #images_names#…',
-        sbProgress: 'Mengunggah #file_name#: #progress#%',
-        sbOnUploaded: 'Selesai mengunggah #image_name#',
-        sizeUnits: ' B, KB, MB'
-      },
-      errorMessages: {
-        noFileGiven: 'Pilih file gambar dulu.',
-        typeNotAllowed: 'Format gambar tidak didukung.',
-        fileTooLarge: 'Ukuran gambar terlalu besar.',
-        importError: 'Gambar gagal diunggah.'
+      setup: function (editor) {
+        editor.on('change input undo redo', function () { editor.save(); });
       }
     });
-    editorEl.form.addEventListener('submit', function () { editorEl.value = editor.value(); });
   }
 
   var grid = document.querySelector('[data-photo-grid]');

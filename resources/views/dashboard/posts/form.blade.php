@@ -12,10 +12,6 @@
   @endif
 @endsection
 
-@push('styles')
-<link href="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.css" rel="stylesheet">
-@endpush
-
 @section('content')
 @php($status = old('status', $post->published_at ? 'terbit' : 'draf'))
 <form method="post" action="{{ $post->exists ? route('dashboard.blog.update', $post) : route('dashboard.blog.store') }}" enctype="multipart/form-data" novalidate>
@@ -50,8 +46,8 @@
           <div>
             <label for="body" class="form-label">Isi artikel</label>
             @error('body')<div class="text-danger small mb-2">{{ $message }}</div>@enderror
-            <textarea id="body" name="body" rows="18" data-editor data-upload-url="{{ route('dashboard.blog.gambar') }}">{{ old('body', $post->body) }}</textarea>
-            <div class="form-hint">Pakai tombol di toolbar untuk judul, daftar, tautan, dan gambar. Gambar bisa di-drag langsung ke editor.</div>
+            <textarea id="body" name="body" rows="18" data-editor data-upload-url="{{ route('dashboard.blog.gambar') }}" data-content-css="{{ \App\Support\Asset::url('assets/css/editor-content.css') }}">{{ old('body', $post->body) }}</textarea>
+            <div class="form-hint">Atur ukuran huruf, perataan teks, judul, daftar, tautan, tabel, dan gambar lewat toolbar. Gambar juga bisa ditempel atau di-drag langsung ke editor.</div>
           </div>
         </div>
       </div>
@@ -141,5 +137,5 @@
 @endsection
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tinymce@7.6.0/tinymce.min.js" referrerpolicy="origin"></script>
 @endpush

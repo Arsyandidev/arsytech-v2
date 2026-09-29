@@ -127,10 +127,6 @@
 .status-opt strong{ display:block; font-size:.9rem; color:var(--ink) }
 .status-opt small{ color:var(--muted) }
 
-.EasyMDEContainer .editor-toolbar{ border-color:var(--line); border-radius:10px 10px 0 0; background:var(--bg-soft) }
-.EasyMDEContainer .CodeMirror{ border-color:var(--line); border-radius:0 0 10px 10px; font-family:'Plus Jakarta Sans', system-ui, sans-serif; font-size:.975rem; line-height:1.7 }
-.EasyMDEContainer .editor-preview{ font-family:'Plus Jakarta Sans', system-ui, sans-serif }
-.editor-statusbar{ font-size:.75rem }
 
 .dropzone{ border:1.5px dashed var(--line); border-radius:var(--r); background:var(--bg-soft); padding:2rem 1rem; text-align:center; position:relative; transition:border-color .15s, background .15s }
 .dropzone.drag{ border-color:var(--brand); background:var(--brand-soft) }
@@ -181,12 +177,12 @@
 .min-w-0{ min-width:0 }
 .photo-card .thumb{ overflow:hidden }
 .photo-card .thumb img{ position:absolute; inset:0 }
-.EasyMDEContainer .editor-toolbar{ display:flex; flex-wrap:wrap; align-items:center; gap:2px; padding:6px 8px }
-.EasyMDEContainer .editor-toolbar button{ flex:0 0 auto; width:32px; height:32px; margin:0; display:inline-flex; align-items:center; justify-content:center }
-.EasyMDEContainer .editor-toolbar i.separator{ display:inline-block; height:20px; margin:0 6px; border-left:1px solid var(--line); border-right:0 }
-.EasyMDEContainer .cm-header-1{ font-size:1.6em }
-.EasyMDEContainer .cm-header-2{ font-size:1.35em }
-.EasyMDEContainer .cm-header-3{ font-size:1.15em }
 .input-group > .form-control:not(:last-child){ border-top-right-radius:0; border-bottom-right-radius:0 }
 .input-group > .btn:last-of-type{ border-radius:0 10px 10px 0; border-color:var(--line); color:var(--muted); background:#fff }
 .input-group > .btn:last-of-type:hover{ color:var(--brand) }
+
+.tox.tox-tinymce{ border-color:var(--line); border-radius:10px }
+.tox .tox-editor-header{ box-shadow:none !important; border-bottom:1px solid var(--line) !important }
+.tox .tox-toolbar, .tox .tox-toolbar__overflow, .tox .tox-toolbar__primary{ background:var(--bg-soft) !important }
+.tox .tox-statusbar{ border-top-color:var(--line-2) !important }
+.tox-tinymce:focus-within{ border-color:var(--brand-300) !important; box-shadow:0 0 0 .2rem rgba(169,14,20,.12) }

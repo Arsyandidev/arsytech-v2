@@ -47,10 +47,7 @@ class Post extends Model
 
     public function html(): string
     {
-        return Str::markdown($this->body, [
-            'html_input' => 'strip',
-            'allow_unsafe_links' => false,
-        ]);
+        return (string) $this->body;
     }
 
     public function summary(int $limit = 180): string

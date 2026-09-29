@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Support\HtmlSanitizer;
 use App\Support\ImageUploader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -81,7 +82,10 @@ class PostController extends Controller
 
     protected function save(Request $request, Post $post): void
     {
-        $request->merge(['slug' => Str::slug($request->input('slug') ?: $request->input('title'))]);
+        $request->merge([
+            'slug' => Str::slug($request->input('slug') ?: $request->input('title')),
+            'body' => HtmlSanitizer::isEmpty($request->input('body')) ? null : HtmlSanitizer::clean($request->input('body')),
+        ]);
 
         $data = $request->validate([
             'title' => ['required', 'string', 'max:200'],
