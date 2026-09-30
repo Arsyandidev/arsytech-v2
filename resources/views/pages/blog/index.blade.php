@@ -6,7 +6,7 @@
 @section('content')
 @include('layouts.components.page-head', [
     'title' => 'Blog',
-    'subtitle' => 'Catatan dari tim kami: pengalaman di proyek, cara kami bekerja, dan hal-hal yang sering ditanyakan klien soal sistem bisnis.',
+    'subtitle' => 'Referensi dari kami tentang sistem bisnis dan pengalaman proyek.',
     'breadcrumbs' => $category ? ['Blog' => route('blog.index'), e($category) => null] : ['Blog' => null],
 ])
 
