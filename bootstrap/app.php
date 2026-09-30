@@ -4,13 +4,6 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
-foreach ([$app->basePath('public_html'), dirname($app->basePath()).'/public_html'] as $publicHtml) {
-    if (is_dir($publicHtml)) {
-        $app->usePublicPath($publicHtml);
-        break;
-    }
-}
-
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
     App\Http\Kernel::class
