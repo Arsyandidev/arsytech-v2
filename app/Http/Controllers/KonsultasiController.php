@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Content\Konsultasi;
 use App\Mail\KonsultasiBaru;
+use App\Rules\NoLineBreaks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -31,9 +32,9 @@ class KonsultasiController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'nama' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'email', 'max:150'],
-            'perusahaan' => ['nullable', 'string', 'max:150'],
+            'nama' => ['required', 'string', 'max:100', new NoLineBreaks],
+            'email' => ['required', 'email:rfc,filter', 'max:150', new NoLineBreaks],
+            'perusahaan' => ['nullable', 'string', 'max:150', new NoLineBreaks],
             'telepon' => ['nullable', 'string', 'max:30', 'regex:/^[0-9+\-\s().]+$/'],
             'kebutuhan' => ['required', Rule::in(array_keys(Konsultasi::KEBUTUHAN))],
             'industri' => ['nullable', Rule::in(array_keys(Konsultasi::INDUSTRI))],

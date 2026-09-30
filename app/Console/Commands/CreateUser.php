@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use App\Rules\NoLineBreaks;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
@@ -20,8 +21,8 @@ class CreateUser extends Command
         $password = $this->option('password') ?: $this->secret('Password (minimal 8 karakter)');
 
         $validator = Validator::make(compact('name', 'email', 'password'), [
-            'name' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'email', 'max:150'],
+            'name' => ['required', 'string', 'max:100', new NoLineBreaks],
+            'email' => ['required', 'email:rfc,filter', 'max:150', new NoLineBreaks],
             'password' => ['required', Password::min(8)],
         ]);
 

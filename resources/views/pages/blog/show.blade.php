@@ -59,7 +59,7 @@
             <span class="dash-avatar-sm">{{ \Illuminate\Support\Str::of(optional($post->author)->name ?? 'Arsytech')->explode(' ')->take(2)->map(fn ($part) => mb_substr($part, 0, 1))->join('') }}</span>
             <div>
               <div class="small" style="color:var(--muted)">Ditulis oleh</div>
-              <strong>{{ optional($post->author)->name ?? 'Tim Arsytech' }}</strong>
+              <strong>Redaksi Arsytech</strong>
             </div>
           </div>
           <div class="share">
