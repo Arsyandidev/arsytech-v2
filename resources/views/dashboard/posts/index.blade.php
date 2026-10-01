@@ -39,6 +39,7 @@
           <tr>
             <th>Artikel</th>
             <th>Status</th>
+            <th class="text-end">Pembaca</th>
             <th>Tanggal terbit</th>
             <th class="text-end">Aksi</th>
           </tr>
@@ -60,6 +61,7 @@
                 </div>
               </td>
               <td>@include('dashboard.posts.status', ['post' => $post])</td>
+              <td class="text-end fw-bold" title="Pembaca unik sepanjang waktu (1 IP per hari)">{{ number_format($readers[$post->id] ?? 0, 0, ',', '.') }}</td>
               <td class="text-nowrap t-sub">{{ $post->published_at ? $post->published_at->translatedFormat('d M Y, H.i') : '—' }}</td>
               <td class="text-end text-nowrap">
                 <a href="{{ route('blog.show', $post) }}" target="_blank" rel="noopener" class="btn btn-icon btn-soft" title="{{ $post->isPublished() ? 'Lihat di situs' : 'Pratinjau' }}"><i class="bi bi-eye"></i></a>

@@ -402,3 +402,224 @@
     });
   }
 })();
+
+(function () {
+  'use strict';
+
+  var data = window.dashboardCharts;
+  if (!data || !window.Chart) return;
+
+  var brand = '#A90E14';
+  var brandDark = '#7E0A0F';
+  var brandTint = '#EDC3C5';
+  var ink = '#111519';
+  var muted = '#6B7683';
+  var grid = '#F0F2F5';
+  var nf = new Intl.NumberFormat('id-ID');
+
+  Chart.defaults.font.family = "'Plus Jakarta Sans', system-ui, sans-serif";
+  Chart.defaults.font.size = 12;
+  Chart.defaults.color = muted;
+
+  var tooltip = {
+    backgroundColor: ink,
+    padding: 12,
+    cornerRadius: 10,
+    titleFont: { weight: '700', size: 12 },
+    bodyFont: { size: 12 },
+    displayColors: false
+  };
+
+  var metrics = {
+    visitors: { label: 'Pengunjung', title: 'Pengunjung' },
+    pageviews: { label: 'Tayangan', title: 'Tayangan halaman' },
+    readers: { label: 'Pembaca blog', title: 'Pembaca blog' },
+    conversions: { label: 'Konsultasi', title: 'Konsultasi terkirim' }
+  };
+  var unit = data.monthly ? 'bulan' : 'hari';
+  var current = 'visitors';
+
+  var trendEl = document.getElementById('trendChart');
+  if (trendEl) {
+    var trend = new Chart(trendEl, {
+      type: 'bar',
+      data: {
+        labels: data.trend.map(function (row) { return row.label; }),
+        datasets: [{
+          label: metrics[current].label,
+          data: data.trend.map(function (row) { return row[current]; }),
+          backgroundColor: brand,
+          hoverBackgroundColor: brandDark,
+          borderRadius: { topLeft: 4, topRight: 4 },
+          borderSkipped: 'start',
+          maxBarThickness: 28,
+          categoryPercentage: 0.82,
+          barPercentage: 0.9
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: Object.assign({}, tooltip, {
+            callbacks: {
+              title: function (items) { return data.trend[items[0].dataIndex].full; },
+              label: function () { return null; },
+              afterBody: function (items) {
+                var row = data.trend[items[0].dataIndex];
+                return [
+                  'Pengunjung: ' + nf.format(row.visitors),
+                  'Tayangan: ' + nf.format(row.pageviews),
+                  'Pembaca blog: ' + nf.format(row.readers),
+                  'Konsultasi: ' + nf.format(row.conversions)
+                ];
+              }
+            }
+          })
+        },
+        scales: {
+          x: { grid: { display: false }, border: { display: false }, ticks: { maxRotation: 0, autoSkipPadding: 14 } },
+          y: { beginAtZero: true, grid: { color: grid }, border: { display: false }, ticks: { precision: 0, callback: function (v) { return nf.format(v); } } }
+        }
+      }
+    });
+
+    var title = document.querySelector('[data-chart-title]');
+    document.querySelectorAll('[data-metric]').forEach(function (btn) {
+      btn.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        current = btn.dataset.metric;
+        document.querySelectorAll('[data-metric]').forEach(function (b) { b.classList.toggle('on', b === btn); });
+        trend.data.datasets[0].label = metrics[current].label;
+        trend.data.datasets[0].data = data.trend.map(function (row) { return row[current]; });
+        trend.update();
+        if (title) title.textContent = metrics[current].title + ' per ' + unit;
+      });
+    });
+  }
+
+  var hourEl = document.getElementById('hourChart');
+  if (hourEl) {
+    var totals = data.hours.map(function (row) { return row.total; });
+    var peak = Math.max.apply(null, totals);
+    new Chart(hourEl, {
+      type: 'bar',
+      data: {
+        labels: data.hours.map(function (row) { return row.label.slice(0, 2); }),
+        datasets: [{
+          label: 'Kunjungan',
+          data: totals,
+          backgroundColor: totals.map(function (v) { return peak > 0 && v === peak ? brand : brandTint; }),
+          hoverBackgroundColor: brandDark,
+          borderRadius: { topLeft: 4, topRight: 4 },
+          borderSkipped: 'start',
+          categoryPercentage: 0.86,
+          barPercentage: 0.9
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: Object.assign({}, tooltip, {
+            callbacks: {
+              title: function (items) { return 'Pukul ' + data.hours[items[0].dataIndex].label + ' WIB'; },
+              label: function (item) { return nf.format(item.raw) + ' kunjungan' + (item.raw === peak && peak > 0 ? ' (paling ramai)' : ''); }
+            }
+          })
+        },
+        scales: {
+          x: { grid: { display: false }, border: { display: false }, ticks: { maxRotation: 0, autoSkip: false, callback: function (v, i) { return i % 3 === 0 ? this.getLabelForValue(v) : ''; } } },
+          y: { beginAtZero: true, grid: { color: grid }, border: { display: false }, ticks: { precision: 0, maxTicksLimit: 4 } }
+        }
+      }
+    });
+  }
+})();
+
+(function () {
+  'use strict';
+
+  var form = document.querySelector('[data-range-picker]');
+  if (!form || !window.flatpickr) return;
+
+  var input = form.querySelector('[data-range-input]');
+  var from = form.querySelector('input[name="dari"]');
+  var to = form.querySelector('input[name="sampai"]');
+  var maxDays = parseInt(input.dataset.maxDays, 10) || 731;
+  var today = new Date(input.dataset.max + 'T00:00:00');
+
+  function iso(date) {
+    var m = String(date.getMonth() + 1).padStart(2, '0');
+    var d = String(date.getDate()).padStart(2, '0');
+    return date.getFullYear() + '-' + m + '-' + d;
+  }
+
+  function daysAgo(n) {
+    var d = new Date(today);
+    d.setDate(d.getDate() - n);
+    return d;
+  }
+
+  function submit(start, end) {
+    from.value = iso(start);
+    to.value = iso(end);
+    form.submit();
+  }
+
+  var presets = [
+    { label: 'Hari ini', range: function () { return [today, today]; } },
+    { label: '7 hari', range: function () { return [daysAgo(6), today]; } },
+    { label: '30 hari', range: function () { return [daysAgo(29), today]; } },
+    { label: '90 hari', range: function () { return [daysAgo(89), today]; } },
+    { label: 'Bulan ini', range: function () { return [new Date(today.getFullYear(), today.getMonth(), 1), today]; } },
+    { label: 'Bulan lalu', range: function () { return [new Date(today.getFullYear(), today.getMonth() - 1, 1), new Date(today.getFullYear(), today.getMonth(), 0)]; } },
+    { label: '12 bulan', range: function () { return [new Date(today.getFullYear() - 1, today.getMonth() + 1, 1), today]; } }
+  ];
+
+  flatpickr(input, {
+    mode: 'range',
+    locale: Object.assign({}, flatpickr.l10ns.id, { rangeSeparator: ' – ' }),
+    dateFormat: 'Y-m-d',
+    altInput: true,
+    altFormat: 'j M Y',
+    altInputClass: 'form-control',
+    defaultDate: [input.dataset.start, input.dataset.end],
+    maxDate: input.dataset.max,
+    showMonths: window.matchMedia('(min-width: 768px)').matches ? 2 : 1,
+    position: 'auto right',
+    disableMobile: true,
+    onReady: function (selected, str, fp) {
+      var bar = document.createElement('div');
+      bar.className = 'rp-presets';
+      presets.forEach(function (preset) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = preset.label;
+        btn.addEventListener('click', function () {
+          var r = preset.range();
+          fp.setDate(r, false);
+          submit(r[0], r[1]);
+        });
+        bar.appendChild(btn);
+      });
+      var hint = document.createElement('div');
+      hint.className = 'rp-hint';
+      hint.textContent = 'Klik tanggal awal, lalu tanggal akhir.';
+      fp.calendarContainer.appendChild(hint);
+      fp.calendarContainer.appendChild(bar);
+    },
+    onClose: function (selected, str, fp) {
+      if (selected.length === 1) selected = [selected[0], selected[0]];
+      if (selected.length !== 2) return;
+      var span = Math.round((selected[1] - selected[0]) / 86400000) + 1;
+      if (span > maxDays) {
+        selected[0] = new Date(selected[1]);
+        selected[0].setDate(selected[0].getDate() - (maxDays - 1));
+      }
+      if (iso(selected[0]) === from.value && iso(selected[1]) === to.value) return;
+      submit(selected[0], selected[1]);
+    }
+  });
+})();

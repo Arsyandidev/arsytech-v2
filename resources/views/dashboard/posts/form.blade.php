@@ -116,6 +116,26 @@
         </div>
       </div>
 
+      @isset($readerStats)
+        <div class="panel mb-4">
+          <div class="panel-head"><h2>Statistik pembaca</h2><span class="small text-muted-2">Hanya terlihat di dashboard</span></div>
+          <div class="panel-body">
+            <div class="row g-3 text-center">
+              <div class="col-4"><div class="dt-val">{{ number_format($readerStats['readers'], 0, ',', '.') }}</div><div class="dt-label">Total pembaca</div></div>
+              <div class="col-4"><div class="dt-val">{{ number_format($readerStats['readers_30'], 0, ',', '.') }}</div><div class="dt-label">30 hari terakhir</div></div>
+              <div class="col-4"><div class="dt-val">{{ number_format($readerStats['views'], 0, ',', '.') }}</div><div class="dt-label">Tayangan</div></div>
+            </div>
+            <div class="small text-muted-2 mt-3">
+              @if ($readerStats['last_read'])
+                Terakhir dibaca {{ \Illuminate\Support\Carbon::parse($readerStats['last_read'])->diffForHumans() }}.
+              @else
+                Belum ada yang membaca artikel ini.
+              @endif
+            </div>
+          </div>
+        </div>
+      @endisset
+
       @if ($post->exists)
         <div class="panel">
           <div class="panel-body d-flex align-items-center justify-content-between gap-3">

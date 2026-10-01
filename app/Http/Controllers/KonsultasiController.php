@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Content\Konsultasi;
 use App\Mail\KonsultasiBaru;
 use App\Rules\NoLineBreaks;
+use App\Support\Analytics\Recorder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -63,6 +64,8 @@ class KonsultasiController extends Controller
 
             return $back->withInput()->with('konsultasi_gagal', 'Maaf, pesan Anda belum terkirim karena ada gangguan di server email kami. Silakan coba lagi sebentar lagi, atau hubungi kami langsung lewat WhatsApp.');
         }
+
+        Recorder::markConverted($request);
 
         return $back->with('konsultasi_terkirim', $data['nama']);
     }

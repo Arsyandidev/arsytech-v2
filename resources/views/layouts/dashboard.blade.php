@@ -23,7 +23,7 @@
     <img src="{{ asset('assets/img/logo-white.png') }}" alt="Arsytech" style="height:2rem">
   </a>
   <ul class="dash-nav">
-    <li><a @class(['active' => request()->routeIs('dashboard.index')]) href="{{ route('dashboard.index') }}"><i class="bi bi-grid-1x2"></i> Ringkasan</a></li>
+    <li><a @class(['active' => request()->routeIs('dashboard.index')]) href="{{ route('dashboard.index') }}"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
     <li class="label">Konten</li>
     <li><a @class(['active' => request()->routeIs('dashboard.blog.*')]) href="{{ route('dashboard.blog.index') }}"><i class="bi bi-journal-text"></i> Blog</a></li>
     <li><a @class(['active' => request()->routeIs('dashboard.galeri.*')]) href="{{ route('dashboard.galeri.index') }}"><i class="bi bi-images"></i> Galeri</a></li>

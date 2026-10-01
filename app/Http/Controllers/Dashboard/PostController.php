@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Support\Analytics\Report;
 use App\Support\HtmlSanitizer;
 use App\Support\ImageUploader;
 use Illuminate\Http\Request;
@@ -26,7 +27,9 @@ class PostController extends Controller
             ->paginate(15)
             ->withQueryString();
 
-        return view('dashboard.posts.index', compact('posts', 'status'));
+        $readers = Report::readersPerPost($posts->pluck('id')->all());
+
+        return view('dashboard.posts.index', compact('posts', 'status', 'readers'));
     }
 
     public function create()
@@ -51,6 +54,7 @@ class PostController extends Controller
         return view('dashboard.posts.form', [
             'post' => $post,
             'categories' => $this->categories(),
+            'readerStats' => Report::postStats($post),
         ]);
     }
 
