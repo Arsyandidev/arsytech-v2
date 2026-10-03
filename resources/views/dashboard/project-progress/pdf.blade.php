@@ -69,7 +69,21 @@
       <tr>
         <td>
           <div class="logo-wrap">
-            <img src="{{ public_path('assets/img/logo.png') }}" alt="Arsytech">
+            @php
+                $logoPath = public_path('assets/img/logo.png');
+                $logoBase64 = '';
+                if (file_exists($logoPath)) {
+                    $logoData = file_get_contents($logoPath);
+                    $logoType = pathinfo($logoPath, PATHINFO_EXTENSION);
+                    $logoBase64 = 'data:image/' . $logoType . ';base64,' . base64_encode($logoData);
+                }
+            @endphp
+
+            @if($logoBase64)
+                <img src="{{ $logoBase64 }}" alt="Arsytech" style="width: 180px; height: auto;">
+            @else
+                <strong style="font-size: 18px; color: #A90F14;">ARSYTECH.ID</strong>
+            @endif
           </div>
         </td>
         <td style="text-align:right">
@@ -160,8 +174,23 @@
                 @foreach ($chunk as $attachment)
                   <td>
                     <div class="attachment-card">
-                      <!-- FIX: Memanggil publicPath() dengan fallback safe -->
-                      <img src="{{ $attachment->publicPath() }}" alt="Lampiran">
+                      <img src="{{ $attachment->publicPath() }}" alt="Lampiran">@php
+                            $filePath = method_exists($attachment, 'publicPath') ? $attachment->publicPath() : public_path('storage/' . $attachment->file_path);
+
+                            $imgBase64 = '';
+                            if (file_exists($filePath)) {
+                                $imgData = file_get_contents($filePath);
+                                $ext = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+                                $mime = ($ext === 'webp') ? 'image/webp' : (($ext === 'png') ? 'image/png' : 'image/jpeg');
+                                $imgBase64 = 'data:' . $mime . ';base64,' . base64_encode($imgData);
+                            }
+                        @endphp
+
+                        @if($imgBase64)
+                            <img src="{{ $imgBase64 }}" alt="Lampiran" style="max-width: 100%; max-height: 200px; height: auto; display: block; margin: 0 auto;">
+                        @else
+                            <div style="padding: 20px; color: #999; font-size: 10px; text-align: center;">[ Gambar Tidak Ditemukan di Server ]</div>
+                        @endif
                       <div class="attachment-cap">{{ $attachment->caption ?: 'Tanpa caption' }}</div>
                     </div>
                   </td>
