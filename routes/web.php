@@ -51,6 +51,9 @@ Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(functi
     Route::patch('foto/{photo}', [Dashboard\GalleryPhotoController::class, 'update'])->name('foto.update');
     Route::delete('foto/{photo}', [Dashboard\GalleryPhotoController::class, 'destroy'])->name('foto.destroy');
 
+    Route::get('progres/{progres}/pdf', [Dashboard\ProjectProgressController::class, 'pdf'])->name('progres.pdf');
+    Route::resource('progres', Dashboard\ProjectProgressController::class)->except('show')->parameters(['progres' => 'progres']);
+
     Route::get('akun', [Dashboard\AccountController::class, 'edit'])->name('akun');
     Route::put('akun', [Dashboard\AccountController::class, 'update'])->name('akun.update');
 });

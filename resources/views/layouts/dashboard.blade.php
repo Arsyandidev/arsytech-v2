@@ -27,6 +27,7 @@
     <li class="label">Konten</li>
     <li><a @class(['active' => request()->routeIs('dashboard.blog.*')]) href="{{ route('dashboard.blog.index') }}"><i class="bi bi-journal-text"></i> Blog</a></li>
     <li><a @class(['active' => request()->routeIs('dashboard.galeri.*')]) href="{{ route('dashboard.galeri.index') }}"><i class="bi bi-images"></i> Galeri</a></li>
+    <li><a @class(['active' => request()->routeIs('dashboard.progres.*')]) href="{{ route('dashboard.progres.index') }}"><i class="bi bi-file-earmark-bar-graph"></i> Progres proyek</a></li>
     <li class="label">Lainnya</li>
     <li><a @class(['active' => request()->routeIs('dashboard.akun')]) href="{{ route('dashboard.akun') }}"><i class="bi bi-person-gear"></i> Akun saya</a></li>
     <li><a href="{{ route('home') }}" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Lihat situs</a></li>
