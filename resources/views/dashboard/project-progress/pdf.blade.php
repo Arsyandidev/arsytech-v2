@@ -12,43 +12,52 @@
   .inner { padding: 20px 24px 14px; }
   .head { width: 100%; margin-bottom: 18px; }
   .head td { vertical-align: middle; }
-  .logo-wrap { display: inline-flex; align-items: center; gap: 10px; }
-  .logo-wrap img { width: 210px; height: auto; }
+  .logo-wrap img { width: 180px; height: auto; }
   .pill { display: inline-block; border: 1px solid #f0b8ba; color: #A90F14; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 999px; }
   .meta { width: 100%; border: 1px solid #d9e3f2; border-radius: 8px; background: #f6f9ff; padding: 12px 14px; margin-bottom: 16px; }
   .meta td:first-child { border-left: 4px solid #A90F14; }
   .meta td { width: 50%; padding: 6px 8px; vertical-align: top; }
   .meta .k { font-size: 11px; color: #5e7393; font-weight: 700; text-transform: uppercase; margin-bottom: 2px; letter-spacing: .3px; }
   .meta .v { font-size: 13px; color: #111f34; }
-  .section-title { font-size: 17px; font-weight: 700; margin: 16px 0 8px; color: #12243f; }
-  .progress-row { margin: 5px 0 12px; }
-  .progress-row .lbl { font-weight: 700; }
-  .progress-row .num { float: right; font-weight: 800; }
-  .bar { margin-top: 5px; height: 9px; border-radius: 99px; background: #deebf8; overflow: hidden; }
+  .section-title { font-size: 15px; font-weight: 700; margin: 16px 0 8px; color: #12243f; }
+
+  /* Progress Row Safe for DomPDF */
+  .progress-table { width: 100%; margin-bottom: 6px; }
+  .progress-table td { padding: 0; }
+  .progress-table .lbl { font-weight: 700; text-align: left; }
+  .progress-table .num { font-weight: 800; text-align: right; color: #A90F14; }
+  .bar { margin-top: 5px; height: 9px; border-radius: 99px; background: #deebf8; overflow: hidden; width: 100%; margin-bottom: 14px; }
   .bar > span { display: block; height: 100%; background: #A90F14; }
-  table { width: 100%; border-collapse: collapse; }
+
+  table.modules { width: 100%; border-collapse: collapse; }
   .modules th, .modules td { border-bottom: 1px solid #d8e4f2; padding: 8px 9px; vertical-align: top; }
-  .modules th { background: #14233c; color: #fff; font-size: 12px; text-align: left; }
+  .modules th { background: #14233c; color: #fff; font-size: 11px; text-align: left; }
   .status { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 999px; }
   .s-done { background: #dff6e6; color: #0b7c45; }
   .s-progress { background: #fff2cf; color: #8c6100; }
   .s-pending { background: #eceff4; color: #516074; }
+
   .action-box { border: 1px solid #f2c9cb; border-radius: 8px; background: #fff5f5; padding: 10px 12px; }
-  .action-box h4 { margin: 0 0 8px; font-size: 13px; color: #7e1014; }
+  .action-box h4 { margin: 0 0 8px; font-size: 12px; color: #7e1014; }
   .action-box ul { margin: 0; padding-left: 18px; }
   .action-box li { margin-bottom: 4px; }
-  .attachments { margin-top: 14px; }
-  .attachments-grid { width: 100%; }
+
+  .attachments { margin-top: 10px; }
+  .attachments-grid { width: 100%; border-collapse: collapse; }
   .attachments-grid td { width: 50%; padding: 6px; vertical-align: top; }
-  .attachment-card { border: 1px solid #e4e9f2; border-radius: 8px; overflow: hidden; }
-  .attachment-card img { width: 100%; height: 180px; object-fit: cover; }
-  .attachment-cap { padding: 7px 9px; font-size: 11px; color: #2b3850; background: #fafcff; }
-  .sign { width: 100%; margin-top: 28px; }
-  .sign td { width: 100%; text-align: right; vertical-align: top; padding: 8px 0; }
-  .line { margin: 54px 0 4px auto; width: 48%; border-top: 1px solid #a5b7d1; }
+  .attachment-card { border: 1px solid #e4e9f2; border-radius: 8px; overflow: hidden; text-align: center; background: #fafcff; }
+  /* FIX: Hapus object-fit, pakai max-height */
+  .attachment-card img { max-width: 100%; max-height: 200px; height: auto; display: block; margin: 0 auto; }
+  .attachment-cap { padding: 7px 9px; font-size: 11px; color: #2b3850; background: #fafcff; text-align: left; border-top: 1px solid #e4e9f2; }
+
+  .sign { width: 100%; margin-top: 20px; }
+  .sign td { text-align: right; vertical-align: top; padding: 8px 0; }
+  .sign-box { display: inline-block; text-align: center; min-width: 200px; }
+  .line { margin: 50px auto 4px auto; width: 100%; border-top: 1px solid #a5b7d1; }
   .name { font-weight: 700; }
   .role, .company { font-size: 11px; color: #5c7190; }
-  .footer { background: #121f37; color: #d8e5fa; font-size: 10px; padding: 8px 12px; }
+
+  .footer { background: #121f37; color: #d8e5fa; font-size: 10px; padding: 8px 12px; width: 100%; }
   .footer td:last-child { text-align: right; }
 </style>
 </head>
@@ -92,19 +101,22 @@
       </tr>
     </table>
 
-    <div class="progress-row">
-      <span class="lbl">Total progres pengembangan (overall progress)</span>
-      <span class="num">{{ number_format($report->overall_progress, 0, ',', '.') }}%</span>
-      <div class="bar"><span style="width: {{ max(0, min(100, $report->overall_progress)) }}%"></span></div>
-    </div>
+    <!-- FIX: Progress bar pakai tabel agar rapi -->
+    <table class="progress-table">
+      <tr>
+        <td class="lbl">Total progres pengembangan (overall progress)</td>
+        <td class="num">{{ number_format($report->overall_progress, 0, ',', '.') }}%</td>
+      </tr>
+    </table>
+    <div class="bar"><span style="width: {{ max(0, min(100, $report->overall_progress)) }}%"></span></div>
 
     <div class="section-title">Status modul & fitur (Sprint Check)</div>
     <table class="modules">
       <thead>
         <tr>
-          <th style="width:16%">Modul / Scope</th>
+          <th style="width:18%">Modul / Scope</th>
           <th style="width:35%">Sub-fitur / Deskripsi</th>
-          <th style="width:16%">Status</th>
+          <th style="width:17%">Status</th>
           <th>Catatan / Deliverable</th>
         </tr>
       </thead>
@@ -115,13 +127,13 @@
             $statusClass = $status === 'Selesai' ? 's-done' : ($status === 'Dalam Proses' ? 's-progress' : 's-pending');
           @endphp
           <tr>
-            <td>{{ $module['module_scope'] ?? '-' }}</td>
+            <td><strong>{{ $module['module_scope'] ?? '-' }}</strong></td>
             <td>{{ $module['feature_description'] ?? '-' }}</td>
             <td><span class="status {{ $statusClass }}">{{ $status }}</span></td>
             <td>{{ $module['deliverable_notes'] ?? '-' }}</td>
           </tr>
         @empty
-          <tr><td colspan="4">Belum ada data modul.</td></tr>
+          <tr><td colspan="4" style="text-align: center;">Belum ada data modul.</td></tr>
         @endforelse
       </tbody>
     </table>
@@ -148,6 +160,7 @@
                 @foreach ($chunk as $attachment)
                   <td>
                     <div class="attachment-card">
+                      <!-- FIX: Memanggil publicPath() dengan fallback safe -->
                       <img src="{{ $attachment->publicPath() }}" alt="Lampiran">
                       <div class="attachment-cap">{{ $attachment->caption ?: 'Tanpa caption' }}</div>
                     </div>
@@ -166,16 +179,18 @@
     <table class="sign">
       <tr>
         <td>
-          <div class="role">Disiapkan & dilaporkan oleh:</div>
-          <div class="line"></div>
-          <div class="name">{{ $report->prepared_by_name ?: '-' }}</div>
-          <div class="role">{{ $report->prepared_by_title ?: '-' }}</div>
+          <div class="sign-box">
+            <div class="role">Disiapkan & dilaporkan oleh:</div>
+            <div class="line"></div>
+            <div class="name">{{ $report->prepared_by_name ?: '-' }}</div>
+            <div class="role">{{ $report->prepared_by_title ?: '-' }}</div>
+          </div>
         </td>
       </tr>
     </table>
   </div>
 
-  <table class="footer" width="100%">
+  <table class="footer">
     <tr>
       <td>&copy; {{ now()->year }} PT Arsytech Nawasena Zetta. All rights reserved.</td>
       <td>SOP Document Ref: DOC-PRG/ABS/{{ optional($report->report_date)->format('Y') ?: now()->format('Y') }}</td>
