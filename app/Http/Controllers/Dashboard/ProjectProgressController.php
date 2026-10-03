@@ -90,6 +90,9 @@ class ProjectProgressController extends Controller
 
     public function pdf(ProjectProgressReport $progres)
     {
+        set_time_limit(300);
+        ini_set('memory_limit', '512M');
+
         $progres->load('attachments');
 
         $pdf = Pdf::loadView('dashboard.project-progress.pdf', [
