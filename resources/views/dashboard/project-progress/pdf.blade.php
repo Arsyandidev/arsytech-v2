@@ -69,13 +69,19 @@
       <tr>
         <td>
             @php
-                $logoPath = base_path('assets/img/logo.png');
+                $candidates = [
+                    base_path('../public_html/arsytech.id/assets/img/logo.png'),
+                    $_SERVER['DOCUMENT_ROOT'] . '/assets/img/logo.png',
+                    public_path('assets/img/logo.png'),
+                    base_path('assets/img/logo.png'),
+                ];
 
                 $logoBase64 = '';
-
-                if (file_exists($logoPath) && !is_dir($logoPath)) {
-                    $logoData = file_get_contents($logoPath);
-                    $logoBase64 = 'data:image/png;base64,' . base64_encode($logoData);
+                foreach ($candidates as $logoPath) {
+                    if (file_exists($logoPath) && !is_dir($logoPath)) {
+                        $logoBase64 = 'data:image/png;base64,' . base64_encode(file_get_contents($logoPath));
+                        break;
+                    }
                 }
             @endphp
 
