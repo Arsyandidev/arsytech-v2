@@ -69,13 +69,10 @@
       <tr>
         <td>
             @php
-                $logoPath = public_path('assets/logo.png');
-
-                if (!file_exists($logoPath)) {
-                    $logoPath = public_path('assets/img/logo.png');
-                }
+                $logoPath = base_path('assets/img/logo.png');
 
                 $logoBase64 = '';
+
                 if (file_exists($logoPath) && !is_dir($logoPath)) {
                     $logoData = file_get_contents($logoPath);
                     $logoBase64 = 'data:image/png;base64,' . base64_encode($logoData);
