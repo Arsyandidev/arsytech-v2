@@ -69,22 +69,16 @@
       <tr>
         <td>
             @php
-                $possibleLogoPaths = [
-                    public_path('assets/img/logo.png'),
-                    public_path('assets/images/logo.png'),
-                    public_path('img/logo.png'),
-                    public_path('logo.png'),
-                ];
+                $logoPath = public_path('assets/logo.png');
+
+                if (!file_exists($logoPath)) {
+                    $logoPath = public_path('assets/img/logo.png');
+                }
 
                 $logoBase64 = '';
-                foreach ($possibleLogoPaths as $path) {
-                    if (file_exists($path) && !is_dir($path)) {
-                        $logoData = file_get_contents($path);
-                        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
-                        $mime = ($ext === 'png') ? 'image/png' : (($ext === 'svg') ? 'image/svg+xml' : 'image/jpeg');
-                        $logoBase64 = 'data:' . $mime . ';base64,' . base64_encode($logoData);
-                        break;
-                    }
+                if (file_exists($logoPath) && !is_dir($logoPath)) {
+                    $logoData = file_get_contents($logoPath);
+                    $logoBase64 = 'data:image/png;base64,' . base64_encode($logoData);
                 }
             @endphp
 
@@ -230,7 +224,7 @@
         <tr>
             <td>
             <div class="sign-box">
-                <div class="role">Disiapkan & dilaporkan oleh:</div>
+                <div class="role">Disusun oleh:</div>
                 <div class="line"></div>
                 <div class="name">{{ $report->prepared_by_name ?: '-' }}</div>
                 <div class="role">{{ $report->prepared_by_title ?: '-' }}</div>
