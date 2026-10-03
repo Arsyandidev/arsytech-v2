@@ -68,23 +68,35 @@
     <table class="head">
       <tr>
         <td>
-          <div class="logo-wrap">
             @php
-                $logoPath = public_path('assets/img/logo.png');
+                $possibleLogoPaths = [
+                    public_path('assets/img/logo.png'),
+                    public_path('assets/images/logo.png'),
+                    public_path('img/logo.png'),
+                    public_path('logo.png'),
+                ];
+
                 $logoBase64 = '';
-                if (file_exists($logoPath)) {
-                    $logoData = file_get_contents($logoPath);
-                    $logoType = pathinfo($logoPath, PATHINFO_EXTENSION);
-                    $logoBase64 = 'data:image/' . $logoType . ';base64,' . base64_encode($logoData);
+                foreach ($possibleLogoPaths as $path) {
+                    if (file_exists($path) && !is_dir($path)) {
+                        $logoData = file_get_contents($path);
+                        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+                        $mime = ($ext === 'png') ? 'image/png' : (($ext === 'svg') ? 'image/svg+xml' : 'image/jpeg');
+                        $logoBase64 = 'data:' . $mime . ';base64,' . base64_encode($logoData);
+                        break;
+                    }
                 }
             @endphp
 
-            @if($logoBase64)
+            <div class="logo-wrap">
+                @if ($logoBase64)
                 <img src="{{ $logoBase64 }}" alt="Arsytech" style="width: 180px; height: auto;">
-            @else
-                <strong style="font-size: 18px; color: #A90F14;">ARSYTECH.ID</strong>
-            @endif
-          </div>
+                @else
+                <span style="font-size: 20px; font-weight: 800; color: #A90F14; letter-spacing: -0.5px;">
+                    ARSYTECH<span style="color: #10213a;">.ID</span>
+                </span>
+                @endif
+            </div>
         </td>
         <td style="text-align:right">
           <span class="pill">PROGRES LAPORAN {{ $report->report_number ?: '#01' }}</span>
