@@ -165,59 +165,68 @@
     </div>
 
     @if ($report->attachments->isNotEmpty())
-      <div class="section-title">Lampiran dokumentasi</div>
-      <div class="attachments">
-        <table class="attachments-grid">
-          <tbody>
-            @foreach ($report->attachments->chunk(2) as $chunk)
-              <tr>
-                @foreach ($chunk as $attachment)
-                  <td>
-                    <div class="attachment-card">
-                      <img src="{{ $attachment->publicPath() }}" alt="Lampiran">@php
-                            $filePath = method_exists($attachment, 'publicPath') ? $attachment->publicPath() : public_path('storage/' . $attachment->file_path);
+    <div class="section-title">Lampiran dokumentasi</div>
+        <div class="attachments">
+            <table class="attachments-grid">
+            <tbody>
+                @foreach ($report->attachments->chunk(2) as $chunk)
+                <tr>
+                    @foreach ($chunk as $attachment)
+                    @php
+                        $dbPath = $attachment->path;
 
-                            $imgBase64 = '';
-                            if (file_exists($filePath)) {
-                                $imgData = file_get_contents($filePath);
-                                $ext = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
-                                $mime = ($ext === 'webp') ? 'image/webp' : (($ext === 'png') ? 'image/png' : 'image/jpeg');
-                                $imgBase64 = 'data:' . $mime . ';base64,' . base64_encode($imgData);
-                            }
-                        @endphp
+                        $fullPath = public_path('storage/' . $dbPath);
 
-                        @if($imgBase64)
-                            <img src="{{ $imgBase64 }}" alt="Lampiran" style="max-width: 100%; max-height: 200px; height: auto; display: block; margin: 0 auto;">
+                        if (!file_exists($fullPath)) {
+                            $fullPath = storage_path('app/public/' . $dbPath);
+                        }
+
+                        $imgBase64 = '';
+                        if (file_exists($fullPath) && !is_dir($fullPath)) {
+                            $imgData = file_get_contents($fullPath);
+                            $ext = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
+                            $mime = ($ext === 'png') ? 'image/png' : (($ext === 'webp') ? 'image/webp' : 'image/jpeg');
+                            $imgBase64 = 'data:' . $mime . ';base64,' . base64_encode($imgData);
+                        }
+                    @endphp
+
+                    <td>
+                        <div class="attachment-card">
+                        @if ($imgBase64)
+                            <img src="{{ $imgBase64 }}" alt="Lampiran">
                         @else
-                            <div style="padding: 20px; color: #999; font-size: 10px; text-align: center;">[ Gambar Tidak Ditemukan di Server ]</div>
+                            <div style="padding: 15px; font-size: 10px; color: #999; text-align: center;">
+                            [ Gambar Tidak Ditemukan ]
+                            </div>
                         @endif
-                      <div class="attachment-cap">{{ $attachment->caption ?: 'Tanpa caption' }}</div>
-                    </div>
-                  </td>
-                @endforeach
-                @if ($chunk->count() === 1)
-                  <td></td>
-                @endif
-              </tr>
-            @endforeach
-          </tbody>
-        </table>
-      </div>
-    @endif
+                        <div class="attachment-cap">{{ $attachment->caption ?: 'Tanpa caption' }}</div>
+                        </div>
+                    </td>
+                    @endforeach
 
-    <table class="sign">
-      <tr>
-        <td>
-          <div class="sign-box">
-            <div class="role">Disiapkan & dilaporkan oleh:</div>
-            <div class="line"></div>
-            <div class="name">{{ $report->prepared_by_name ?: '-' }}</div>
-            <div class="role">{{ $report->prepared_by_title ?: '-' }}</div>
-          </div>
-        </td>
-      </tr>
-    </table>
-  </div>
+                    @if ($chunk->count() === 1)
+                    <td></td>
+                    @endif
+                </tr>
+                @endforeach
+            </tbody>
+            </table>
+        </div>
+        @endif
+
+        <table class="sign">
+        <tr>
+            <td>
+            <div class="sign-box">
+                <div class="role">Disiapkan & dilaporkan oleh:</div>
+                <div class="line"></div>
+                <div class="name">{{ $report->prepared_by_name ?: '-' }}</div>
+                <div class="role">{{ $report->prepared_by_title ?: '-' }}</div>
+            </div>
+            </td>
+        </tr>
+        </table>
+    </div>
 
   <table class="footer">
     <tr>
