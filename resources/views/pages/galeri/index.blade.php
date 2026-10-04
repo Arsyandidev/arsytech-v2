@@ -6,7 +6,7 @@
 @section('content')
 @include('layouts.components.page-head', [
     'title' => 'Galeri kegiatan',
-    'subtitle' => 'Foto-foto dari lapangan: kick-off proyek, pelatihan pengguna di lokasi klien, sampai acara internal tim kami.',
+    'subtitle' => 'Dokumentasi dari lapangan: kick-off proyek, pelatihan pengguna di lokasi klien, sampai acara internal tim kami.',
     'breadcrumbs' => [
         'Galeri' => null,
     ],

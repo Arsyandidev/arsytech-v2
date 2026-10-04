@@ -32,7 +32,7 @@ class GalleryController extends Controller
         $gallery = new Gallery();
         $this->save($request, $gallery);
 
-        return redirect()->route('dashboard.galeri.edit', $gallery)->with('success', 'Album dibuat. Sekarang tambahkan foto-fotonya.');
+        return redirect()->route('dashboard.galeri.edit', $gallery)->with('success', 'Album dibuat. Sekarang tambahkan foto atau videonya.');
     }
 
     public function edit(Gallery $gallery)
@@ -54,7 +54,7 @@ class GalleryController extends Controller
         $gallery->photos->each->delete();
         $gallery->delete();
 
-        return redirect()->route('dashboard.galeri.index')->with('success', 'Album "'.$gallery->title.'" beserta fotonya sudah dihapus.');
+        return redirect()->route('dashboard.galeri.index')->with('success', 'Album "'.$gallery->title.'" beserta medianya sudah dihapus.');
     }
 
     protected function save(Request $request, Gallery $gallery): void

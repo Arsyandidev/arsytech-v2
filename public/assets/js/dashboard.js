@@ -315,7 +315,7 @@
       textarea.addEventListener('blur', save);
 
       card.querySelector('[data-delete-photo]').addEventListener('click', function () {
-        confirmAction('Hapus foto ini dari album?', function () {
+        confirmAction('Hapus media ini dari album?', function () {
           card.style.opacity = '.4';
           request('DELETE', card.dataset.deleteUrl).then(function (res) {
             card.remove();
@@ -350,7 +350,19 @@
       var card = document.createElement('div');
       card.className = 'photo-card uploading';
       card.innerHTML = '<div class="thumb"><img alt=""><span class="bar"></span></div><div class="err" hidden></div>';
-      card.querySelector('img').src = URL.createObjectURL(file);
+      var preview = card.querySelector('img');
+      var previewUrl = URL.createObjectURL(file);
+      card.dataset.previewUrl = previewUrl;
+      if (file.type.indexOf('video/') === 0) {
+        var video = document.createElement('video');
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        video.src = previewUrl;
+        preview.replaceWith(video);
+      } else {
+        preview.src = previewUrl;
+      }
       grid.appendChild(card);
       emptyState.hidden = true;
       return card;
@@ -358,9 +370,10 @@
 
     function upload(item) {
       active++;
-      resizeImage(item.file, 2400).then(function (file) {
+      var prepared = item.file.type.indexOf('image/') === 0 ? resizeImage(item.file, 2400) : Promise.resolve(item.file);
+      prepared.then(function (file) {
         var data = new FormData();
-        data.append('photo', file);
+        data.append('media', file, item.file.name);
         var xhr = new XMLHttpRequest();
         xhr.open('POST', dropzone.dataset.uploadUrl);
         xhr.setRequestHeader('X-CSRF-TOKEN', csrf);
@@ -375,6 +388,7 @@
             var tmp = document.createElement('div');
             tmp.innerHTML = res.html.trim();
             var card = tmp.firstChild;
+            URL.revokeObjectURL(item.card.dataset.previewUrl);
             item.card.replaceWith(card);
             bindCard(card);
           } else {
@@ -384,7 +398,7 @@
         };
         xhr.onerror = function () { fail(item, 'Koneksi terputus.'); done(); };
         xhr.send(data);
-      });
+      }).catch(function () { fail(item, 'File tidak dapat disiapkan untuk diunggah.'); done(); });
     }
 
     function fail(item, message) {
@@ -397,7 +411,12 @@
       var close = document.createElement('a');
       close.href = '#';
       close.textContent = 'Tutup';
-      close.addEventListener('click', function (ev) { ev.preventDefault(); item.card.remove(); refreshCount(); });
+      close.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        URL.revokeObjectURL(item.card.dataset.previewUrl);
+        item.card.remove();
+        refreshCount();
+      });
       err.appendChild(close);
     }
 
@@ -414,8 +433,13 @@
 
     function addFiles(files) {
       Array.prototype.forEach.call(files, function (file) {
-        if (!/^image\//.test(file.type)) return;
-        queue.push({ file: file, card: placeholderCard(file) });
+        if (!/^(image|video)\//.test(file.type)) return;
+        var item = { file: file, card: placeholderCard(file) };
+        if (file.type.indexOf('video/') === 0 && file.size > 10 * 1024 * 1024) {
+          fail(item, 'Ukuran video maksimal 10 MB. Kompres video sebelum diunggah.');
+          return;
+        }
+        queue.push(item);
       });
       next();
     }
@@ -430,6 +454,11 @@
     });
     ['dragleave', 'drop'].forEach(function (type) {
       dropzone.addEventListener(type, function () { dropzone.classList.remove('drag'); });
+    });
+    dropzone.addEventListener('dragover', function (ev) { ev.preventDefault(); });
+    dropzone.addEventListener('drop', function (ev) {
+      ev.preventDefault();
+      if (ev.dataTransfer) addFiles(ev.dataTransfer.files);
     });
   }
 })();

@@ -11,6 +11,7 @@ class GalleryPhoto extends Model
     protected $fillable = [
         'path',
         'thumb_path',
+        'media_type',
         'width',
         'height',
         'caption',
@@ -32,8 +33,13 @@ class GalleryPhoto extends Model
         return ImageUploader::url($this->path);
     }
 
-    public function thumbUrl(): string
+    public function thumbUrl(): ?string
     {
         return ImageUploader::url($this->thumb_path);
+    }
+
+    public function isVideo(): bool
+    {
+        return $this->media_type === 'video';
     }
 }

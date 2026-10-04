@@ -16,9 +16,15 @@
     [index - 1, index, index + 1].forEach(function (i) {
       var item = items[(i + total) % total];
       var img = item && item.querySelector('img[data-src]');
+      var video = item && item.querySelector('video[data-src]');
       if (img) {
         img.src = img.dataset.src;
         img.removeAttribute('data-src');
+      }
+      if (video) {
+        video.src = video.dataset.src;
+        video.removeAttribute('data-src');
+        video.load();
       }
     });
   }
@@ -32,7 +38,20 @@
     });
   }
 
-  carouselEl.addEventListener('slide.bs.carousel', function (ev) { sync(ev.to); });
+  carouselEl.addEventListener('slide.bs.carousel', function (ev) {
+    items.forEach(function (item, index) {
+      var video = item.querySelector('video');
+      if (video && index !== ev.to) video.pause();
+    });
+    sync(ev.to);
+  });
+
+  modalEl.addEventListener('hidden.bs.modal', function () {
+    items.forEach(function (item) {
+      var video = item.querySelector('video');
+      if (video) video.pause();
+    });
+  });
 
   document.querySelectorAll('[data-lightbox]').forEach(function (trigger) {
     trigger.addEventListener('click', function () {

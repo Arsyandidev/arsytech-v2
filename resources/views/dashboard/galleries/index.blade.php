@@ -20,7 +20,7 @@
         <p class="mb-0">Coba kata kunci lain.</p>
       @else
         <h3>Belum ada album</h3>
-        <p class="mb-3">Buat album untuk setiap kegiatan, lalu unggah foto-fotonya sekaligus.</p>
+        <p class="mb-3">Buat album untuk setiap kegiatan, lalu unggah foto atau videonya sekaligus.</p>
         <a href="{{ route('dashboard.galeri.create') }}" class="btn btn-brand btn-sm">Buat album</a>
       @endif
     </div>
@@ -32,11 +32,15 @@
         <div class="album-card">
           <a class="cv" href="{{ route('dashboard.galeri.edit', $gallery) }}">
             @if ($gallery->cover)
-              <img src="{{ $gallery->cover->thumbUrl() }}" alt="" loading="lazy">
+              @if ($gallery->cover->isVideo())
+                <span class="media-poster-placeholder"><i class="bi bi-play-circle"></i><span>Video</span></span>
+              @else
+                <img src="{{ $gallery->cover->thumbUrl() }}" alt="" loading="lazy">
+              @endif
             @else
               <i class="bi bi-images fs-2"></i>
             @endif
-            <span class="count"><i class="bi bi-image me-1"></i>{{ $gallery->photos_count }}</span>
+            <span class="count"><i class="bi bi-images me-1"></i>{{ $gallery->photos_count }}</span>
           </a>
           <div class="bd">
             <span @class(['badge-status', 's-live' => $gallery->is_published, 's-draft' => ! $gallery->is_published])>{{ $gallery->is_published ? 'Tayang' : 'Draf' }}</span>
@@ -46,7 +50,7 @@
           <div class="ft">
             <a href="{{ route('galeri.show', $gallery) }}" target="_blank" rel="noopener" class="btn btn-icon btn-soft" title="{{ $gallery->is_published ? 'Lihat di situs' : 'Pratinjau' }}"><i class="bi bi-eye"></i></a>
             <a href="{{ route('dashboard.galeri.edit', $gallery) }}" class="btn btn-icon btn-soft" title="Ubah"><i class="bi bi-pencil"></i></a>
-            <form method="post" action="{{ route('dashboard.galeri.destroy', $gallery) }}" data-confirm="Hapus album &quot;{{ $gallery->title }}&quot; beserta {{ $gallery->photos_count }} fotonya? Tindakan ini tidak bisa dibatalkan.">
+            <form method="post" action="{{ route('dashboard.galeri.destroy', $gallery) }}" data-confirm="Hapus album &quot;{{ $gallery->title }}&quot; beserta {{ $gallery->photos_count }} media? Tindakan ini tidak bisa dibatalkan.">
               @csrf
               @method('DELETE')
               <button type="submit" class="btn btn-icon btn-soft-danger" title="Hapus"><i class="bi bi-trash3"></i></button>

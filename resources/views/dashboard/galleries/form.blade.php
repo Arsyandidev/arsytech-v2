@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="panel-foot d-flex flex-wrap gap-2 justify-content-between">
-        <button type="submit" class="btn btn-brand">{{ $gallery->exists ? 'Simpan detail' : 'Simpan & lanjut tambah foto' }}</button>
+        <button type="submit" class="btn btn-brand">{{ $gallery->exists ? 'Simpan detail' : 'Simpan & lanjut tambah media' }}</button>
         @if ($gallery->exists)
           <button type="button" class="btn btn-soft-danger" data-delete-form="#deleteGallery"><i class="bi bi-trash3 me-1"></i> Hapus album</button>
         @endif
@@ -64,15 +64,15 @@
     <div class="col-xl-8">
       <div class="panel">
         <div class="panel-head">
-          <h2>Foto <span class="text-muted-2 fw-semibold" data-photo-count>({{ $gallery->photos->count() }})</span></h2>
-          <span class="small text-muted-2">Seret untuk mengubah urutan. Foto pertama jadi sampul.</span>
+          <h2>Foto &amp; video <span class="text-muted-2 fw-semibold" data-photo-count>({{ $gallery->photos->count() }})</span></h2>
+          <span class="small text-muted-2">Seret untuk mengubah urutan. Media pertama jadi sampul.</span>
         </div>
         <div class="panel-body">
           <div class="dropzone mb-4" data-dropzone data-upload-url="{{ route('dashboard.galeri.foto.store', $gallery) }}">
             <i class="bi bi-cloud-arrow-up"></i>
-            <strong>Klik atau seret foto ke sini</strong>
-            <small>Bisa pilih banyak sekaligus. Foto otomatis diperkecil sebelum diunggah.</small>
-            <input type="file" accept="image/jpeg,image/png,image/webp" multiple>
+            <strong>Klik atau seret foto dan video ke sini</strong>
+            <small>Foto otomatis diperkecil. Video MP4, MOV, atau WebM maksimal 10 MB per file dan tidak dikompresi oleh aplikasi.</small>
+            <input type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,video/webm" multiple>
           </div>
           <div class="photo-grid" data-photo-grid data-reorder-url="{{ route('dashboard.galeri.foto.urutan', $gallery) }}">
             @foreach ($gallery->photos as $photo)
@@ -80,7 +80,7 @@
             @endforeach
           </div>
           <div class="empty py-4" data-photo-empty @if ($gallery->photos->isNotEmpty()) hidden @endif>
-            <p class="mb-0">Album ini belum punya foto.</p>
+            <p class="mb-0">Album ini belum punya foto atau video.</p>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@
 </div>
 
 @if ($gallery->exists)
-  <form method="post" action="{{ route('dashboard.galeri.destroy', $gallery) }}" id="deleteGallery" data-confirm="Hapus album ini beserta semua fotonya? Tindakan ini tidak bisa dibatalkan.">
+  <form method="post" action="{{ route('dashboard.galeri.destroy', $gallery) }}" id="deleteGallery" data-confirm="Hapus album ini beserta semua foto dan videonya? Tindakan ini tidak bisa dibatalkan.">
     @csrf
     @method('DELETE')
   </form>

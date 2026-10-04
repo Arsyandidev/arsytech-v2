@@ -278,7 +278,7 @@
   <div class="col-sm-6 col-xl-3"><div class="stat-card"><div class="ico ico-sm"><i class="bi bi-journal-check"></i></div><div><div class="v">{{ $stats['published'] }}</div><div class="l">Artikel terbit</div></div></div></div>
   <div class="col-sm-6 col-xl-3"><div class="stat-card"><div class="ico ico-sm"><i class="bi bi-pencil-square"></i></div><div><div class="v">{{ $stats['drafts'] + $stats['scheduled'] }}</div><div class="l">Draf &amp; terjadwal</div></div></div></div>
   <div class="col-sm-6 col-xl-3"><div class="stat-card"><div class="ico ico-sm"><i class="bi bi-collection"></i></div><div><div class="v">{{ $stats['galleries'] }}</div><div class="l">Album galeri</div></div></div></div>
-  <div class="col-sm-6 col-xl-3"><div class="stat-card"><div class="ico ico-sm"><i class="bi bi-image"></i></div><div><div class="v">{{ $stats['photos'] }}</div><div class="l">Foto tersimpan</div></div></div></div>
+  <div class="col-sm-6 col-xl-3"><div class="stat-card"><div class="ico ico-sm"><i class="bi bi-image"></i></div><div><div class="v">{{ $stats['photos'] }}</div><div class="l">Media tersimpan</div></div></div></div>
 </div>
 
 <div class="row g-4">
@@ -320,13 +320,17 @@
       @forelse ($galleries as $gallery)
         <a class="recent-item" href="{{ route('dashboard.galeri.edit', $gallery) }}">
           @if ($gallery->cover)
-            <img class="t-thumb" src="{{ $gallery->cover->thumbUrl() }}" alt="">
+            @if ($gallery->cover->isVideo())
+              <span class="t-thumb"><i class="bi bi-play-circle"></i></span>
+            @else
+              <img class="t-thumb" src="{{ $gallery->cover->thumbUrl() }}" alt="">
+            @endif
           @else
             <span class="t-thumb"><i class="bi bi-images"></i></span>
           @endif
           <div class="flex-grow-1 min-w-0">
             <div class="t text-truncate">{{ $gallery->title }}</div>
-            <div class="s">{{ $gallery->photos_count }} foto · {{ $gallery->displayDate()->translatedFormat('d M Y') }}</div>
+            <div class="s">{{ $gallery->photos_count }} media · {{ $gallery->displayDate()->translatedFormat('d M Y') }}</div>
           </div>
           <span @class(['badge-status', 's-live' => $gallery->is_published, 's-draft' => ! $gallery->is_published])>{{ $gallery->is_published ? 'Tayang' : 'Draf' }}</span>
         </a>
