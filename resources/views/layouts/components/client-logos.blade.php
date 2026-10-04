@@ -2,7 +2,6 @@
 @if ($clients->isNotEmpty())
   <section class="client-strip" aria-labelledby="clientStripTitle">
     <div class="container">
-      <p class="cs-title" id="clientStripTitle">Dipercaya perusahaan dan instansi untuk membangun sistem mereka</p>
       <ul class="cs-logos">
         @foreach ($clients as $client)
           <li>
