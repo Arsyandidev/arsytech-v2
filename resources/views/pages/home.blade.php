@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Pembuatan Sistem Bisnis ERP, WMS, HRIS & CRM | Arsytech')
-@section('description', 'Arsytech membuat ERP, WMS, HRIS, CRM, dan sistem keuangan yang saling terhubung untuk perusahaan di Indonesia. Penyerahan Source Code, konsultasi awal gratis.')
+@section('title', 'Pembuatan Sistem ERP & Software Custom untuk Perusahaan | Arsytech')
+@section('description', 'Arsytech membuat sistem ERP dan software custom yang mengikuti alur bisnis Anda: HRIS, WMS, CRM, dan keuangan dalam satu sistem. Source code jadi milik Anda, konsultasi awal gratis.')
 
 @section('content')
 <section class="hero">
@@ -9,9 +9,10 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-6">
         <span class="pill"><span class="tag">SOFTWARE HOUSE B2B</span><span><span class="d-none d-sm-inline">Bogor · Melayani klien se-Indonesia</span><span class="d-sm-none">Bogor · Klien se-Indonesia</span></span></span>
-        <h1>Operasional teratur, <em>data laporan lebih <br> Akurat</em></h1>
+        <h1>Sistem ERP &amp; software custom yang mengikuti <em>alur bisnis Anda</em></h1>
         <p class="lead-lg mt-4 measure-sm">
-          Kami membangun solusi guna menyatukan data operasional perusahaan ke dalam satu sistem terpusat, memastikan manajemen memiliki landasan angka yang valid dan transparan
+          Kami petakan proses kerja tim Anda dulu, lalu membangun sistem yang benar-benar dipakai setiap hari.
+          Source code jadi milik Anda, tanpa biaya langganan bulanan per pengguna.
         </p>
         <div class="hero-cta">
           <a href="{{ route('kontak') }}" class="btn btn-brand btn-lg">Konsultasi Gratis <i class="bi bi-arrow-right ms-1"></i></a>
@@ -74,6 +75,8 @@
     </div>
   </div>
 </section>
+
+@include('layouts.components.client-logos')
 
 <section class="statbar">
   <div class="container">

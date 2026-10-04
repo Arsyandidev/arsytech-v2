@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Rules\NoLineBreaks;
+use App\Support\Analytics\Recorder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -43,6 +45,7 @@ class LoginController extends Controller
 
         RateLimiter::clear($key);
         $request->session()->regenerate();
+        Cookie::queue(Cookie::make(Recorder::INTERNAL_COOKIE, '1', 60 * 24 * 730));
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

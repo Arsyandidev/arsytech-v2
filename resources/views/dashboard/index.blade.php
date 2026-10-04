@@ -13,6 +13,7 @@
   <div>
     <p class="text-muted-2 mb-1">Halo, {{ \Illuminate\Support\Str::before(auth()->user()->name, ' ') }}. Ini performa situs pada <strong>{{ $report->label() }}</strong> ({{ $fmt($report->days) }} hari).</p>
     <p class="small text-muted-2 mb-0">Dibanding periode sebelumnya: {{ $report->previousLabel() }}</p>
+    <p class="small text-muted-2 mb-0 mt-1"><i class="bi bi-shield-check me-1"></i>Kunjungan tim tidak dihitung. Tandai perangkat lain (misalnya HP tim) dengan membuka <a href="{{ url('/?internal=1') }}" target="_blank" rel="noopener">{{ preg_replace('#^https?://#', '', url('/?internal=1')) }}</a> sekali di perangkat itu.</p>
   </div>
   <form class="range-picker" method="get" action="{{ route('dashboard.index') }}" data-range-picker>
     <i class="bi bi-calendar3"></i>
@@ -27,7 +28,7 @@
   <div class="ts-item"><span class="ts-label">Pengunjung hari ini</span><span class="ts-val">{{ $fmt($today['visitors']) }}</span></div>
   <div class="ts-item"><span class="ts-label">Tayangan hari ini</span><span class="ts-val">{{ $fmt($today['pageviews']) }}</span></div>
   <div class="ts-item"><span class="ts-label"><span @class(['live-dot', 'on' => $today['active'] > 0])></span>Aktif 5 menit terakhir</span><span class="ts-val">{{ $fmt($today['active']) }}</span></div>
-  <div class="ts-item"><span class="ts-label">Konsultasi hari ini</span><span class="ts-val">{{ $fmt($today['conversions']) }}</span></div>
+  <div class="ts-item"><span class="ts-label">Menghubungi hari ini</span><span class="ts-val">{{ $fmt($today['conversions']) }}</span></div>
 </div>
 
 @unless ($hasData)
@@ -62,9 +63,9 @@
     <div class="kc-sub">{{ $fmt($summary['returning']['value']) }} kembali · {{ $fmt($summary['visitors']['value'] - $summary['returning']['value']) }} baru</div>
   </div>
   <div class="kpi-card kpi-accent">
-    <div class="kc-top"><span class="kc-label"><i class="bi bi-envelope-check"></i> Konsultasi terkirim</span></div>
+    <div class="kc-top"><span class="kc-label"><i class="bi bi-chat-dots"></i> Menghubungi</span></div>
     <div class="kc-val">{{ $fmt($summary['conversions']['value']) }}@include('dashboard.partials.delta', ['change' => $summary['conversions']['change']])</div>
-    <div class="kc-sub">Konversi {{ $fmt($summary['conversion_rate']['value'], 1) }}% dari pengunjung</div>
+    <div class="kc-sub">{{ $fmt($summary['forms']['value']) }} form · {{ $fmt($summary['whatsapp']['value']) }} WhatsApp · konversi {{ $fmt($summary['conversion_rate']['value'], 1) }}%</div>
   </div>
 </div>
 
@@ -79,7 +80,7 @@
         <a href="#" class="on" data-metric="visitors">Pengunjung</a>
         <a href="#" data-metric="pageviews">Tayangan</a>
         <a href="#" data-metric="readers">Pembaca blog</a>
-        <a href="#" data-metric="conversions">Konsultasi</a>
+        <a href="#" data-metric="conversions">Menghubungi</a>
       </div>
       <button class="btn btn-sm btn-soft" type="button" data-bs-toggle="collapse" data-bs-target="#trendTable" aria-expanded="false"><i class="bi bi-table me-1"></i> Tabel</button>
     </div>
@@ -89,7 +90,7 @@
     <div class="collapse mt-3" id="trendTable">
       <div class="table-responsive" style="max-height:320px">
         <table class="table table-sm dash-table mb-0">
-          <thead><tr><th>{{ $report->monthly ? 'Bulan' : 'Tanggal' }}</th><th class="text-end">Pengunjung</th><th class="text-end">Tayangan</th><th class="text-end">Pembaca blog</th><th class="text-end">Konsultasi</th></tr></thead>
+          <thead><tr><th>{{ $report->monthly ? 'Bulan' : 'Tanggal' }}</th><th class="text-end">Pengunjung</th><th class="text-end">Tayangan</th><th class="text-end">Pembaca blog</th><th class="text-end">Menghubungi</th></tr></thead>
           <tbody>
             @foreach (array_reverse($trend) as $row)
               <tr><td>{{ $row['full'] }}</td><td class="text-end">{{ $fmt($row['visitors']) }}</td><td class="text-end">{{ $fmt($row['pageviews']) }}</td><td class="text-end">{{ $fmt($row['readers']) }}</td><td class="text-end">{{ $fmt($row['conversions']) }}</td></tr>
@@ -197,9 +198,36 @@
   </div>
 </div>
 
-<div class="panel mb-4">
-  <div class="panel-head"><h2>Jam ramai pengunjung</h2><span class="small text-muted-2">Berdasarkan jam pertama kali datang (WIB)</span></div>
-  <div class="panel-body"><div class="chart-box chart-box-sm"><canvas id="hourChart" aria-label="Grafik jam ramai" role="img"></canvas></div></div>
+<div class="row g-4 mb-4">
+  <div class="col-xl-7">
+    <div class="panel h-100">
+      <div class="panel-head"><h2>Jam ramai pengunjung</h2><span class="small text-muted-2">Berdasarkan jam pertama kali datang (WIB)</span></div>
+      <div class="panel-body"><div class="chart-box chart-box-sm"><canvas id="hourChart" aria-label="Grafik jam ramai" role="img"></canvas></div></div>
+    </div>
+  </div>
+  <div class="col-xl-5">
+    <div class="panel h-100">
+      <div class="panel-head"><h2>Klik tombol ajakan</h2><span class="small text-muted-2">Jumlah orang yang mengklik</span></div>
+      @if ($clicks->isEmpty())
+        <div class="empty py-4"><p class="mb-0">Belum ada yang mengklik tombol WhatsApp atau konsultasi pada periode ini.</p></div>
+      @else
+        <div class="table-responsive">
+          <table class="table dash-table mb-0">
+            <thead><tr><th>Tombol</th><th>Di halaman</th><th class="text-end">Orang</th></tr></thead>
+            <tbody>
+              @foreach ($clicks as $click)
+                <tr title="{{ $fmt($click['visitors']) }} orang, {{ $fmt($click['clicks']) }} klik">
+                  <td class="text-nowrap"><i @class(['bi me-1', 'bi-whatsapp text-success' => $click['type'] === 'whatsapp', 'bi-chat-square-text' => $click['type'] !== 'whatsapp'])></i>{{ $click['type'] === 'whatsapp' ? 'WhatsApp' : 'Konsultasi' }}</td>
+                  <td><span class="t-cell-title" style="max-width:190px" title="{{ $click['page'] }} ({{ $click['path'] }})">{{ $click['page'] }}</span></td>
+                  <td class="text-end fw-bold">{{ $fmt($click['visitors']) }}</td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      @endif
+    </div>
+  </div>
 </div>
 
 <div class="panel mb-5">
@@ -225,7 +253,9 @@
               <td class="text-nowrap"><i @class(['bi me-1', 'bi-phone' => $visit->device === 'Mobile', 'bi-laptop' => $visit->device === 'Desktop', 'bi-tablet' => $visit->device === 'Tablet'])></i>{{ $visit->browser }}<div class="t-sub">{{ $visit->os }}</div></td>
               <td class="text-nowrap">
                 @if ($visit->converted_at)
-                  <span class="badge-status s-live">Kirim konsultasi</span>
+                  <span class="badge-status s-live">Kirim form</span>
+                @elseif ($visit->whatsapp_at)
+                  <span class="badge-status s-live">Klik WhatsApp</span>
                 @elseif ($visit->is_returning)
                   <span class="badge-status s-sched">Kembali</span>
                 @else

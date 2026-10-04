@@ -44,6 +44,12 @@
 <main id="main">
 @yield('content')
 </main>
+@if (session()->has('internal_device'))
+  <div class="internal-note" role="status">
+    <i class="bi {{ session('internal_device') ? 'bi-shield-check' : 'bi-shield-x' }}"></i>
+    {{ session('internal_device') ? 'Perangkat ini ditandai sebagai perangkat internal. Kunjungannya tidak dihitung di analitik.' : 'Tanda perangkat internal dihapus. Kunjungan dari perangkat ini kembali dihitung.' }}
+  </div>
+@endif
 @include('layouts.components.footer')
 <script type="application/ld+json">
 {!! app(\App\Support\StructuredData::class)->toJson() !!}

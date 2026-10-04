@@ -64,6 +64,35 @@
     counters.forEach(runCounter);
   }
 
+  function beacon(url, data) {
+    var body = new URLSearchParams(data);
+    try {
+      if (navigator.sendBeacon && navigator.sendBeacon(url, body)) return;
+    } catch (e) {}
+    if (window.fetch) fetch(url, { method: 'POST', body: body, keepalive: true, credentials: 'same-origin' }).catch(function () {});
+  }
+
+  var trackBase = window.location.origin + '/t/';
+
+  function ping() {
+    setTimeout(function () { beacon(trackBase + 'ping', { path: window.location.pathname }); }, 1200);
+  }
+
+  if (document.readyState === 'complete') ping();
+  else window.addEventListener('load', ping);
+
+  document.addEventListener('click', function (ev) {
+    var link = ev.target.closest ? ev.target.closest('a[href]') : null;
+    if (!link) return;
+    var href = link.getAttribute('href') || '';
+    var type = null;
+    if (/wa\.me\/|api\.whatsapp\.com|^whatsapp:/i.test(href)) type = 'whatsapp';
+    else if (link.dataset.track === 'konsultasi' || (link.hostname === window.location.hostname && /^\/kontak\/?$/.test(link.pathname))) type = 'konsultasi';
+    if (!type) return;
+    var label = link.dataset.trackLabel || (link.textContent || '').replace(/\s+/g, ' ').trim() || link.getAttribute('aria-label') || '';
+    beacon(trackBase + 'event', { type: type, label: label.slice(0, 110), path: window.location.pathname });
+  }, true);
+
   document.querySelectorAll('form.needs-validation').forEach(function (form) {
     form.addEventListener('submit', function (ev) {
       form.classList.add('was-validated');

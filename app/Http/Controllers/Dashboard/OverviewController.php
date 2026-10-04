@@ -29,6 +29,7 @@ class OverviewController extends Controller
             'browsers' => $report->breakdown('browser', 5),
             'systems' => $report->breakdown('os', 5),
             'hours' => $report->hours(),
+            'clicks' => $report->clicks(),
             'recentVisits' => $report->recentVisits(),
             'stats' => [
                 'published' => Post::published()->count(),

@@ -7,11 +7,11 @@ use App\Content\Solusi;
 use App\Models\Gallery;
 use App\Models\PageView;
 use App\Models\Post;
+use App\Models\SiteEvent;
 use App\Models\SiteVisit;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 
 class Report
 {
@@ -96,17 +96,17 @@ class Report
         $today = CarbonImmutable::today();
 
         return [
-            'visitors' => SiteVisit::whereDate('visit_date', $today)->count(),
-            'pageviews' => PageView::where('viewed_at', '>=', $today)->count(),
-            'active' => SiteVisit::where('last_seen_at', '>=', now()->subMinutes(5))->count(),
-            'conversions' => SiteVisit::whereDate('visit_date', $today)->whereNotNull('converted_at')->count(),
+            'visitors' => SiteVisit::verified()->whereDate('visit_date', $today)->count(),
+            'pageviews' => static::verifiedViews()->where('viewed_at', '>=', $today)->count(),
+            'active' => SiteVisit::verified()->where('last_seen_at', '>=', now()->subMinutes(5))->count(),
+            'conversions' => SiteVisit::verified()->whereDate('visit_date', $today)->where(fn ($query) => $query->whereNotNull('converted_at')->orWhereNotNull('whatsapp_at'))->count(),
         ];
     }
 
     public function trend(): array
     {
         $visits = $this->visitsQuery($this->start, $this->end)
-            ->selectRaw($this->bucket('visit_date').' as bucket, COUNT(*) as visitors, SUM(is_returning) as returning_visitors, SUM(converted_at IS NOT NULL) as conversions')
+            ->selectRaw($this->bucket('visit_date').' as bucket, COUNT(*) as visitors, SUM(is_returning) as returning_visitors, SUM(converted_at IS NOT NULL OR whatsapp_at IS NOT NULL) as conversions')
             ->groupBy('bucket')
             ->get()
             ->keyBy('bucket');
@@ -208,9 +208,33 @@ class Report
         ])->all();
     }
 
+    public function clicks(int $limit = 8): Collection
+    {
+        $rows = SiteEvent::query()
+            ->whereIn('site_visit_id', SiteVisit::verified()->select('id'))
+            ->whereBetween('created_at', [$this->start->startOfDay(), $this->end->endOfDay()])
+            ->selectRaw('type, path, COUNT(*) as clicks, COUNT(DISTINCT site_visit_id) as visitors')
+            ->groupBy('type', 'path')
+            ->orderByDesc('visitors')
+            ->limit($limit)
+            ->get();
+
+        $titles = $this->titlesFor($rows->map(fn ($row) => (object) ['path' => $row->path, 'post_id' => null, 'gallery_id' => null]));
+        $routes = PageView::whereIn('path', $rows->pluck('path')->filter())->select('path', 'route')->distinct()->pluck('route', 'path');
+
+        return $rows->map(fn ($row) => [
+            'type' => $row->type,
+            'type_label' => SiteEvent::TYPES[$row->type] ?? $row->type,
+            'page' => $this->pageTitle((object) ['path' => $row->path, 'route' => $routes[$row->path] ?? null, 'post_id' => null, 'gallery_id' => null], $titles),
+            'path' => $row->path,
+            'clicks' => (int) $row->clicks,
+            'visitors' => (int) $row->visitors,
+        ]);
+    }
+
     public function recentVisits(int $limit = 12): Collection
     {
-        $visits = SiteVisit::query()
+        $visits = SiteVisit::verified()
             ->orderByDesc('last_seen_at')
             ->limit($limit)
             ->get();
@@ -227,7 +251,7 @@ class Report
 
     public static function readersPerPost(array $postIds = []): array
     {
-        return PageView::query()
+        return static::verifiedViews()
             ->whereNotNull('post_id')
             ->when($postIds, fn ($query) => $query->whereIn('post_id', $postIds))
             ->selectRaw('post_id, COUNT(DISTINCT site_visit_id) as readers')
@@ -239,7 +263,7 @@ class Report
 
     public static function postStats(Post $post): array
     {
-        $base = PageView::where('post_id', $post->id);
+        $base = static::verifiedViews()->where('post_id', $post->id);
 
         return [
             'readers' => (clone $base)->distinct()->count('site_visit_id'),
@@ -252,7 +276,7 @@ class Report
     protected function totals(CarbonImmutable $start, CarbonImmutable $end): array
     {
         $visits = $this->visitsQuery($start, $end)
-            ->selectRaw('COUNT(*) as visitors, SUM(is_returning) as returning_visitors, SUM(converted_at IS NOT NULL) as conversions')
+            ->selectRaw('COUNT(*) as visitors, SUM(is_returning) as returning_visitors, SUM(converted_at IS NOT NULL OR whatsapp_at IS NOT NULL) as conversions, SUM(converted_at IS NOT NULL) as forms, SUM(whatsapp_at IS NOT NULL) as whatsapp')
             ->first();
 
         $views = $this->viewsQuery($start, $end)
@@ -270,6 +294,8 @@ class Report
             'readers' => (int) $views->readers,
             'returning' => (int) $visits->returning_visitors,
             'conversions' => $conversions,
+            'forms' => (int) $visits->forms,
+            'whatsapp' => (int) $visits->whatsapp,
             'conversion_rate' => $visitors ? round($conversions / $visitors * 100, 1) : 0,
         ];
     }
@@ -285,12 +311,17 @@ class Report
 
     protected function visitsQuery(CarbonImmutable $start, CarbonImmutable $end)
     {
-        return SiteVisit::query()->whereBetween('visit_date', [$start->toDateString(), $end->toDateString()]);
+        return SiteVisit::verified()->whereBetween('visit_date', [$start->toDateString(), $end->toDateString()]);
     }
 
     protected function viewsQuery(CarbonImmutable $start, CarbonImmutable $end)
     {
-        return PageView::query()->whereBetween('viewed_at', [$start->startOfDay(), $end->endOfDay()]);
+        return static::verifiedViews()->whereBetween('viewed_at', [$start->startOfDay(), $end->endOfDay()]);
+    }
+
+    protected static function verifiedViews()
+    {
+        return PageView::query()->whereIn('site_visit_id', SiteVisit::verified()->select('id'));
     }
 
     protected function bucket(string $column): string

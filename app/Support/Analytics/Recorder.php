@@ -5,6 +5,7 @@ namespace App\Support\Analytics;
 use App\Models\Gallery;
 use App\Models\PageView;
 use App\Models\Post;
+use App\Models\SiteEvent;
 use App\Models\SiteVisit;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -12,14 +13,24 @@ use Illuminate\Support\Str;
 
 class Recorder
 {
+    public const INTERNAL_COOKIE = 'arsytech_internal';
+
+    public static function shouldIgnore(Request $request): bool
+    {
+        return ! $request->ip()
+            || $request->cookie(static::INTERNAL_COOKIE) === '1'
+            || ! $request->headers->has('Accept-Language')
+            || Client::isBot((string) $request->userAgent());
+    }
+
     public static function record(Request $request): void
     {
-        $userAgent = (string) $request->userAgent();
-        $ip = $request->ip();
-
-        if (! $ip || Client::isBot($userAgent)) {
+        if (static::shouldIgnore($request)) {
             return;
         }
+
+        $userAgent = (string) $request->userAgent();
+        $ip = $request->ip();
 
         $now = now();
         $hash = Client::hashIp($ip);
@@ -57,6 +68,44 @@ class Recorder
         }
     }
 
+    public static function verify(Request $request): void
+    {
+        if (static::shouldIgnore($request)) {
+            return;
+        }
+
+        static::todayVisit($request)?->forceFill(['is_verified' => true])->save();
+    }
+
+    public static function event(Request $request, string $type, ?string $label, ?string $path): void
+    {
+        if (static::shouldIgnore($request) || ! ($visit = static::todayVisit($request))) {
+            return;
+        }
+
+        $now = now();
+
+        SiteEvent::create([
+            'site_visit_id' => $visit->id,
+            'type' => $type,
+            'label' => $label !== null ? Str::limit(trim(preg_replace('/\s+/', ' ', $label)), 115, '') : null,
+            'path' => $path !== null ? '/'.ltrim(Str::limit($path, 250, ''), '/') : null,
+            'created_at' => $now,
+        ]);
+
+        $visit->forceFill(array_filter([
+            'is_verified' => true,
+            'whatsapp_at' => $type === 'whatsapp' && ! $visit->whatsapp_at ? $now : null,
+        ], fn ($value) => $value !== null))->save();
+    }
+
+    protected static function todayVisit(Request $request): ?SiteVisit
+    {
+        return SiteVisit::where('visitor_hash', Client::hashIp((string) $request->ip()))
+            ->whereDate('visit_date', now()->toDateString())
+            ->first();
+    }
+
     public static function markConverted(Request $request): void
     {
         if (! $request->ip()) {
@@ -66,7 +115,7 @@ class Recorder
         SiteVisit::where('visitor_hash', Client::hashIp($request->ip()))
             ->whereDate('visit_date', now()->toDateString())
             ->whereNull('converted_at')
-            ->update(['converted_at' => now()]);
+            ->update(['converted_at' => now(), 'is_verified' => true]);
     }
 
     public static function forgetOldVisitorHashes(int $days = 90): int

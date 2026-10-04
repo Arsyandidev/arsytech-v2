@@ -1,5 +1,8 @@
 <?php
 
+$whatsappNumber = '628211316623';
+$whatsappMessage = 'Halo Arsytech, saya ingin konsultasi kebutuhan pembuatan sistem/software untuk perusahaan saya.';
+
 return [
 
     'name' => 'Arsytech',
@@ -12,7 +15,8 @@ return [
         'inbox' => env('CONTACT_INBOX', 'info@arsytech.id'),
         'phone' => '+628211316623',
         'phone_schema' => '628211316623',
-        'whatsapp' => 'https://wa.me/628211316623',
+        'whatsapp_message' => $whatsappMessage,
+        'whatsapp' => 'https://wa.me/'.$whatsappNumber.'?text='.rawurlencode($whatsappMessage),
         'city' => 'Bogor',
         'region' => 'Jawa Barat',
         'hours' => '',

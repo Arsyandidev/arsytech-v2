@@ -145,6 +145,37 @@
     });
   }
 
+  document.querySelectorAll('input[type="file"][data-preview]').forEach(function (input) {
+    var drop = input.closest('[data-cover-drop]');
+    var preview = drop && drop.querySelector('[data-cover-preview]');
+    var placeholder = drop && drop.querySelector('.ph');
+    var strip = document.querySelector('[data-strip-preview]');
+
+    input.addEventListener('change', function () {
+      var file = input.files[0];
+      if (!file) return;
+      var url = URL.createObjectURL(file);
+      if (preview) {
+        preview.src = url;
+        preview.hidden = false;
+        if (placeholder) placeholder.hidden = true;
+      }
+      if (strip) {
+        strip.src = url;
+        strip.hidden = false;
+      }
+    });
+
+    if (drop) {
+      ['dragenter', 'dragover'].forEach(function (type) {
+        drop.addEventListener(type, function () { drop.classList.add('drag'); });
+      });
+      ['dragleave', 'drop'].forEach(function (type) {
+        drop.addEventListener(type, function () { drop.classList.remove('drag'); });
+      });
+    }
+  });
+
   document.querySelectorAll('input[type="file"][data-resize]').forEach(function (input) {
     var drop = input.closest('[data-cover-drop]');
     var preview = drop && drop.querySelector('[data-cover-preview]');

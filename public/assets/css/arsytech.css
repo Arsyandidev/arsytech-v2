@@ -646,3 +646,21 @@ hr.soft{ border-color:var(--line); opacity:1 }
   .pill .tag{ font-size:.625rem; padding:.14rem .5rem; white-space:nowrap; flex-shrink:0 }
   .pill > span:last-child{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0 }
 }
+
+.client-strip{ padding:clamp(2rem,1.5rem + 2vw,3rem) 0; background:#fff; border-top:1px solid var(--line-2) }
+.cs-title{ text-align:center; font-size:.8125rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:1.75rem }
+.cs-logos{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:1.75rem clamp(1.75rem,1rem + 3vw,3.5rem) }
+.cs-logos li{ display:flex; flex-direction:column; align-items:center; gap:.5rem; max-width:170px; text-align:center }
+.cs-logo{ display:flex; align-items:center; justify-content:center; height:52px }
+.cs-logo img{ max-height:52px; max-width:150px; width:auto; height:auto; object-fit:contain; filter:grayscale(1); opacity:.7; transition:filter .25s, opacity .25s }
+.cs-logos li:hover .cs-logo img{ filter:none; opacity:1 }
+.cs-project{ font-size:.75rem; color:var(--muted); line-height:1.4 }
+@media (max-width: 575.98px){
+  .cs-logos{ gap:1.25rem 1.5rem }
+  .cs-logos li{ max-width:42% }
+  .cs-logo{ height:44px }
+  .cs-logo img{ max-height:44px; max-width:120px }
+}
+.internal-note{ position:fixed; left:50%; bottom:1.25rem; transform:translateX(-50%); z-index:1080; display:flex; gap:.6rem; align-items:center; max-width:calc(100% - 2rem); background:var(--bg-ink); color:#fff; font-size:.875rem; padding:.75rem 1rem; border-radius:12px; box-shadow:var(--shadow-lg); animation:internalNote 6s ease forwards }
+.internal-note i{ color:#4ADE80; font-size:1.1rem }
+@keyframes internalNote{ 0%{ opacity:0; transform:translate(-50%,10px) } 8%,85%{ opacity:1; transform:translate(-50%,0) } 100%{ opacity:0; visibility:hidden } }

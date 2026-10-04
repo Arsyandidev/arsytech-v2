@@ -6,6 +6,7 @@ use App\Support\Analytics\Recorder;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
@@ -14,6 +15,16 @@ class TrackVisit
 {
     public function handle(Request $request, Closure $next): Response
     {
+        if ($request->has('internal')) {
+            $internal = $request->query('internal') !== '0';
+
+            Cookie::queue($internal
+                ? Cookie::make(Recorder::INTERNAL_COOKIE, '1', 60 * 24 * 730)
+                : Cookie::forget(Recorder::INTERNAL_COOKIE));
+
+            return redirect()->to($request->url())->with('internal_device', $internal);
+        }
+
         return $next($request);
     }
 

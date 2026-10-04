@@ -7,6 +7,7 @@ use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\IndustriController;
 use App\Http\Controllers\KonsultasiController;
 use App\Http\Controllers\SolusiController;
+use App\Http\Controllers\TrackingController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('track')->group(function () {
@@ -32,6 +33,11 @@ Route::middleware('track')->group(function () {
     Route::get('/galeri/{gallery:slug}', [GaleriController::class, 'show'])->name('galeri.show');
 });
 
+Route::middleware('throttle:120,1')->prefix('t')->name('track.')->group(function () {
+    Route::post('ping', [TrackingController::class, 'ping'])->name('ping');
+    Route::post('event', [TrackingController::class, 'event'])->name('event');
+});
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store'])->name('login.store');
@@ -44,6 +50,8 @@ Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(functi
 
     Route::post('blog/gambar', [Dashboard\PostController::class, 'uploadImage'])->name('blog.gambar');
     Route::resource('blog', Dashboard\PostController::class)->except('show')->parameters(['blog' => 'post']);
+
+    Route::resource('klien', Dashboard\ClientController::class)->except('show')->parameters(['klien' => 'klien']);
 
     Route::resource('galeri', Dashboard\GalleryController::class)->except('show')->parameters(['galeri' => 'gallery']);
     Route::post('galeri/{gallery}/foto', [Dashboard\GalleryPhotoController::class, 'store'])->name('galeri.foto.store');
